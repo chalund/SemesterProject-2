@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eBids</title>
+    <title>eBids | Home</title>
     <link rel="stylesheet" href="/dist/css/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -33,12 +33,197 @@
             </div>
         </div>
     </nav>
+        <div class="container-fluid bg-danger">
+            <div class="py-2"></div>
+        </div>
     <main>
+       <!---Section one-->
+        <div class="container my-0 my-sm-5 pb-4 col-12-log bg-primary">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 order-2 order-md-1 d-flex align-items-center justify-content-center">
+                    <div class="text-center bg-light">
+                        <h1>Buy and sell, EASY!</h1>
+                        <p>Create an account and get started</p>
+                        <button class="btn btn-secondary btn-lg mt-4">Register</button> 
+                    </div>
+                </div>
+                <div class="col order-1 order-md-2">
+                    <img src="images/cash.png" alt="money" width="200px" class="d-block mx-auto my-4 bg-light">
+                </div>
+            </div>
+        </div>
+        <!---Last change auctions-->
+        <div class="container bg-light p-3">
+            <h2>Last chance</h2>
+            <div id="lastChance"></div>
 
-    </main>
-    <footer>
+            <div class="row row-cols-1 row-cols-md-4 g-4">
+                <div class="col">
+                    <div class="card text-center p-2">
+                        <img src="images/logo.png" class="card-img-top" alt="#" width="80px" height="100px">
+                        <div class="card-body">
+                            <h3>Product title</h3>
+                            <div class="row align-items-center">
+                                <div class="col text-end">
+                                    <p class="mb-0">Current bid</p>
+                                </div>
+                                <div class="col text-start">
+                                    <h4 class="mb-0">$186</h4>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-danger mt-3">View</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center p-2">
+                        <img src="images/logo.png" class="card-img-top" alt="#" width="80px" height="100px">
+                        <div class="card-body">
+                            <h3>Product title</h3>
+                            <div class="row align-items-center">
+                                <div class="col text-end">
+                                    <p class="mb-0">Current bid</p>
+                                </div>
+                                <div class="col text-start">
+                                    <h4 class="mb-0">$186</h4>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-danger mt-3">View</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center p-2">
+                        <img src="images/logo.png" class="card-img-top" alt="#" width="80px" height="100px">
+                        <div class="card-body">
+                            <h3>Product title</h3>
+                            <div class="row align-items-center">
+                                <div class="col text-end">
+                                    <p class="mb-0">Current bid</p>
+                                </div>
+                                <div class="col text-start">
+                                    <h4 class="mb-0">$186</h4>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-danger mt-3">View</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center p-2">
+                        <img src="images/logo.png" class="card-img-top" alt="#" width="80px" height="100px">
+                        <div class="card-body">
+                            <h3>Product title</h3>
+                            <div class="row align-items-center">
+                                <div class="col text-end">
+                                    <p class="mb-0">Current bid</p>
+                                </div>
+                                <div class="col text-start">
+                                    <h4 class="mb-0">$186</h4>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-danger mt-3">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <!---Newest auctions-->
+                <div class="container bg-light mt-4">
+                    <h2>Newest Auction</h2>
+                    <div id="newestAuction"></div>
         
-    </footer>
+                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                        <div class="col">
+                            <div class="card text-center p-2">
+                                <img src="images/logo.png" class="card-img-top" alt="#" width="80px" height="100px">
+                                <div class="card-body">
+                                    <h3>Product title</h3>
+                                    <div class="row align-items-center">
+                                        <div class="col text-end">
+                                            <p class="mb-0">Current bid</p>
+                                        </div>
+                                        <div class="col text-start">
+                                            <h4 class="mb-0">$186</h4>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn btn-danger mt-3">View</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card text-center p-2">
+                                <img src="images/logo.png" class="card-img-top" alt="#" width="80px" height="100px">
+                                <div class="card-body">
+                                    <h3>Product title</h3>
+                                    <div class="row align-items-center">
+                                        <div class="col text-end">
+                                            <p class="mb-0">Current bid</p>
+                                        </div>
+                                        <div class="col text-start">
+                                            <h4 class="mb-0">$186</h4>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn btn-danger mt-3">View</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card text-center p-2">
+                                <img src="images/logo.png" class="card-img-top" alt="#" width="80px" height="100px">
+                                <div class="card-body">
+                                    <h3>Product title</h3>
+                                    <div class="row align-items-center">
+                                        <div class="col text-end">
+                                            <p class="mb-0">Current bid</p>
+                                        </div>
+                                        <div class="col text-start">
+                                            <h4 class="mb-0">$186</h4>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn btn-danger mt-3">View</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card text-center p-2">
+                                <img src="images/logo.png" class="card-img-top" alt="#" width="80px" height="100px">
+                                <div class="card-body">
+                                    <h3>Product title</h3>
+                                    <div class="row align-items-center">
+                                        <div class="col text-end">
+                                            <p class="mb-0">Current bid</p>
+                                        </div>
+                                        <div class="col text-start">
+                                            <h4 class="mb-0">$186</h4>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn btn-danger mt-3">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+       <!---Section one-->
+        <div class="container my-0 my-sm-5 p3 col-12-log bg-secondary text-light">
+        <div class="row">
+            <h2>How to get started</h2>
+            <div class="col-sm-12 col-md-6 order-2 order-md-1 d-flex align-items-center justify-content-center">
+              <div>
+                <div class="card">
+                    <img src="" alt="">
+                    <div class="card-body">
+                        <p>Register user</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        </div>
+    </main>
+    <footer class="footer mt-auto py-1 bg-primary">
+        <p class="text-center"> &copy; Copyright 2023</p>
+    </footer>  
     
 </body>
 </html>

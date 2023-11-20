@@ -1,4 +1,112 @@
 @charset "UTF-8";
+/*social */
+.card-one {
+  position: relative;
+  width: 300px;
+  background: #fff;
+  box-shadow: 0 10px 7px -5px rgba(0, 0, 0, 0.4);
+}
+
+.card {
+  margin-bottom: 35px;
+  box-shadow: 0 10px 20px 0 rgba(26, 44, 57, 0.14);
+  border: none;
+}
+
+.follower-wrapper li {
+  list-style-type: none;
+  color: #fff;
+  display: inline-block;
+  float: left;
+  margin-right: 20px;
+}
+
+.social-profile {
+  color: #fff;
+}
+
+.social-profile a {
+  color: #fff;
+}
+
+.social-profile {
+  position: relative;
+  margin-bottom: 150px;
+}
+
+.social-profile .user-profile {
+  position: absolute;
+  bottom: -75px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  left: 50px;
+}
+
+.social-nav {
+  position: absolute;
+  bottom: 0;
+}
+
+.social-prof {
+  color: #333;
+  text-align: center;
+}
+
+.social-prof .wrapper {
+  width: 70%;
+  margin: auto;
+  margin-top: -100px;
+}
+
+.social-prof img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 5px solid #fff;
+  /*border: 10px solid #70b5e6ee;*/
+}
+
+.social-prof h3, .social-prof .h3 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.social-prof p {
+  font-size: 18px;
+}
+
+.social-prof .nav-tabs {
+  border: none;
+}
+
+.card .nav > li {
+  position: relative;
+  display: block;
+}
+
+.card .nav > li > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  font-weight: 300;
+  border-radius: 4px;
+}
+
+.card .nav > li > a:focus,
+.card .nav > li > a:hover {
+  text-decoration: none;
+  background-color: #eee;
+}
+
+.card .s-nav > li > a.active {
+  text-decoration: none;
+  background-color: rgba(51, 170, 255, 0.9333333333);
+  color: #fff;
+}
+
 /*!
  * Bootstrap  v5.3.2 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors
