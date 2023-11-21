@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eBids | Listings</title>
+    <link rel="stylesheet" href="/dist/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="/js/index.js" type="module"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="../images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
+                <span class="ms-2">eBids</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar7">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar7">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item d-flex justify-content-center">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item d-flex justify-content-center">
+                        <a class="nav-link active" href="Listing/index.html">Listings</a>
+                    </li>
+                    <li class="nav-item d-flex justify-content-center ">
+                        <button class="btn btn-primary my-2 my-sm-0 ms-2 d-none d-sm-block" type="button" id="loginButton">Login</button>
+                        <a class="nav-link btn" href="Auth/login.html" id="loginLink">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+        <div class="container-fluid bg-danger">
+            <div class="py-2"></div>
+        </div>
+    <main>
+       <!---search-->
+        <div class="container my-0 my-sm-5 pb-4 col-12-lg bg-primary">
+            <div class="row">
+                <div class="col-sm-12 d-flex align-items-center justify-content-center">
+                    <div class="text-center mt-5 ">
+                        <h1>All Listings</h1>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Search" aria-label="search-bar" aria-describedby="basic-addon2">
+                            <span class="input-group-text" id="basic-addon2">Search</span>
+                        </div>
+                        <div class="mx-3 d-none d-sm-block">
+                            <button class="btn btn-secondary me-3">Search</button> 
+                            <button class="btn btn-secondary me-3">Search</button> 
+                            <button class="btn btn-secondary me-3">Search</button> 
+                            <button class="btn btn-secondary me-3">Search</button> 
+                        </div>
+                    </div>
+                  
+
+                </div>
+               
+            </div>
+        </div>
+        <!---Last change auctions-->
+        <div class="container bg-light p-3">
+            <h2>Last chance</h2>
+            <div id="lastChance"></div>
+            <div class="row row-cols-sm-1 row-cols-md-3 row-cols-lg-4">
+                <div class="col">
+                    <div class="card text-center p-2 mb-2">
+                        <img src="../images/auction-hammer.jpeg" class="card-img-top" alt="#" width="80px" height="100px">
+                        <div class="card-body">
+                            <h3>Product title</h3>
+                            <div class="row align-items-center">
+                                <div class="col text-end">
+                                    <p class="mb-0">Current bid</p>
+                                </div>
+                                <div class="col text-start">
+                                    <h4 class="mb-0">$186</h4>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-danger mt-3">View</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center p-2">
+                        <img src="../images/auction-hammer.jpeg" class="card-img-top" alt="#" width="80px" height="100px">
+                        <div class="card-body">
+                            <h3>Product title</h3>
+                            <div class="row align-items-center">
+                                <div class="col text-end">
+                                    <p class="mb-0">Current bid</p>
+                                </div>
+                                <div class="col text-start">
+                                    <h4 class="mb-0">$186</h4>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-danger mt-3">View</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center p-2">
+                        <img src="../images/auction-hammer.jpeg" class="card-img-top" alt="#" width="80px" height="100px">
+                        <div class="card-body">
+                            <h3>Product title</h3>
+                            <div class="row align-items-center">
+                                <div class="col text-end">
+                                    <p class="mb-0">Current bid</p>
+                                </div>
+                                <div class="col text-start">
+                                    <h4 class="mb-0">$186</h4>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-danger mt-3">View</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center p-2">
+                        <img src="../images/auction-hammer.jpeg" class="card-img-top" alt="#" width="80px" height="100px">
+                        <div class="card-body">
+                            <h3>Product title</h3>
+                            <div class="row align-items-center">
+                                <div class="col text-end">
+                                    <p class="mb-0">Current bid</p>
+                                </div>
+                                <div class="col text-start">
+                                    <h4 class="mb-0">$186</h4>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-danger mt-3">View</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center p-2">
+                        <img src="../images/auction-hammer.jpeg" class="card-img-top" alt="#" width="80px" height="100px">
+                        <div class="card-body">
+                            <h3>Product title</h3>
+                            <div class="row align-items-center">
+                                <div class="col text-end">
+                                    <p class="mb-0">Current bid</p>
+                                </div>
+                                <div class="col text-start">
+                                    <h4 class="mb-0">$186</h4>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-danger mt-3">View</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center p-2">
+                        <img src="../images/auction-hammer.jpeg" class="card-img-top" alt="#" width="80px" height="100px">
+                        <div class="card-body">
+                            <h3>Product title</h3>
+                            <div class="row align-items-center">
+                                <div class="col text-end">
+                                    <p class="mb-0">Current bid</p>
+                                </div>
+                                <div class="col text-start">
+                                    <h4 class="mb-0">$186</h4>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-danger mt-3">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center my-4">
+            <button class="btn btn-secondary me-3">Previous</button> 
+            <button class="btn btn-secondary me-3">Next</button> 
+        </div>
+    </main>
+    <footer class="footer mt-auto py-1 bg-primary">
+        <p class="text-center"> &copy; Copyright 2023</p>
+    </footer>  
+    
+</body>
+</html>
