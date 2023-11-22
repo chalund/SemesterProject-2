@@ -1,4 +1,4 @@
-import { login } from "../auth/login.mjs";
+import { login } from "../api/auth/login.mjs"; 
 
 export function loginFormListener() {
     const form = document.querySelector('#loginForm');
@@ -10,7 +10,7 @@ export function loginFormListener() {
                 const form = event.target
                 const formData = new FormData(form);
                 const profile = Object.fromEntries(formData);
-                console.log("testing login")
+                console.log(profile)
                 //send to api
                 login(profile)
         });

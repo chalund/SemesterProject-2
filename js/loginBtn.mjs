@@ -21,3 +21,25 @@
 // Call the function initially
 toggleLoginDisplay();
 
+
+
+function updateLoginButtonFromLocalStorage() {
+    const loginButton = document.getElementById("loginButton");
+    const loginLink = document.getElementById("loginLink");
+
+    // Retrieve user data from local storage
+    const userDataJSON = localStorage.getItem("profile");
+    if (userDataJSON) {
+        const userData = JSON.parse(userDataJSON);
+
+        const userIcon = `<i class="fas fa-user me-1"></i>`;
+        const userContent = `${userIcon}${userData.username} (${userData.credits} credits)`;
+        
+        loginButton.innerHTML = userContent;
+        loginLink.style.display = "none"; // Hide the login link if user is logged in
+    }
+}
+
+// Call the function to update login button based on local storage data
+updateLoginButtonFromLocalStorage();
+
