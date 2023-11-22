@@ -22,24 +22,3 @@
 toggleLoginDisplay();
 
 
-import * as storage from "./api/storage/index.mjs";
-
-export function updateLoginButtonFromLocalStorage() {
-    const loginButton = document.getElementById("loginButton");
-    const loginLink = document.getElementById("loginLink");
-
-    // Retrieve user data from local storage
-    const userData = storage.load("username"); // Change "username" to the appropriate key
-    
-    if (userData) {
-        const userIcon = `<i class="fas fa-user me-1"></i>`;
-        const userContent = `${userIcon}${userData}`;
-        
-        loginButton.innerHTML = userContent;
-        loginLink.style.display = "none"; // Hide the login link if user is logged in
-    }
-}
-
-// Call the function to update login button based on local storage data
-updateLoginButtonFromLocalStorage();
-
