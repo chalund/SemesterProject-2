@@ -24,7 +24,8 @@ export async function login(profile) {
             storage.save("email", email);
             storage.save("username", name);
 
-            window.location.replace("/index.html");
+            // window.location.replace("/index.html");
+            window.location.replace("/profile/index.html");
         } else {
             alert("Login failed. Please check your username and password."); 
         }
