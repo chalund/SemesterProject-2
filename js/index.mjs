@@ -1,9 +1,5 @@
 console.log("js/index")
 
-import { toggleLoginDisplay } from "./loginBtn.mjs";
-toggleLoginDisplay()
-
-
 import { registerFormListener } from "./handlers/register.mjs"; 
 import { loginFormListener} from "./handlers/login.mjs";
 
@@ -15,3 +11,8 @@ if( path === '/profile/login/index.html') {
     registerFormListener()
 }
 
+
+
+import { createPostFormInitializer , createPostFormToggle } from "./hideForm.mjs";
+createPostFormInitializer()
+createPostFormToggle()

@@ -1,4 +1,6 @@
-export function initializeCreatePostForm() {
+console.log("hide form")
+
+export function createPostFormInitializer() {
     const form = document.querySelector("#createPostForm");
     const imageList = document.getElementById("imageList");
 
@@ -20,9 +22,9 @@ export function initializeCreatePostForm() {
         // Perform further operations with the media URLs as needed
     });
 }
-initializeCreatePostForm()
 
-export function initializeFormToggle() {
+
+export function createPostFormToggle() {
     const toggleButton = document.getElementById("toggleForm");
     const form = document.getElementById("createPostForm");
 
@@ -37,7 +39,6 @@ export function initializeFormToggle() {
     });
 }
 
-initializeFormToggle()
 
 
 

@@ -1,49 +1,89 @@
+console.log("get profile")
+
 import { API_BASE_URL } from "../constants.mjs"; 
 import { load } from "../storage/index.mjs";
 
 const action = "/api/v1/auction/profiles";
 const method = "get";
 
-// Function to fetch user info
-async function getUserInfo() {
+// export async function getProfiles() {
+//     const token = load("accessToken");
+//     const getProfileURL = `${API_BASE_URL}${action}`; // Replace with your actual user info endpoint
+
+//     try {
+//         const response = await fetch(getProfileURL , {
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 "Authorization": `Bearer ${token}`,
+//             },
+//         });
+//         const getProfiles = await response.json();
+//         console.log(getProfiles)
+
+//         return getProfiles;
+//     } catch (error) {
+//         console.error(error);
+//         throw error;
+//     }
+// }
+// getProfiles()
+
+async function getProfile(name) {
     const token = load("accessToken");
-    const userInfoUrl = `${API_BASE_URL}${action}`; // Replace with your actual user info endpoint
+    const username = load("username")
+    const getProfileUrl = `${API_BASE_URL}${action}/${username}`; // Replace with your actual user info endpoint
 
     try {
-        const response = await fetch(userInfoUrl, {
+        const response = await fetch(getProfileUrl, {
             headers: {
                 'Content-Type': 'application/json',
                 "Authorization": `Bearer ${token}`,
             },
         });
-        const userData = await response.json();
-        return userData;
+        const getProfile = await response.json();
+        console.log(getProfile)
+        return getProfile;
     } catch (error) {
         console.error(error);
         throw error;
     }
 }
 
-// Function to update profile layout with user info
+
+
+
+
 async function updateProfileLayout() {
     try {
-        const userData = await getUserInfo();
+        const userData = await getProfile();
+        console.log(userData)
 
         // Update the HTML elements with user info
-        const profileName = document.querySelector('.panel.profile-widget h4');
-        const profileEmail = document.querySelector('.panel.profile-widget div:nth-child(3)');
-        const profileCredits = document.querySelector('.panel.profile-widget div:nth-child(4)');
+        const profileAvatar = document.querySelector('#profile-avatar');
+        const profileUsername = document.querySelector('#profile-name');
+        const profileEmail = document.querySelector('#profile-email');
+        const profileCredits = document.querySelector('#profile-credits');
+        const profileWins = document.querySelector('#profile-wins')
+        const profileListings = document.querySelector('#profile-listings')
 
-        if (profileName && profileEmail && profileCredits) {
-            profileName.textContent = userData.name; // Update with the actual property names from your user data
+        if (profileAvatar && profileUsername && profileEmail && profileCredits && profileWins) {
+            profileAvatar.textContent = userData.avatar;
+            profileUsername.textContent = userData.name;
             profileEmail.textContent = userData.email;
+
             profileCredits.textContent = `${userData.credits} credits`;
+            if (userData.wins.length === 0) {
+                profileWins.textContent = '0 Wins'; // If wins array length is 0, display '0'
+              } else {
+                profileWins.textContent = `${userData.wins.length} Wins`; // Display the actual count of wins
+              }
+            
+            profileListings.textContent = userData._count.listings
+
         }
     } catch (error) {
         console.error(error);
         // Handle errors as needed
     }
 }
-
-// Call the function to update the profile layout when the page loads or as needed
 updateProfileLayout();
