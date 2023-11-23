@@ -1,4 +1,12 @@
 @charset "UTF-8";
+.hidden {
+  display: none;
+}
+
+.normal-link {
+  text-decoration: none;
+}
+
 .item-image {
   width: 100%;
   height: 100%;
