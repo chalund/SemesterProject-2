@@ -6,29 +6,8 @@ import { load } from "../storage/index.mjs";
 const action = "/api/v1/auction/profiles";
 const method = "get";
 
-// export async function getProfiles() {
-//     const token = load("accessToken");
-//     const getProfileURL = `${API_BASE_URL}${action}`; // Replace with your actual user info endpoint
 
-//     try {
-//         const response = await fetch(getProfileURL , {
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 "Authorization": `Bearer ${token}`,
-//             },
-//         });
-//         const getProfiles = await response.json();
-//         console.log(getProfiles)
-
-//         return getProfiles;
-//     } catch (error) {
-//         console.error(error);
-//         throw error;
-//     }
-// }
-// getProfiles()
-
-async function getProfile(name) {
+export async function getProfile(name) {
     const token = load("accessToken");
     const username = load("username")
     const getProfileUrl = `${API_BASE_URL}${action}/${username}`; // Replace with your actual user info endpoint
@@ -41,7 +20,7 @@ async function getProfile(name) {
             },
         });
         const getProfile = await response.json();
-        console.log(getProfile)
+        // console.log(getProfile)
         return getProfile;
     } catch (error) {
         console.error(error);
@@ -50,10 +29,7 @@ async function getProfile(name) {
 }
 
 
-
-
-
-async function updateProfileLayout() {
+export async function updateProfileLayout() {
     try {
         const userData = await getProfile();
         console.log(userData)
@@ -67,23 +43,35 @@ async function updateProfileLayout() {
         const profileListings = document.querySelector('#profile-listings')
 
         if (profileAvatar && profileUsername && profileEmail && profileCredits && profileWins) {
-            profileAvatar.textContent = userData.avatar;
+            if (!userData.avatar) {
+                profileAvatar.src = "../images/logo.png";
+                profileAvatar.alt = "avatar";
+            } else {
+                profileAvatar.src = userData.avatar;
+            }
+            
             profileUsername.textContent = userData.name;
             profileEmail.textContent = userData.email;
 
             profileCredits.textContent = `${userData.credits} credits`;
+
             if (userData.wins.length === 0) {
                 profileWins.textContent = '0 Wins'; // If wins array length is 0, display '0'
               } else {
                 profileWins.textContent = `${userData.wins.length} Wins`; // Display the actual count of wins
               }
             
-            profileListings.textContent = userData._count.listings
+              if(userData._count.listings === 0) {
+                profileListings.textContent = `You have no listings at the moment`
+              } else {
+                profileListings.textContent = `${userData._count.listings}`
+              }
+         
+            }
+            
 
-        }
     } catch (error) {
         console.error(error);
         // Handle errors as needed
     }
 }
-updateProfileLayout();

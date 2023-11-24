@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="../js/index.mjs" type="module"></script>
-    <script src="../js/api/posts/getProfile.mjs" type="module"></script>
+    <script src="../js/api/posts/updateProfile.mjs" type="module"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
@@ -33,6 +33,9 @@
                         <a href="/profile/login/index.html" class="btn btn-primary my-2 my-sm-0 ms-2 d-none d-sm-block" id="loginLink">Login</a>
                         <a href="/profile/login/index.html" class="d-sm-none normal-link nav-link" id="loginLinkSmall">Login</a>
                     </li>
+                    <li class="nav-item d-flex justify-content-center">
+                        <a class="nav-link" id="logout">Logout</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -49,8 +52,40 @@
                         <div class="col-sm-12">
                             <div class="image-container" style="background:url('../images/snow.avif')">  
                                 <img src="../images/logo.png" class="avatar" alt="avatar" id="profile-avatar"> 
-                                <button class="btn btn-primary position-absolute top-0 end-0 m-3">Edit</button>
+                                <button class="btn btn-primary position-absolute top-0 end-0 m-3" data-bs-toggle="modal" data-bs-target="#exampleModal" id="edit-btn">Edit Profile</button>
                             </div>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit profile image</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form id="avatarForm" action="">
+                <div class="form-group mb-3 position-relative">
+                    <label for="avatar">Update Profile image</label>
+                    <div class="input-group">
+                        <input class="form-control" type="url" id="avatar" name="avatar">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary btn-clear" type="button">&times;</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="save-btn">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
                         </div>
                         <div class="col-sm-12">
                             <div class="details mt-2">

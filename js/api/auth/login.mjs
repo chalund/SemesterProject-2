@@ -18,11 +18,12 @@ export async function login(profile) {
         });
 
         if (response.ok) {
-            const { accessToken, email, name } = await response.json();
+            const { accessToken, email, name, avatar } = await response.json();
 
             storage.save("accessToken", accessToken);
             storage.save("email", email);
             storage.save("username", name);
+            storage.save("profileImage", avatar)
 
             // window.location.replace("/index.html");
             window.location.replace("/profile/index.html");
