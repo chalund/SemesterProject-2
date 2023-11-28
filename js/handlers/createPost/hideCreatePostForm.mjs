@@ -1,5 +1,3 @@
-console.log("hide form")
-
 export function createPostFormInitializer() {
     const form = document.querySelector("#createPostForm");
     const imageList = document.getElementById("imageList");
