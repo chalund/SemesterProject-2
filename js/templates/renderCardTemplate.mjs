@@ -1,6 +1,7 @@
-import { postTemplate } from "../../templates/cardTemplate.mjs"
+import { postTemplate } from "./cardTemplate.mjs"
+import { getActivePosts } from "../api/posts/getPost.mjs";
 
-export async function renderPostCardTemplate(containerId, getPostsFunction) {
+export async function renderCardTemplate(containerId, getPostsFunction) {
     try {
         const posts = await getPostsFunction();
         const container = document.querySelector(`#${containerId}`);
@@ -23,4 +24,6 @@ export async function renderPostCardTemplate(containerId, getPostsFunction) {
         console.error('Error:', error);
     }
 }
-
+document.addEventListener('DOMContentLoaded', () => {
+    renderCardTemplate('auctionPosts', getActivePosts);
+});

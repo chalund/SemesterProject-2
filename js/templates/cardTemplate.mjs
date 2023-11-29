@@ -48,18 +48,18 @@ export function postTemplate(postData) {
     colTextEnd.append(currentBid);
     BidDiv.append(colTextEnd);
 
-    const amount = document.createElement("div");
-    amount.classList.add("col", "text-start");
-    const bidAmount = document.createElement("h4");
-    bidAmount.classList.add("mb-0");
-    bidAmount.textContent = `$${postData.amount || '0'}`;
-    amount.append(bidAmount);
-    BidDiv.append(amount);
+    // const amount = document.createElement("div");
+    // amount.classList.add("col", "text-start");
+    // const bidAmount = document.createElement("h4");
+    // bidAmount.classList.add("mb-0");
+    // bidAmount.textContent = `$${postData.amount || '0'}`;
+    // amount.append(bidAmount);
+    // BidDiv.append(amount);
 
-    cardBody.append(BidDiv);
+    // cardBody.append(BidDiv);
 
     const viewButton = document.createElement("a");
-    viewButton.href = "listing/item.html";
+    viewButton.href = "./item.html";
     viewButton.classList.add("btn", "btn-danger", "mt-3");
     viewButton.textContent = "View";
 

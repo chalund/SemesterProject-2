@@ -1,7 +1,7 @@
 import { getActivePosts, getPostsEndsToday, getPostsCreatedToday, getPostsWithBids } from '../../api/posts/getPost.mjs';
 
-import { renderPostCardTemplate } from "../../handlers/filter/renderFilterTemplate.mjs";
-renderPostCardTemplate('auctionPosts', getActivePosts);
+import { renderCardTemplate } from "../../templates/renderCardTemplate.mjs";
+renderCardTemplate('auctionPosts', getActivePosts);
 
 
 
@@ -17,7 +17,7 @@ export function changeHeader(newHeaderText) {
 export async function handleFilterAllPosts() {
     try {
         changeHeader('All active Auction Posts');
-        renderPostCardTemplate('auctionPosts', getActivePosts);
+        renderCardTemplate('auctionPosts', getActivePosts);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -27,7 +27,7 @@ export async function handleFilterAllPosts() {
 export async function handleFilterNewPosts() {
     try {
         changeHeader('New Auction Posts');
-        renderPostCardTemplate('auctionPosts', getPostsCreatedToday);
+        renderCardTemplate('auctionPosts', getPostsCreatedToday);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -37,7 +37,7 @@ export async function handleFilterNewPosts() {
 export async function handleFilterEndsTodayPosts() {
     try {
         changeHeader('Auction ends today Posts');
-        renderPostCardTemplate('auctionPosts', getPostsEndsToday);
+        renderCardTemplate('auctionPosts', getPostsEndsToday);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -47,7 +47,7 @@ export async function handleFilterEndsTodayPosts() {
 export async function handleFilterPopularPost() {
     try {
         changeHeader('Popular auction posts (most bids)');
-        renderPostCardTemplate('auctionPosts', getPostsWithBids);
+        renderCardTemplate('auctionPosts', getPostsWithBids);
     } catch (error) {
         console.error('Error:', error);
     }

@@ -1,30 +1,3 @@
-// import { API_BASE_URL } from "../constants.mjs"; 
-// import { load } from "../storage/index.mjs";
-
-// const action = "/api/v1/auction/listings";
-// const method = "get";
-
-// export async function getPosts() {
-//     const token = load("accessToken")
-//     const getPostUrl = `${API_BASE_URL}${action}`;
-
-//     try {
-//         const response = await fetch(getPostUrl, {
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 "Authorization": `Bearer ${token}`,
-//             },
-//         });
-//             const data = await response.json();
-//             console.log(data)
-//             return data;
-     
-//     } catch (error) {
-//         console.error(error);
-//         throw error;
-//     }
-// }
-
 import { fetchToken } from "../fetchToken.mjs";
 import { API_BASE_URL } from "../constants.mjs";
 
@@ -32,6 +5,21 @@ const action = "/api/v1/auction/listings";
 const activePosts = "?_active=true";
 
 
+export async function getPosts() {
+    const getPostURL = `${API_BASE_URL}${action}`;
+
+    try {
+        const response = await fetchToken(getPostURL, {
+            method: 'GET',
+        });
+        const getPosts = await response.json();
+        // console.log("getPosts:", getPosts);
+        return getPosts; // Return the fetched posts
+    } catch (error) {
+        console.error('Error fetching posts:', error);
+        throw error;
+    }
+}
 
 export async function getPostsWithBids() {
     const getPostURL = `${API_BASE_URL}${action}`;
@@ -45,7 +33,7 @@ export async function getPostsWithBids() {
         // Filter posts with bids greater than 0
         const postsWithBids = allPosts.filter(post => post._count.bids > 0);
 
-        console.log("Posts with bids:", postsWithBids);
+        // console.log("Posts with bids:", postsWithBids);
         return postsWithBids; // Return the fetched posts with bids
     } catch (error) {
         console.error('Error fetching posts with bids:', error);
@@ -73,7 +61,7 @@ export async function getPostsCreatedToday() {
             return postCreationDate === today; // Check if the post's creation date matches today's date
         });
 
-        console.log("PostsCreatedToday:", postsCreatedToday);
+        // console.log("PostsCreatedToday:", postsCreatedToday);
         return postsCreatedToday; // Return posts created today
     } catch (error) {
         console.error('Error fetching posts:', error);
@@ -100,7 +88,7 @@ export async function getPostsEndsToday() {
             return postEndDate === today; // Check if the post's end date matches today's date
         });
 
-        console.log("PostsEndingToday:", postsEndingToday);
+        // console.log("PostsEndingToday:", postsEndingToday);
         return postsEndingToday; // Return posts ending today
     } catch (error) {
         console.error('Error fetching posts:', error);
@@ -109,29 +97,7 @@ export async function getPostsEndsToday() {
 }
 
 
-export async function getPosts() {
-    const getPostURL = `${API_BASE_URL}${action}`;
-
-    try {
-        const response = await fetchToken(getPostURL, {
-            method: 'GET',
-        });
-        const getPosts = await response.json();
-        console.log("getPosts:", getPosts);
-        return getPosts; // Return the fetched posts
-    } catch (error) {
-        console.error('Error fetching posts:', error);
-        throw error;
-    }
-}
-
-
-
-
-
-
-
-export async function getActivePosts() {
+export async function getActivePostsSearch() {
     const getPostURL = `${API_BASE_URL}${action}${activePosts}`;
 
     try {
@@ -146,54 +112,27 @@ export async function getActivePosts() {
             return !title.includes('test') && !title.includes('testing');
         });
 
-        console.log("filteredPosts" ,filteredPosts);
+        // console.log("filteredPosts" ,filteredPosts);
         return filteredPosts; // Return the filtered posts
     } catch (error) {
         console.error('Error fetching posts:', error);
         throw error;
     }
 }
-// export async function getActivePosts() {
-//     const getPostURL = `${API_BASE_URL}${action}${activePosts}`;
 
-//     try {
-//         const response = await fetchToken(getPostURL, {
-//             method: 'GET',
-//         });
-//         const getActivePosts = await response.json();
-//         console.log("getActivePosts" , getActivePosts);
-//         return getActivePosts; // Return the fetched posts
-//     } catch (error) {
-//         console.error('Error fetching posts:', error);
-//         throw error;
-//     }
-// }
+export async function getActivePosts() {
+    const getPostURL = `${API_BASE_URL}${action}${activePosts}`;
 
-
-
-
-
-
-
-// export async function getPost(id) {
-//     const token = load("accessToken")
-//     const getPostUrl = `${API_BASE_URL}${action}/${id}`;
-
-//     try {
-//         const response = await fetch(getPostUrl, {
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 "Authorization": `Bearer ${token}`,
-//             },
-//         });
-//             const data = await response.json();
-//             console.log(data)
-//             return data;
-     
-//     } catch (error) {
-//         console.error(error);
-//         throw error;
-//     }
-// }
-
+    try {
+        const response = await fetchToken(getPostURL, {
+            method: 'GET',
+        });
+        const getActivePosts = await response.json();
+        // console.log("getActivePosts" , getActivePosts);
+        return getActivePosts; // Return the fetched posts
+    } catch (error) {
+        console.error('Error fetching posts:', error);
+        throw error;
+    }
+}
 
