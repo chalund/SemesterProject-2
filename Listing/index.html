@@ -23,10 +23,13 @@
             <div class="collapse navbar-collapse" id="navbar7">
                 <ul class="navbar-nav ms-auto" id="navbarList">
                      <li class="nav-item d-flex justify-content-center">
-                        <a class="nav-link" href="/index.html">Home</a>
+                         <a class="nav-link" href="/index.html">Home</a>
                     </li>
                      <li class="nav-item d-flex justify-content-center">
                         <a class="nav-link active" href="/Listing/index.html">Find products</a>
+                    </li>
+                    <li class="nav-item d-flex justify-content-center">
+                        <a class="nav-link disabled" href="/profile/index.html" tabindex="-1" aria-disabled="true" id="profileLink">Profile</a>
                     </li>
                      <li class="nav-item d-flex justify-content-center" id="loginListItem">
                         <a href="/profile/login/index.html" class="btn btn-primary my-2 my-sm-0 ms-2 d-none d-sm-block" id="loginLink">Login</a>
@@ -46,15 +49,17 @@
                 <div class="col-sm-12 d-flex align-items-center justify-content-center">
                     <div class="text-center mt-5 ">
                         <h1>All Listings</h1>
-                        <div class="form-group mb-3 position-relative">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search" aria-label="search-bar" aria-describedby="basic-addon2" id="searchInput">
-                                <div class="input-group-append">
-                                    <button class="btn btn-light btn-clear" type="button">&times;</button>
+                        <form action="" id="serchForm">
+                            <div class="form-group mb-3 position-relative">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search" aria-label="search-bar" aria-describedby="basic-addon2" id="searchInput">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-light btn-clear" type="button">&times;</button>
+                                    </div>
+                                    <button class="btn btn-danger" type="button" id="searchButton">Search</button>
                                 </div>
-                                <button class="btn btn-danger" type="button" id="searchButton">Search</button>
                             </div>
-                        </div>
+                        </form>
                         <div class="mx-3 d-none d-sm-block">
                             <button class="btn btn-secondary me-3" id="filterAllPosts">View All</button> 
                             <button class="btn btn-secondary me-3" id="filterNewPosts">New Auctions</button> 

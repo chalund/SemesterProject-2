@@ -1,16 +1,21 @@
 export function clearInputListeners() {
-    // Function to clear input field
     function clearInput() {
-        const inputs = document.querySelectorAll('input'); // Get all input elements
+        const inputs = document.querySelectorAll('input');
         inputs.forEach(input => {
-            input.value = ''; // Clear the input value
+            input.value = '';
+            console.log('Input cleared');
         });
     }
 
-    // Event listener attached to a parent element
-    document.addEventListener('click', event => {
-        if (event.target.classList.contains('btn-clear')) {
-            clearInput(); // Call the function to clear all input fields
-        }
+    document.addEventListener('DOMContentLoaded', function() {
+        const clearButtons = document.querySelectorAll('.btn-clear');
+        clearButtons.forEach(button => {
+            button.addEventListener('click', clearInput);
+        });
+
+        console.log(clearButtons);
+        console.log('Input listeners attached');
     });
 }
+
+

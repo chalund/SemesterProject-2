@@ -1,5 +1,5 @@
 import { getProfileListings } from "../api/profile/getProfileListings.mjs";
-import { postProfileTemplate } from "./postProfileTemplate.mjs"
+import { postProfileTemplate } from "./profileTemplate.mjs"
 
 export async function renderPostProfileTemplate(containerId) {
     try {
@@ -16,4 +16,4 @@ export async function renderPostProfileTemplate(containerId) {
 }
 
 // Call the function 'renderPostProfileTemplate' with the ID of the container element as 'auctionPosts'
-// renderPostProfileTemplate('profilePosts');
+renderPostProfileTemplate('profilePosts');

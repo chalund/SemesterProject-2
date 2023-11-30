@@ -25,7 +25,8 @@ export async function login(profile) {
             storage.save("username", name);
             storage.save("profileImage", avatar)
 
-            window.location.replace("/index.html");
+            // window.location.replace("/index.html");
+            window.location.replace("/profile/index.html");
          
 
         } else {
