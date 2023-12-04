@@ -3,6 +3,7 @@ $secondary: #454545;
 $danger: #9A0D27;
 
 
+
 //create form button
 .hidden {
   display: none;
@@ -17,6 +18,10 @@ $danger: #9A0D27;
 .card {
   position: relative;
   overflow: hidden;
+}
+
+.card a {
+  text-decoration: none;
 }
 
 .card-img-top {

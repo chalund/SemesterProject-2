@@ -1,10 +1,8 @@
 export function clearInputListeners() {
-    function clearInput() {
-        const inputs = document.querySelectorAll('input');
-        inputs.forEach(input => {
-            input.value = '';
-            console.log('Input cleared');
-        });
+    function clearInput(event) {
+        const input = event.target.closest('.input-group').querySelector('input');
+        input.value = '';
+        console.log('Input cleared');
     }
 
     document.addEventListener('DOMContentLoaded', function() {

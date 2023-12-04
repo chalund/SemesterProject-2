@@ -4,6 +4,7 @@ import { getActivePosts } from "../api/posts/getPost.mjs";
 export async function renderCardTemplate(containerId, getPostsFunction) {
     try {
         const posts = await getPostsFunction();
+        console.log(posts)
         const container = document.querySelector(`#${containerId}`);
 
         if (!container) {

@@ -59,7 +59,8 @@ export function postTemplate(postData) {
     // cardBody.append(BidDiv);
 
     const viewButton = document.createElement("a");
-    viewButton.href = "./item.html";
+    viewButton.href = "/listing/product/index.html";
+    viewButton.id = `${postData.id}`; // Set the ID based on your data
     viewButton.classList.add("btn", "btn-danger", "mt-3");
     viewButton.textContent = "View";
 
@@ -81,6 +82,12 @@ export function postTemplate(postData) {
 
     card.append(cardBody);
     cardContainer.appendChild(card);
+
+    viewButton.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevents the default behavior of the anchor tag
+        const postId = postData.id;
+        window.location.href = `/listing/product/index.html?id=${postId}`;
+    });
 
     return cardContainer;
 }
