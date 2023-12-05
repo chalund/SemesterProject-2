@@ -6,7 +6,7 @@ export function postTemplate(postData) {
     cardContainer.classList.add("col-lg-3", "col-md-4", "my-3");
 
     const card = document.createElement("div");
-    card.classList.add("card", "text-center", "p-2", "h-100");
+    card.classList.add("card", "text-center", "p-2", "h-100", "card-hover", "bg-light");
 
     if (postData.media && postData.media.length > 0) {
         const firstImage = postData.media[0];
@@ -61,7 +61,7 @@ export function postTemplate(postData) {
     const viewButton = document.createElement("a");
     viewButton.href = "/listing/product/index.html";
     viewButton.id = `${postData.id}`; // Set the ID based on your data
-    viewButton.classList.add("btn", "btn-danger", "mt-3");
+    viewButton.classList.add("btn", "btn-primary", "mt-3");
     viewButton.textContent = "View";
 
     const endsAt = document.createElement("h5");

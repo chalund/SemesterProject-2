@@ -9,7 +9,7 @@ export function postProfileTemplate(postData) {
     card.classList.add("card", "text-center", "p-2");
 
     const deleteBtn = document.createElement("button");
-    deleteBtn.classList.add("btn", "btn-danger", "delete-btn", "small");
+    deleteBtn.classList.add("btn", "btn-info", "delete-btn", "small");
     deleteBtn.textContent = "Delete";
     deleteBtn.setAttribute("data-post-id", postData.id); // Add a custom attribute to store post ID
     deleteBtn.addEventListener("click", handleDeleteButtonClick); // Add click event listener
@@ -66,7 +66,7 @@ export function postProfileTemplate(postData) {
 
     const viewButton = document.createElement("a");
     viewButton.href = "listing/item.html";
-    viewButton.classList.add("btn", "btn-danger", "mt-3");
+    viewButton.classList.add("btn", "btn-primary", "mt-3");
     viewButton.textContent = "View";
 
     const endsAt = document.createElement("h5");

@@ -28,6 +28,9 @@ export function isLoggedIn() {
     return !!userToken;
 }
 
+
+
+
 // Function to update button based on user login status
 export function updateButtonBasedOnLoginStatus() {
     const loginListItem = document.getElementById('loginListItem');

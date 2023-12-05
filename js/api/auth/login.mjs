@@ -18,16 +18,16 @@ export async function login(profile) {
         });
 
         if (response.ok) {
-            const { accessToken, email, name, avatar } = await response.json();
+            const { accessToken, email, name, avatar, credits } = await response.json();
 
             storage.save("accessToken", accessToken);
             storage.save("email", email);
             storage.save("username", name);
-            storage.save("profileImage", avatar)
+            storage.save("avatar", avatar)
+            storage.save("credits" ,credits)
 
             // window.location.replace("/index.html");
             window.location.replace("/profile/index.html");
-         
 
         } else {
             alert("Login failed. Please check your username and password."); 
