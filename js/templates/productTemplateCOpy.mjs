@@ -1,4 +1,21 @@
-export function postTemplateTest(postData) {
+function formatDate(postData) {
+    const date = new Date(postData);
+    return date.toLocaleDateString("en-US", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+    });
+}
+
+function calculateTotalBidsAmount(bids) {
+    return bids.reduce((total, bid) => total + bid.amount, 0);
+}
+
+
+
+export function productTemplate(postData) {
     const container = document.createElement("div")
     container.classList.add("container", "my-0", "my-sm-5", "pb-5", "bg-info")
 
@@ -36,17 +53,11 @@ export function postTemplateTest(postData) {
 
     const productInfoDiv = document.createElement("div");
     productInfoDiv.classList.add("product-info", "p-sm-4");
+    
 
     const postCreated = document.createElement("p")
-    const postCreatedDate = new Date(postData.created); 
-    const formattedDate1 = postCreatedDate.toLocaleDateString("en-US", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-    });
-    postCreated.textContent = `Created: ${formattedDate1}`;
+    const postCreatedDate = formatDate(postData.created)
+    postCreated.textContent = `Created: ${postCreatedDate}`;
     postCreated.classList.add("mt-3", "text-primary") // Set the formatted date
     productContainerDiv.appendChild(postCreated)
 
@@ -54,14 +65,22 @@ export function postTemplateTest(postData) {
     productTitle.textContent = postData.title;
     productInfoDiv.appendChild(productTitle);
 
-    const currentBid = document.createElement("h3");
-    currentBid.classList.add("my-3");
-    currentBid.textContent = `Current bid $${postData.currentBid}`;
-    productInfoDiv.appendChild(currentBid);
+
 
     const productDescription = document.createElement("p");
     productDescription.textContent = postData.description;
     productInfoDiv.appendChild(productDescription);
+
+    const productDescription2 = document.createElement("p");
+    productDescription.textContent = `postData.description`;
+    productInfoDiv.appendChild(productDescription2);
+
+    const currentBid = document.createElement("h3");
+    const currentBidAmount = calculateTotalBidsAmount(postData.bids)
+    currentBid.classList.add("my-3", "currentBid");
+    currentBid.textContent = `Current bid: ${currentBidAmount} credits`;
+    productInfoDiv.appendChild(currentBid);
+    
 
     productContainerDiv.appendChild(productInfoDiv);
 
@@ -71,19 +90,13 @@ export function postTemplateTest(postData) {
     const timeLeftTitle = document.createElement("h4");
     timeLeftTitle.textContent = "Time left";
     productTimeDiv.appendChild(timeLeftTitle);
+    
 
     const endsAt = document.createElement("h5");
-    const endsAtDate = new Date(postData.endsAt); // Convert endsAt string to a Date object
-    const formattedDate = endsAtDate.toLocaleDateString("en-US", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-    });
-    endsAt.textContent = `Ends at: ${formattedDate}`;
-    endsAt.classList.add("mt-3", "text-danger") // Set the formatted date
-    productContainerDiv.appendChild(endsAt)
+    const endsAtDate = formatDate(postData.endsAt);
+    endsAt.textContent = `Ends at: ${endsAtDate}`;
+    endsAt.classList.add("mt-3", "text-danger");
+    productContainerDiv.appendChild(endsAt);
 
     // Creating bid form and buy now button
     const bidFormDiv = document.createElement("div");
@@ -103,10 +116,6 @@ export function postTemplateTest(postData) {
     bidFormDiv.appendChild(bidForm);
 
 
-
-
-
-
     productContainerDiv.appendChild(bidFormDiv);
     productContainer.appendChild(productContainerDiv);
     cardContainer.appendChild(productContainer);
@@ -114,29 +123,55 @@ export function postTemplateTest(postData) {
 
     const bidContainer = document.createElement("div");
     bidContainer.classList.add("col-12", "border", "p-3");
-
+    
     const bidHistoryTitle = document.createElement("h3");
     bidHistoryTitle.textContent = "Bid history";
     bidContainer.appendChild(bidHistoryTitle);
-
-
+    
     const bidLine = document.createElement("div");
-    bidLine.classList.add("col-4", "py-1",  "bg-primary")
-    bidContainer.append(bidLine)
+    bidLine.classList.add("col-4", "py-1", "bg-primary");
+    bidContainer.appendChild(bidLine);
+    
+    postData.bids.forEach(bid => {
+    const bidEntry = document.createElement("div");
+    bidEntry.classList.add("d-flex", "justify-content-start", "align-items-center", "mb-2"); // Added margin-bottom for spacing
+    
+    const bidDate = document.createElement("p");
+    const bidDateCreated = formatDate(bid.created);
+    bidDate.classList.add("me-3");
+    bidDate.textContent = `${bidDateCreated}`;
 
+    const bidUsername = document.createElement("p");
+    bidUsername.classList.add("me-3");
+    bidUsername.textContent = bid.bidderName;
+    bidUsername.style.width = "155px"; // Set a fixed width
 
-    cardContainer.append(bidContainer)
+    const bidAmount = document.createElement("p");
+    bidAmount.classList.add("me-3");
+    bidAmount.textContent = `$${bid.amount}`;
+    bidAmount.style.width = "100px"; // Set a fixed width
 
+    bidEntry.appendChild(bidDate);
+    bidEntry.appendChild(bidUsername);
+    bidEntry.appendChild(bidAmount);
 
-
-
-
-
+    bidContainer.appendChild(bidEntry);
+});
+    
+    cardContainer.appendChild(bidContainer);
 
     container.append(cardContainer)
 
     return container;
 }
+
+
+
+
+
+
+
+
 
 
 

@@ -15,5 +15,8 @@ import * as searchFunction from "./handlers/filter/search.mjs"
 import { clearInputListeners } from "./handlers/createPost/clearInput.mjs";
 clearInputListeners()
 
-import { updateButtonBasedOnLoginStatus } from "./handlers/buttons/logoutBtn.mjs";
+
+import { updateButtonBasedOnLoginStatus } from "./handlers/buttons/userLoggedIn.mjs"; 
+import { createLogoutButton } from "./handlers/buttons/logoutBtn.mjs"; 
 updateButtonBasedOnLoginStatus()
+createLogoutButton()

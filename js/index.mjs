@@ -6,7 +6,7 @@ import { clearInputListeners } from "./handlers/createPost/clearInput.mjs";
 
 import { renderCardTemplate } from "./templates/renderCardTemplate.mjs";
 import { getActivePosts } from "./api/posts/getPost.mjs";
-import { updateButtonBasedOnLoginStatus } from "./handlers/buttons/logoutBtn.mjs";
+
 
 
 
@@ -24,3 +24,4 @@ if( path === '/profile/login/index.html') {
 }else if (path === '/listings/register/index.html') {
     updateButtonBasedOnLoginStatus()
 }
+

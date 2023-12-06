@@ -27,7 +27,7 @@ export async function login(profile) {
             storage.save("credits" ,credits)
 
             // window.location.replace("/index.html");
-            window.location.replace("/profile/index.html");
+            window.location.replace("/index.html");
 
         } else {
             alert("Login failed. Please check your username and password."); 

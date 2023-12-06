@@ -9,7 +9,7 @@ export function postProfileTemplate(postData) {
     card.classList.add("card", "text-center", "p-2");
 
     const deleteBtn = document.createElement("button");
-    deleteBtn.classList.add("btn", "btn-info", "delete-btn", "small");
+    deleteBtn.classList.add("btn", "btn-danger", "delete-btn", "small");
     deleteBtn.textContent = "Delete";
     deleteBtn.setAttribute("data-post-id", postData.id); // Add a custom attribute to store post ID
     deleteBtn.addEventListener("click", handleDeleteButtonClick); // Add click event listener

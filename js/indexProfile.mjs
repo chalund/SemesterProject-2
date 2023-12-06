@@ -1,5 +1,6 @@
 import { renderPostProfileTemplate } from "./templates/renderPostProfileTemplate.mjs";
 import { updateProfileLayout } from "./api/profile/getProfile.mjs";
+
 import { editProfileImage , editProfileImageModal } from "./api/profile/updateProfile.mjs";
 
 
@@ -20,5 +21,9 @@ createPostFormToggle() // show/hide button for create form
 import { clearInputListeners } from "./handlers/createPost/clearInput.mjs";
 clearInputListeners() //works on modal
 
-import { updateButtonBasedOnLoginStatus } from "./handlers/buttons/logoutBtn.mjs";
+
+import { updateButtonBasedOnLoginStatus } from "./handlers/buttons/userLoggedIn.mjs"; 
+import { createLogoutButton } from "./handlers/buttons/logoutBtn.mjs"; 
 updateButtonBasedOnLoginStatus()
+createLogoutButton()
+
