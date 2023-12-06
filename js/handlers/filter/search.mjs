@@ -36,7 +36,7 @@ export async function handleSearch() {
         // Update the search result count in the header
         const header = document.querySelector('#auctionHeader');
         if (header) {
-            header.textContent = `Search Results: ${searchResults.length} item(s) found`;
+         
         }
 
         // Render the search results in the auctionPosts container

@@ -16,7 +16,7 @@ export function changeHeader(newHeaderText) {
 // Function to handle filter for all active posts
 export async function handleFilterAllPosts() {
     try {
-        changeHeader('All active Auction Posts');
+        changeHeader('Auction');
         renderCardTemplate('auctionPosts', getActivePosts);
     } catch (error) {
         console.error('Error:', error);
@@ -46,7 +46,7 @@ export async function handleFilterEndsTodayPosts() {
 // Function to handle filter for popular posts
 export async function handleFilterPopularPost() {
     try {
-        changeHeader('Popular auction posts (most bids)');
+        changeHeader('Popular auction posts');
         renderCardTemplate('auctionPosts', getPostsWithBids);
     } catch (error) {
         console.error('Error:', error);

@@ -51,8 +51,8 @@ export async function getPostId(id) {
     }
 }
 
-export async function getPostIdBids(id) {
-    const getPostUrl = `${API_BASE_URL}${action}/${id}${bids}`;
+export async function getPostIdSeller(id) {
+    const getPostUrl = `${API_BASE_URL}${action}/${id}${seller}`;
     const token = load("accessToken");
 
     try {

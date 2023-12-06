@@ -158,11 +158,11 @@ export function productTemplate(postData) {
     
     // Creating form elements
     const bidForm = document.createElement("form");
-    bidForm.classList.add("col-6", "d-flex");
+    bidForm.classList.add("col-6", "d-flex", "addBidForm");
     bidForm.setAttribute("role", "search");
     
     const input = document.createElement("input");
-    input.classList.add("form-control", "me-2");
+    input.classList.add("form-control", "me-2", "bidSearch");
     input.setAttribute("type", "search");
     input.setAttribute("aria-label", "Search");
     

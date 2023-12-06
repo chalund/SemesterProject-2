@@ -23,10 +23,7 @@
             <div class="collapse navbar-collapse" id="navbar7">
                 <ul class="navbar-nav ms-auto" id="navbarList">
                      <li class="nav-item d-flex justify-content-center">
-                         <a class="nav-link active" href="/index.html">Home</a>
-                    </li>
-                     <li class="nav-item d-flex justify-content-center">
-                        <a class="nav-link" href="/Listing/index.html">Find products</a>
+                         <a class="nav-link active" href="/index.html">Auction</a>
                     </li>
                     <li class="nav-item d-flex justify-content-center">
                         <a class="nav-link disabled" href="/profile/index.html" tabindex="-1" aria-disabled="true" id="profileLink">Profile</a>
@@ -54,18 +51,34 @@
                     <div class="d-flex justify-content-center align-items-center h-100">
                         <div class="text-center text-white">
                             <h1>Buy and sell, EASY!</h1>
-                            <p>Create an account and get started</p>
-                            <button class="btn btn-danger btn-lg mt-2">Register</button>
+                            <h2>add more text here</h2>
+                                <form action="" id="serchForm">
+                                    <div class="form-group mb-3 position-relative mt-5">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Search" aria-label="search-bar" aria-describedby="basic-addon2" id="searchInput">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-light btn-clear" type="button">&times;</button>
+                                            </div>
+                                            <button class="btn btn-primary" type="button" id="searchButton">Search</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="mx-3 mt-4 d-none d-sm-block">
+                                    <button class="btn btn-info text-white me-3" id="filterAllPosts">View All</button> 
+                                    <button class="btn btn-info text-white me-3" id="filterNewPosts">New Auctions</button> 
+                                    <button class="btn btn-info text-white me-3" id="filterEndsTodayPosts">Ends Today</button> 
+                                    <button class="btn btn-info text-white me-3" id="filterPopularPost">Popular</button> 
+                                </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-        <div class="container p-3">
-            <h2>Auction posts</h2>
-            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4" id="auctionPosts"></div>
-        </div>
+      
+
+            <div class="container bg-light p-3 mt-3">
+                <h2 id="auctionHeader">Auction posts</h2>
+                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4" id="auctionPosts"></div>  
+            </div>
 
 
  

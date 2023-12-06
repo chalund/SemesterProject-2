@@ -22,7 +22,7 @@ export async function getPosts() {
 }
 
 export async function getPostsWithBids() {
-    const getPostURL = `${API_BASE_URL}${action}`;
+    const getPostURL = `${API_BASE_URL}${action}${activePosts}`;
 
     try {
         const response = await fetchToken(getPostURL, {
@@ -135,24 +135,3 @@ export async function getActivePosts() {
         throw error;
     }
 }
-
-
-// export async function getPostsId(id) {
-//     const getPostURL = `${API_BASE_URL}${action}/${id}`;
-
-//     try {
-//         const response = await fetchToken(getPostURL, {
-//             method: 'GET',
-//         });
-//         const getPostsId = await response.json();
-//         console.log("getPosts with id:", getPosts);
-//         return getPostsId; // Return the fetched posts
-//     } catch (error) {
-//         console.error('Error fetching posts:', error);
-//         throw error;
-//     }
-// }
-
-
-
-
