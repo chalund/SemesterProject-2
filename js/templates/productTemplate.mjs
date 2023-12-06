@@ -26,6 +26,8 @@ function findLatestBidder(bids) {
     return latestBidderName;
 }
 
+import { isLoggedIn } from "../handlers/buttons/userLoggedIn.mjs";
+
 
 
 export function productTemplate(postData) {
@@ -125,17 +127,23 @@ export function productTemplate(postData) {
     currentPrice.classList.add = ("mb-1")
     currentPrice.textContent = `Current Price:`
 
-    const currentBid = document.createElement("h3");
-    const currentBidAmount = calculateTotalBidsAmount(postData.bids)
-    currentBid.classList.add("mb-1" , "text-info")
-    currentBid.textContent = `${currentBidAmount} credits`;
+    currentBidContainer.append(currentPrice)
 
-    const currentBidUsername = document.createElement("p");
-    currentBidUsername.classList.add("me-3");
-    currentBidUsername.textContent = `Latest bid: `
-    //add function
+  
 
-    currentBidContainer.append(currentPrice, currentBid, currentBidUsername)
+    const currentBidAmount = calculateTotalBidsAmount(postData.bids);
+
+    // const currentBid = document.createElement("h3");
+    // const currentBidAmount = calculateTotalBidsAmount(postData.bids)
+    // currentBid.classList.add("mb-1" , "text-info")
+    // currentBid.textContent = `${currentBidAmount} credits`;
+    const latestBidder = findLatestBidder(postData.bids);
+   
+
+   
+  
+
+
 
     const endsAt = document.createElement("h4");
     const endsAtDate = formatDate(postData.endsAt);
@@ -143,21 +151,34 @@ export function productTemplate(postData) {
     endsAt.classList.add("mt-3", "text-danger");
 
     const yourBidContainer = document.createElement("div");
-    yourBidContainer.classList.add("mt-3")
-
+    yourBidContainer.classList.add("mt-3");
+    
     const yourBidTitle = document.createElement("h4");
-    yourBidTitle.textContent = `Place your Bid:`
-
+    yourBidTitle.textContent = `Place your Bid:`;
+    
+    // Creating form elements
     const bidForm = document.createElement("form");
     bidForm.classList.add("col-6", "d-flex");
     bidForm.setAttribute("role", "search");
-    bidForm.innerHTML = `
-        <input class="form-control me-2" type="search" aria-label="Search">
-        <button class="btn btn-primary" type="submit">Bid</button>
-    `;
-
-    yourBidContainer.append(yourBidTitle, bidForm)
-
+    
+    const input = document.createElement("input");
+    input.classList.add("form-control", "me-2");
+    input.setAttribute("type", "search");
+    input.setAttribute("aria-label", "Search");
+    
+    const button = document.createElement("button");
+    button.classList.add("btn", "btn-primary");
+    button.setAttribute("type", "submit");
+    button.textContent = "Bid";
+    
+    // Appending input and button to the form
+    bidForm.appendChild(input);
+    bidForm.appendChild(button);
+    
+    // Appending the bid form to the yourBidContainer
+    yourBidContainer.append(yourBidTitle, bidForm);
+    
+    // Appending yourBidContainer to the productInfo
     productInfo.append(productTitle, productDescription, productTags, currentBidContainer, endsAt, yourBidContainer);
 
 
@@ -173,50 +194,72 @@ export function productTemplate(postData) {
 
     bidContainer.append(bidHistoryTitle , bidLine);
 
+        // Check if user is logged in
+        if (isLoggedIn()) {
+            // Loop through bids and add bid entries to the bid container
+            postData.bids.forEach(bid => {
+                const bidEntry = document.createElement("div");
+                bidEntry.classList.add("d-flex", "justify-content-start", "align-items-center", "mb-2");
+                
+                const bidDate = document.createElement("p");
+                const bidDateCreated = formatDate(bid.created);
+                bidDate.classList.add("me-3");
+                bidDate.textContent = `${bidDateCreated}`;
     
-    postData.bids.forEach(bid => {
-    const bidEntry = document.createElement("div");
-    bidEntry.classList.add("d-flex", "justify-content-start", "align-items-center", "mb-2"); // Added margin-bottom for spacing
+                const bidUsername = document.createElement("p");
+                bidUsername.classList.add("me-3");
+                bidUsername.textContent = bid.bidderName;
+                bidUsername.style.width = "155px"; // Set a fixed width
     
-    const bidDate = document.createElement("p");
-    const bidDateCreated = formatDate(bid.created);
-    bidDate.classList.add("me-3");
-    bidDate.textContent = `${bidDateCreated}`;
-
-    const bidUsername = document.createElement("p");
-    bidUsername.classList.add("me-3");
-    bidUsername.textContent = bid.bidderName;
-    bidUsername.style.width = "155px"; // Set a fixed width
-
-    const bidAmount = document.createElement("p");
-    bidAmount.classList.add("me-3");
-    bidAmount.textContent = `$${bid.amount}`;
-    bidAmount.style.width = "100px"; // Set a fixed width
-
-    bidEntry.appendChild(bidDate);
-    bidEntry.appendChild(bidUsername);
-    bidEntry.appendChild(bidAmount);
-
-    bidContainer.appendChild(bidEntry);
-});
+                const bidAmount = document.createElement("p");
+                bidAmount.classList.add("me-3");
+                bidAmount.textContent = `$${bid.amount}`;
+                bidAmount.style.width = "100px"; // Set a fixed width
+    
+                bidEntry.appendChild(bidDate);
+                bidEntry.appendChild(bidUsername);
+                bidEntry.appendChild(bidAmount);
+    
+                bidContainer.appendChild(bidEntry);
+        
 
 
+            });
+
+            if (latestBidder) {
+                
+
+                  // Display current bid amount
+            const currentBid = document.createElement("h3");
+            currentBid.classList.add("mb-1", "text-info");
+            currentBid.textContent = `${currentBidAmount} credits`;
+            currentBidContainer.appendChild(currentBid);
+            
+                const currentBidUsername = document.createElement("p");
+                currentBidUsername.classList.add("me-3");
+                currentBidUsername.textContent = `Latest bid: ${latestBidder}`;
+                currentBidContainer.appendChild(currentBidUsername);
+            }
+    
+          
+        } else {
+            // If user is not logged in, show a message
+            const currentBid = document.createElement("h3");
+            currentBid.classList.add("mb-1", "text-info");
+            currentBid.textContent = "Log in to see Bids";
+            currentBidContainer.appendChild(currentBid);
+
+            const notLoggedInMessage = document.createElement("h3");
+            notLoggedInMessage.classList.add("mb-1", "text-info");
+            notLoggedInMessage.textContent = "Log in to see Bids";
+            bidContainer.appendChild(notLoggedInMessage);
+        }
+
+
+    
+
+    
     cardContainer.append(bidContainer)
 
     return container;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

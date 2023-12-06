@@ -23,7 +23,9 @@ clearInputListeners() //works on modal
 
 
 import { updateButtonBasedOnLoginStatus } from "./handlers/buttons/userLoggedIn.mjs"; 
-import { createLogoutButton } from "./handlers/buttons/logoutBtn.mjs"; 
+import { createLogoutButton } from "./handlers/buttons/logoutBtn.mjs";
 updateButtonBasedOnLoginStatus()
 createLogoutButton()
+
+
 
