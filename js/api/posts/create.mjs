@@ -3,27 +3,33 @@ import { load } from "../storage/index.mjs";
 
 const action = "/api/v1/auction/listings";
 const bid = "/bids"
-const method = "POST";
+
 
 export async function createPost(postData) {
-    const token = load("accessToken")
+    const token = load("accessToken");
     const createPostUrl = `${API_BASE_URL}${action}`;
 
     try {
         const response = await fetch(createPostUrl, {
-            method,
+            method: "POST",
             headers: {
                 'Content-Type': 'application/json',
                 "Authorization": `Bearer ${token}`,
             },
             body: JSON.stringify(postData),
         });
-            const post = await response.json();
-            console.log(post)
-            return post;
-     
+
+        if (!response.ok) {
+            const errorData = await response.json(); // Parse the error response
+            console.error('Failed to create post:', response.status, response.statusText, errorData);
+            throw new Error(`Failed to create post: ${response.status}`);
+        }
+
+        const post = await response.json();
+        console.log('Created post:', post);
+        return post;
     } catch (error) {
-        console.error(error);
+        console.error('Error creating post:', error);
         throw error;
     }
 }
@@ -35,7 +41,7 @@ export async function createBid(id) {
 
     try {
         const response = await fetch(createPostUrl, {
-            method,
+            method: "POST",
             headers: {
                 'Content-Type': 'application/json',
                 "Authorization": `Bearer ${token}`,

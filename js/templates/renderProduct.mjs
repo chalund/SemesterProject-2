@@ -1,4 +1,4 @@
-// import { postTemplateTest } from "./cardTemplateTest.mjs"; 
+// import { productTemplate } from "./productTemplate.mjs"; 
 // import { getPostId } from "../api/posts/postById.mjs"; 
 
 

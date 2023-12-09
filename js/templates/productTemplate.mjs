@@ -27,46 +27,74 @@ function findLatestBidder(bids) {
 }
 
 import { isLoggedIn } from "../handlers/buttons/userLoggedIn.mjs";
-
+import { imageGallery } from "../handlers/imgGallery.mjs";
 
 
 export function productTemplate(postData) {
     const container = document.createElement("div")
-    container.classList.add("container", "my-0", "my-sm-5", "pb-5", "border")
+    container.classList.add("container", "my-0", "my-sm-5", "border", "bg-light", "mt-3")
 
     const cardContainer = document.createElement("div");
-    cardContainer.classList.add("row");
-    container.append(cardContainer)
+    cardContainer.classList.add("row"); // Ensure columns have equal height
+    container.append(cardContainer);
 
     const imageContainer = document.createElement("div");
-    imageContainer.classList.add("col-sm-12", "col-md-12", "col-lg-6", "d-flex", "align-items-center", "justify-content-center");
-
+    imageContainer.classList.add("col-lg-6", "d-flex", "flex-column", "align-items-stretch");
+    
     const imageContainerDiv = document.createElement("div");
-    imageContainerDiv.classList.add("text-center", "mt-5", "pb-lg-4", "border");
+    imageContainerDiv.classList.add("text-center", "align-items-stretch");
+    
 
     const productImages = document.createElement("div");
-    productImages.classList.add("item-image");
-
-    const mainImage = document.createElement("img");
-    mainImage.src = postData.media[0]; // Assuming the image URL is at the first index of the media array
-    mainImage.alt = "Main Product Image";
-    productImages.appendChild(mainImage); 
-
+    productImages.classList.add("room-gallery" , "d-flex", "flex-column");
+    
+    // Assuming the first image is the main image
+    if (postData && postData.media && postData.media.length > 0) {
+        const mainImage = document.createElement("img");
+        mainImage.src = postData.media[0];
+        mainImage.alt = "Main Product Image";
+        mainImage.classList.add("gallery-highlight" , "flex-grow-1")
+        mainImage.style.width = "100%";
+        mainImage.style.height = "300px"
+        productImages.appendChild(mainImage);
+    } else {
+        const placeholderImage = document.createElement("img");
+        placeholderImage.src = "/images/noImage.jpg"; // Replace with your placeholder image URL
+        placeholderImage.alt = "No Image Available";
+        placeholderImage.classList.add("product-image");
+        placeholderImage.style.width = "100%";
+        placeholderImage.style.display = "block"; // Ensure it takes full width
+        placeholderImage.style.margin = "auto"; // Center the image horizontally
+        productImages.appendChild(placeholderImage);
+    }
+    
     const productImageList = document.createElement("div");
-    productImageList.classList.add("item-list");
+    productImageList.classList.add("room-preview", "d-flex" , "justify-content-between");
+    
+    if (postData && postData.media && Array.isArray(postData.media)) {
+        const mediaSlice = postData.media.slice(1, 4); // Slice the media array if it has at least 4 elements
+        mediaSlice.forEach(mediaItem => {
+            const image = document.createElement("img");
+            image.src = mediaItem;
+            image.alt = "Product Image";
+            image.classList.add("product-image", "room-preview-img"); // Add new class for specific styling
+            image.style.height = "100px";
+            productImageList.appendChild(image);
+        });
+    }
 
-    //adds images 
-    productImageList.appendChild(productImages);
+    
     imageContainerDiv.appendChild(productImages);
-    imageContainer.appendChild(productImages);
-    cardContainer.append(imageContainer);
-
-  
-
+    imageContainerDiv.appendChild(productImageList);
+    imageContainer.appendChild(imageContainerDiv);
+    
+    // Append the image container to the cardContainer or your desired location in the DOM
+    cardContainer.appendChild(imageContainer);
+          
     //right side of container info content
     const productContainer = document.createElement("div");
-    productContainer.classList.add("col-sm-12", "col-md-12", "col-lg-6", "d-flex", "justify-content-center", "align-items-center");
-    cardContainer.append(productContainer)
+    productContainer.classList.add("col-lg-6", "d-flex", "justify-content-center", "align-items-center");
+    cardContainer.append(productContainer);
 
 
     const productContentContainer = document.createElement("div");
@@ -74,11 +102,11 @@ export function productTemplate(postData) {
     productContainer.append(productContentContainer)
 
     const productInfo = document.createElement("div")
-    productInfo.classList.add("p-3")
+    productInfo.classList.add("p-2")
     productContentContainer.append(productInfo)
 
     const sellerInfo = document.createElement("div")
-    sellerInfo.classList.add("mb-3", "border")
+    sellerInfo.classList.add("mb-3")
     productInfo.append(sellerInfo)
 
     const sellerCreated = document.createElement("p")
@@ -99,8 +127,13 @@ export function productTemplate(postData) {
     const productTitle = document.createElement("h1");
     productTitle.textContent = postData.title;
 
+    const productDescriptionTitle = document.createElement("p");
+    productDescriptionTitle.textContent = 'Description of product:';
+    productDescriptionTitle.style.textDecoration = 'underline';
+
     const productDescription = document.createElement("p");
     productDescription.textContent = postData.description;
+    productDescription.style.fontWeight = 'bold';
 
     //tags
     const productTags = document.createElement("div");
@@ -111,17 +144,18 @@ export function productTemplate(postData) {
     const tagsTitle = document.createElement("p");
     tagsTitle.textContent = "Tags: ";
     tagsTitle.classList.add("mr-2");
+    tagsTitle.style.textDecoration = 'underline'
     productTags.appendChild(tagsTitle);
     
     tagsArray.forEach(tag => {
         const tagElement = document.createElement("p");
-        tagElement.classList.add("mx-2", "border");
+        tagElement.classList.add("mx-2", "border", "border-primary", "px-3");
         tagElement.textContent = tag;
         productTags.appendChild(tagElement);
     });
 
     const currentBidContainer = document.createElement("div"); 
-    currentBidContainer.classList.add("mt-4" , "border")
+    currentBidContainer.classList.add("mt-4" , "border", "px-2")
 
     const currentPrice = document.createElement("p");
     currentPrice.classList.add = ("mb-1")
@@ -157,29 +191,34 @@ export function productTemplate(postData) {
     yourBidTitle.textContent = `Place your Bid:`;
     
     // Creating form elements
-    const bidForm = document.createElement("form");
-    bidForm.classList.add("col-6", "d-flex", "addBidForm");
-    bidForm.setAttribute("role", "search");
-    
-    const input = document.createElement("input");
-    input.classList.add("form-control", "me-2", "bidSearch");
-    input.setAttribute("type", "search");
-    input.setAttribute("aria-label", "Search");
-    
-    const button = document.createElement("button");
-    button.classList.add("btn", "btn-primary");
-    button.setAttribute("type", "submit");
-    button.textContent = "Bid";
-    
-    // Appending input and button to the form
-    bidForm.appendChild(input);
-    bidForm.appendChild(button);
+
+const bidForm = document.createElement("form");
+bidForm.id = "addBidForm"; // Set form ID
+bidForm.classList.add("col-8", "d-flex", "addBidForm");
+bidForm.setAttribute("role", "search");
+
+// const input = document.createElement("input");
+// input.classList.add("form-control", "me-2", "bidSearch");
+// input.setAttribute("type", "search");
+// input.setAttribute("aria-label", "Search");
+
+const button = document.createElement("button");
+button.classList.add("btn", "btn-primary" , "bid-button");
+
+button.textContent = "Bid";
+button.setAttribute("data-bs-toggle", "modal");
+button.setAttribute("data-bs-target", "#bidModal");
+
+// Appending input and button to the form
+// bidForm.appendChild(input);
+bidForm.appendChild(button);
+
     
     // Appending the bid form to the yourBidContainer
     yourBidContainer.append(yourBidTitle, bidForm);
     
     // Appending yourBidContainer to the productInfo
-    productInfo.append(productTitle, productDescription, productTags, currentBidContainer, endsAt, yourBidContainer);
+    productInfo.append(productTitle, productDescriptionTitle, productDescription, productTags, currentBidContainer, endsAt, yourBidContainer);
 
 
     //bid container
@@ -190,7 +229,7 @@ export function productTemplate(postData) {
     bidHistoryTitle.textContent = "Bid history";
 
     const bidLine = document.createElement("div");
-    bidLine.classList.add("col-4", "py-1", "bg-primary");
+    bidLine.classList.add("col-md-8", "py-1", "bg-primary");
 
     bidContainer.append(bidHistoryTitle , bidLine);
 
@@ -199,7 +238,7 @@ export function productTemplate(postData) {
             // Loop through bids and add bid entries to the bid container
             postData.bids.forEach(bid => {
                 const bidEntry = document.createElement("div");
-                bidEntry.classList.add("d-flex", "justify-content-start", "align-items-center", "mb-2");
+                bidEntry.classList.add("d-flex", "justify-content-start", "align-items-center", "mb-1");
                 
                 const bidDate = document.createElement("p");
                 const bidDateCreated = formatDate(bid.created);
@@ -207,7 +246,7 @@ export function productTemplate(postData) {
                 bidDate.textContent = `${bidDateCreated}`;
     
                 const bidUsername = document.createElement("p");
-                bidUsername.classList.add("me-3");
+                bidUsername.classList.add("me-3", "mt-1");
                 bidUsername.textContent = bid.bidderName;
                 bidUsername.style.width = "155px"; // Set a fixed width
     
@@ -261,5 +300,11 @@ export function productTemplate(postData) {
     
     cardContainer.append(bidContainer)
 
+    document.body.appendChild(container);
+
+    // Call imageGallery after the product template content is added to the DOM
+    imageGallery();
+
+    
     return container;
 }

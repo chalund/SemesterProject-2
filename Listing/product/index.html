@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="/js/indexProduct.mjs" type="module"></script>
+    <script src="/js/handlers/imgGallery.mjs" type="module"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
+    <div class="container-fluid bg-secondary">
+    <nav class="navbar navbar-expand-sm navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center" href="/index.html">
                 <img src="/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
@@ -23,16 +25,13 @@
             <div class="collapse navbar-collapse" id="navbar7">
                 <ul class="navbar-nav ms-auto" id="navbarList">
                      <li class="nav-item d-flex justify-content-center">
-                         <a class="nav-link" href="/index.html">Home</a>
-                    </li>
-                     <li class="nav-item d-flex justify-content-center">
-                        <a class="nav-link" href="/Listing/index.html">Find products</a>
+                         <a class="nav-link text-white" href="/index.html">Auction</a>
                     </li>
                     <li class="nav-item d-flex justify-content-center">
-                        <a class="nav-link active" href="/Listing/product/index.html">View products</a>
+                        <a class="nav-link active text-primary" href="/Listing/product/index.html">View Product</a>
                     </li>
                     <li class="nav-item d-flex justify-content-center">
-                        <a class="nav-link disabled" href="/profile/index.html" tabindex="-1" aria-disabled="true" id="profileLink">Profile</a>
+                        <a class="nav-link disabled text-white" href="/profile/index.html" tabindex="-1" aria-disabled="true" id="profileLink">Profile</a>
                     </li>
                      <li class="nav-item d-flex justify-content-center" id="loginListItem">
                         <a href="/profile/login/index.html" class="btn btn-primary my-2 my-sm-0 ms-2 d-none d-sm-block" id="loginLink">Login</a>
@@ -40,38 +39,67 @@
                     </li>
                 </ul>
             </div>
-        </div>
     </nav>
+    </div>
     <div class="container-fluid bg-info text-white">
-        <div class="d-flex justify-content-between">
-                <p class="text-start m-0 ms-2">Online auction site -buy & sell</p>
+        <div class="d-flex justify-content-between nav">
+                <p class="text-start m-0 ms-2 d-none d-md-block">Online auction site -buy & sell</p>
                 <p class="text-end m-0 me-2" id="navProfile">
         </div>
     </div>
     <main>
-        <div class="container my-0 my-sm-5 pb-4 border">
+       <div class="container my-0 my-sm-5 border bg-secondary">
            
                 <div id="viewProduct"></div>
-           
-        </div>
 
-
-<!-- 
-     <div class="container my-0 my-sm-5 pb-4 border">
-        <div class="row align-items-stretch">
-         
-            <div class="col-sm-12 col-md-12 col-lg-6 d-flex align-items-center justify-content-center">
-                <div class="text-center  border">
-                    <div class="item-image">
-                        <img src="/images/images (2).jpeg" alt="" style="max-width: 100%; height: auto;">
-                        <div class="item-list">
-                            <img src="/images/images (2).jpeg" alt="">
-                            <img src="/images/images (2).jpeg" alt="">
-                            <img src="/images/images (2).jpeg" alt="">
+                <div class="modal fade" id="bidModal" tabindex="-1" aria-labelledby="bidModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="bidModalLabel">Bid on product</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+                        <div class="modal-body">
+                            <form id="bidForm" action="">
+                                <div class="form-group mb-3 position-relative p-">
+                                    <label for="bidAmount">Place your Bid</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" id="bidAmount" name="bidAmount">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary btn-clear" type="button">&times;</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="save-bid-btn">Add Bid</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+       </div>
+           
+    
+
+
+<!--        
+
+      <div class="container my-0 my-sm-5 pb-4 border">
+         <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-6">
+            <div class="text-center align-items-stretch">
+                <div class="room-gallery d-flex flex-column">
+                    <img src="/images/photos-images-pictures-beach-coast-travel-trip-concept.jpg" class="gallery-highlight flex-grow-1" alt="">
+                    <div class="room-preview d-flex justify-content-between">
+                        <img src="/images/photos-images-pictures-beach-coast-travel-trip-concept.jpg" alt="" class="active">
+                        <img src="/images/logo.png" alt="">
+                        <img src="/images/noImage.jpg" alt="">
                     </div>
                 </div>
             </div>
+        </div>
                 <div class="col-sm-12 col-md-12 col-lg-6 d-flex justify-content-center align-items-center">
                     <div class="border d-flex flex-column justify-content-between">
                         <div class="product-info p-3">

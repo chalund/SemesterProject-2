@@ -1,34 +1,89 @@
 import { createPost } from "../../api/posts/create.mjs";
 
-export function createPostFormListener() {
+export async function createPostFormListener() {
     const form = document.querySelector("#createPostForm");
-    form.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        const formElements = event.target;
+    const imageList = document.getElementById("imageList");
+    const tagsList = document.getElementById("tagsList");
 
-        const title = document.querySelector('#title').value;
-        const endsAt = document.querySelector('#endsAt').value;
-        const body = document.querySelector('#body').value;
-        const tags = document.querySelector('#tags').value;
-        const media = document.querySelector('#media').value;
+    const mediaInputs = document.querySelectorAll('input[name="media"]');
+    const tagInputs = document.querySelectorAll('input[name="tags"]');
 
-        console.log({title});
-        const post = {
-            title,
-            endsAt,
-            body,
-            tags: [tags],
-            media,
-        }
+    
+        form.addEventListener("click", event => {
+            if (event.target.classList.contains("add-media")) {
+                const inputGroup = document.createElement("div");
+                inputGroup.classList.add("input-group", "my-2");
 
-        console.log("Post Object:", post);
+                const input = document.createElement("input");
+                input.name = "media";
+                input.type = "url";
+                input.classList.add("form-control");
+                inputGroup.appendChild(input);
+    
+                const clearButton = document.createElement("button");
+                clearButton.innerHTML = "&times;";
+                clearButton.classList.add("btn", "btn-light", "btn-clear");
+                clearButton.type = "button";
+                clearButton.addEventListener("click", () => {
+                    input.value = "";
+                });
+             
+            }
+            if (event.target.classList.contains("add-tags")) {
+                const inputGroup = document.createElement("div");
+                inputGroup.classList.add("input-group", "my-2");
 
-        try {
-            await createPost(post);
+                const input = document.createElement("input");
+                input.name = "tags";
+                input.type = "text";
+                input.classList.add("form-control");
+                inputGroup.appendChild(input);
+    
+                const clearButton = document.createElement("button");
+                clearButton.innerHTML = "&times;";
+                clearButton.classList.add("btn", "btn-light", "btn-clear");
+                clearButton.type = "button";
+                clearButton.addEventListener("click", () => {
+                    input.value = "";
+                });
+             
+            }
+        });
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const formElements = event.target;
         
-            // window.location.reload();
-        } catch (error) {
-            console.log("Error creating post:", error);
-        }
-    });
+            const title = document.querySelector('#title').value;
+            const endsAt = document.querySelector('#endsAt').value;
+            const body = document.querySelector('#body').value;
+        
+            // Gather media URLs from inputs
+            const media = Array.from(document.querySelectorAll('input[name="media"]'))
+                            .map(input => input.value)
+                            .filter(value => value !== '');
+        
+            // Gather tags from inputs
+            const tags = Array.from(document.querySelectorAll('input[name="tags"]'))
+                            .map(input => input.value)
+                            .filter(value => value !== '');
+        
+            const post = {
+                title,
+                endsAt,
+                body,
+                tags,
+                media
+            };
+        
+            try {
+                const response = await createPost(post);
+                // Post creation successful
+                console.log("Post added successfully:", response);
+                window.location.reload();
+            } catch (error) {
+                console.log("Error creating post:", error);
+                // Handle specific error cases and provide feedback to the user
+            }
+        });
 }

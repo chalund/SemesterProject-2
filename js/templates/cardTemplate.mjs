@@ -10,21 +10,28 @@ export function postTemplate(postData) {
 
     if (postData.media && postData.media.length > 0) {
         const firstImage = postData.media[0];
-
+    
         const image = document.createElement("img");
         image.classList.add("card-img-top");
         image.src = firstImage;
         image.alt = "Post Image";
         image.style.maxHeight = "200px";
+    
+        // Handle broken images
+        image.onerror = function() {
+            image.src = "../images/noImage.jpg"; // Set default image path if the original image is broken
+            image.alt = "Default Image";
+        };
+    
         card.append(image);
     } else {
         const defaultImage = document.createElement("img");
         defaultImage.classList.add("card-img-top");
-        defaultImage.src = "../images/logo.png"; // Default image path when no image is present
+        defaultImage.src = "../images/noImage.jpg"; // Default image path when no image is present
         defaultImage.alt = "Default Image";
         defaultImage.style.maxHeight = "200px";
         card.append(defaultImage);
-      }
+    }
 
     const cardBody = document.createElement("div");
     cardBody.classList.add("card-body");

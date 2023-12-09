@@ -12,7 +12,7 @@ export async function handleDeleteButtonClick(postData) {
       if (deletedPost) {
         // Remove post from UI or perform other actions if needed
       }
-      // window.location.reload();
+      window.location.reload();
 
     } catch (error) {
       console.log("Error deleting post:", error);

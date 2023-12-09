@@ -1,10 +1,11 @@
 import { API_BASE_URL } from "../constants.mjs";
 import { load } from "../storage/index.mjs";
 import { productTemplate } from "../../templates/productTemplate.mjs"; 
+import { handleBidButtonClick } from "../../handlers/buttons/bidBtn.mjs";
 
 
 const action = "/api/v1/auction/listings";
-const seller = "?_seller=true"
+// const seller = "?_seller=true"
 const bids = "?_bids=true"
 
 
@@ -17,10 +18,13 @@ window.addEventListener('DOMContentLoaded', async () => {
             const postData = await getPostId(postId);
             // Use the retrieved postData as needed
             console.log(postData);
-            const template = productTemplate(postData)
+            const template = productTemplate(postData);
 
             const postDetailsContainer = document.querySelector('#viewProduct');
-            postDetailsContainer.append(template)
+            postDetailsContainer.append(template);
+
+            handleBidButtonClick()
+           
 
         } catch (error) {
             // Handle errors occurring during data retrieval
@@ -51,24 +55,24 @@ export async function getPostId(id) {
     }
 }
 
-export async function getPostIdSeller(id) {
-    const getPostUrl = `${API_BASE_URL}${action}/${id}${seller}`;
-    const token = load("accessToken");
+// export async function getPostIdSeller(id) {
+//     const getPostUrl = `${API_BASE_URL}${action}/${id}${seller}`;
+//     const token = load("accessToken");
 
-    try {
-        const response = await fetch(getPostUrl, {
-            headers: {
-                'Content-Type': 'application/json',
-                "Authorization": `Bearer ${token}`,
-            },
-        });
+//     try {
+//         const response = await fetch(getPostUrl, {
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 "Authorization": `Bearer ${token}`,
+//             },
+//         });
 
-        const postData = await response.json();
+//         const postData = await response.json();
         
-        return postData;
-    } catch (error) {
-        // Log and re-throw the error for handling outside this function
-        console.error('Error in getPostId:', error);
-        throw error;
-    }
-}
+//         return postData;
+//     } catch (error) {
+//         // Log and re-throw the error for handling outside this function
+//         console.error('Error in getPostId:', error);
+//         throw error;
+//     }
+// }

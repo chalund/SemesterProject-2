@@ -1,10 +1,10 @@
 import { postTemplate } from "./cardTemplate.mjs"
-import { getActivePosts } from "../api/posts/getPost.mjs";
+import { getPosts} from "../api/posts/getPost.mjs"; 
 
 export async function renderCardTemplate(containerId, getPostsFunction) {
     try {
-        const posts = await getPostsFunction();
-        console.log(posts)
+        const posts = await getPosts();
+        // console.log(posts)
         const container = document.querySelector(`#${containerId}`);
 
         if (!container) {
@@ -15,7 +15,7 @@ export async function renderCardTemplate(containerId, getPostsFunction) {
             throw new Error('Posts retrieval failed or the data format is incorrect.');
         }
 
-        container.innerHTML = ''; // Clear existing content before rendering new posts
+    
 
         posts.forEach(post => {
             const postContent = postTemplate(post);
@@ -26,5 +26,5 @@ export async function renderCardTemplate(containerId, getPostsFunction) {
     }
 }
 document.addEventListener('DOMContentLoaded', () => {
-    renderCardTemplate('auctionPosts', getActivePosts);
+    renderCardTemplate('auctionPosts', getPosts)
 });

@@ -1,7 +1,7 @@
 import { getActivePosts, getPostsEndsToday, getPostsCreatedToday, getPostsWithBids } from '../../api/posts/getPost.mjs';
 
 import { renderCardTemplate } from "../../templates/renderCardTemplate.mjs";
-renderCardTemplate('auctionPosts', getActivePosts);
+renderCardTemplate('auctionPost', getActivePosts);
 
 
 
@@ -17,7 +17,7 @@ export function changeHeader(newHeaderText) {
 export async function handleFilterAllPosts() {
     try {
         changeHeader('Auction');
-        renderCardTemplate('auctionPosts', getActivePosts);
+        renderCardTemplate('auctionPost', getActivePosts);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -27,7 +27,7 @@ export async function handleFilterAllPosts() {
 export async function handleFilterNewPosts() {
     try {
         changeHeader('New Auction Posts');
-        renderCardTemplate('auctionPosts', getPostsCreatedToday);
+        renderCardTemplate('auctionPost', getPostsCreatedToday);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -37,7 +37,7 @@ export async function handleFilterNewPosts() {
 export async function handleFilterEndsTodayPosts() {
     try {
         changeHeader('Auction ends today Posts');
-        renderCardTemplate('auctionPosts', getPostsEndsToday);
+        renderCardTemplate('auctionPost', getPostsEndsToday);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -47,7 +47,7 @@ export async function handleFilterEndsTodayPosts() {
 export async function handleFilterPopularPost() {
     try {
         changeHeader('Popular auction posts');
-        renderCardTemplate('auctionPosts', getPostsWithBids);
+        renderCardTemplate('auctionPost', getPostsWithBids);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -58,4 +58,3 @@ document.querySelector('#filterAllPosts').addEventListener('click', handleFilter
 document.querySelector('#filterNewPosts').addEventListener('click', handleFilterNewPosts);
 document.querySelector('#filterEndsTodayPosts').addEventListener('click', handleFilterEndsTodayPosts);
 document.querySelector('#filterPopularPost').addEventListener('click', handleFilterPopularPost);
-

@@ -1,31 +1,29 @@
-import { renderPostProfileTemplate } from "./templates/renderPostProfileTemplate.mjs";
-import { updateProfileLayout } from "./api/profile/getProfile.mjs";
-
-import { editProfileImage , editProfileImageModal } from "./api/profile/updateProfile.mjs";
-
-
-
-
-
-
+import { renderCardProfileTemplate } from "./templates/renderCardProfileTemplate.mjs"; 
+(renderCardProfileTemplate) // add cards
 
 import { createPostFormToggle } from "./handlers/createPost/hideCreatePostForm.mjs";
-import { createPostFormInitializer } from "./handlers/createPost/createPostFormInitializer.mjs";
-
-renderPostProfileTemplate('profilePosts'); //get posts
-updateProfileLayout() // update profile image
-
-createPostFormInitializer() // add more input for images
 createPostFormToggle() // show/hide button for create form
 
-import { clearInputListeners } from "./handlers/createPost/clearInput.mjs";
+import { createPostFormInitializer } from "./handlers/createPost/createPostFormInitializer.mjs";
+createPostFormInitializer() // add more input for images/tags
+
+
+import { editProfileImage , editProfileImageModal } from "./api/profile/updateProfileAvatar.mjs";
+import { updateProfileLayout } from "./api/profile/getProfile.mjs";
+updateProfileLayout() // update profile image
+
+
+import { clearInputListeners } from "./handlers/buttons/clearInput.mjs";
 clearInputListeners() //works on modal
 
-
-import { updateButtonBasedOnLoginStatus } from "./handlers/buttons/userLoggedIn.mjs"; 
-import { createLogoutButton } from "./handlers/buttons/logoutBtn.mjs";
+import { updateButtonBasedOnLoginStatus, profileInNav } from "./handlers/buttons/userLoggedIn.mjs"; 
 updateButtonBasedOnLoginStatus()
-createLogoutButton()
+profileInNav()
+
+
+import { createPostFormListener } from "./handlers/form/createPost.mjs";
+createPostFormListener()
+
 
 
 

@@ -11,8 +11,9 @@
     <script src="/js/indexHome.mjs" type="module"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
-        <div class="container-fluid">
+    <div class="container-fluid bg-secondary">
+        <nav class="navbar navbar-expand-sm navbar-dark">
+        
             <a class="navbar-brand d-flex align-items-center" href="/index.html">
                 <img src="/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
                 <span class="ms-2">eBids</span>
@@ -23,10 +24,10 @@
             <div class="collapse navbar-collapse" id="navbar7">
                 <ul class="navbar-nav ms-auto" id="navbarList">
                      <li class="nav-item d-flex justify-content-center">
-                         <a class="nav-link active" href="/index.html">Auction</a>
+                         <a class="nav-link active text-primary" href="/index.html">Auction</a>
                     </li>
                     <li class="nav-item d-flex justify-content-center">
-                        <a class="nav-link disabled" href="/profile/index.html" tabindex="-1" aria-disabled="true" id="profileLink">Profile</a>
+                        <a class="nav-link disabled text-white" href="/profile/index.html" tabindex="-1" aria-disabled="true" id="profileLink">Profile</a>
                     </li>
                      <li class="nav-item d-flex justify-content-center" id="loginListItem">
                         <a href="/profile/login/index.html" class="btn btn-primary my-2 my-sm-0 ms-2 d-none d-sm-block" id="loginLink">Login</a>
@@ -34,10 +35,10 @@
                     </li>
                 </ul>
             </div>
-        </div>
     </nav>
+    </div>
     <div class="container-fluid bg-info text-white">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between nav">
                 <p class="text-start m-0 ms-2">Online auction site -buy & sell</p>
                 <p class="text-end m-0 me-2" id="navProfile">
         </div>
@@ -63,12 +64,12 @@
                                         </div>
                                     </div>
                                 </form>
-                                <div class="mx-3 mt-4 d-none d-sm-block">
+                                <!-- <div class="mx-3 mt-4 d-none d-sm-block">
                                     <button class="btn btn-info text-white me-3" id="filterAllPosts">View All</button> 
                                     <button class="btn btn-info text-white me-3" id="filterNewPosts">New Auctions</button> 
                                     <button class="btn btn-info text-white me-3" id="filterEndsTodayPosts">Ends Today</button> 
                                     <button class="btn btn-info text-white me-3" id="filterPopularPost">Popular</button> 
-                                </div>
+                                </div> -->
                         </div>
                     </div>
                 </div>
@@ -77,7 +78,8 @@
 
             <div class="container bg-light p-3 mt-3">
                 <h2 id="auctionHeader">Auction posts</h2>
-                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4" id="auctionPosts"></div>  
+                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4" id="auctionPosts">
+                </div>  
             </div>
 
 

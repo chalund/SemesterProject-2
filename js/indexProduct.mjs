@@ -5,9 +5,10 @@ import { createLogoutButton } from "./handlers/buttons/logoutBtn.mjs";
 
 
 
-import { createBid } from "./api/posts/addBid.mjs"; 
-createBid()
+// import { createBidFormListener } from "./handlers/form/addBid.mjs"; 
+// createBidFormListener()
 
+// import { renderProductTemplate } from "./templates/renderProduct.mjs";
 // renderProductTemplate('viewProduct', getPostId)
 createLogoutButton()
 

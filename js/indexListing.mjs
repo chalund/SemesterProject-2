@@ -12,7 +12,7 @@ import * as searchFunction from "./handlers/filter/search.mjs"
 
 //on several pages
 
-import { clearInputListeners } from "./handlers/createPost/clearInput.mjs";
+import { clearInputListeners } from "./handlers/buttons/clearInput.mjs"; 
 clearInputListeners()
 
 
