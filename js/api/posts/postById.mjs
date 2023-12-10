@@ -1,7 +1,7 @@
 import { API_BASE_URL } from "../constants.mjs";
 import { load } from "../storage/index.mjs";
 import { productTemplate } from "../../templates/productTemplate.mjs"; 
-import { handleBidButtonClick } from "../../handlers/buttons/bidBtn.mjs";
+import { bidModal } from "../../handlers/buttons/bidBtn.mjs";
 
 
 const action = "/api/v1/auction/listings";
@@ -23,15 +23,16 @@ window.addEventListener('DOMContentLoaded', async () => {
             const postDetailsContainer = document.querySelector('#viewProduct');
             postDetailsContainer.append(template);
 
-            handleBidButtonClick()
+            // Call bidModal with the postId
+            bidModal(postId);
            
-
         } catch (error) {
             // Handle errors occurring during data retrieval
             console.error('Error fetching post data:', error);
         }
     }
 });
+
 
 export async function getPostId(id) {
     const getPostUrl = `${API_BASE_URL}${action}/${id}${bids}`;

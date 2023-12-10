@@ -26,6 +26,7 @@ function findLatestBidder(bids) {
     return latestBidderName;
 }
 
+import { bidModal } from "../handlers/buttons/bidBtn.mjs";
 import { isLoggedIn } from "../handlers/buttons/userLoggedIn.mjs";
 import { imageGallery } from "../handlers/imgGallery.mjs";
 
@@ -304,6 +305,7 @@ bidForm.appendChild(button);
 
     // Call imageGallery after the product template content is added to the DOM
     imageGallery();
+
 
     
     return container;
