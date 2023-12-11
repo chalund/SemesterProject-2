@@ -96,20 +96,20 @@ export function productTemplate(postData) {
           
     //right side of container info content
     const productContainer = document.createElement("div");
-    productContainer.classList.add("col-md-6", "col-lg-6", "d-flex", "justify-content-center", "align-items-center", "mt-3", "mt-sm-5", "p-sm-5");
+    productContainer.classList.add("col-md-6", "col-lg-6", "d-flex", "justify-content-center", "align-items-center", "mt-3");
     cardContainer.append(productContainer);
 
 
     const productContentContainer = document.createElement("div");
-    productContentContainer.classList.add("border", "d-flex" ,"flex-colum" , "justify-center-between", "p-sm-5");
+    productContentContainer.classList.add("border", "d-flex" ,"flex-colum" , "justify-center-between");
     productContainer.append(productContentContainer)
 
     const productInfo = document.createElement("div")
-    productInfo.classList.add("p-2", "mt-sm-5")
+    productInfo.classList.add("p-2")
     productContentContainer.append(productInfo)
 
     const sellerInfo = document.createElement("div")
-    sellerInfo.classList.add("mb-3", "mt-sm-5")
+    sellerInfo.classList.add("mb-3")
     productInfo.append(sellerInfo)
 
     const sellerCreated = document.createElement("p")
@@ -206,7 +206,7 @@ bidForm.setAttribute("role", "search");
 // input.setAttribute("aria-label", "Search");
 
 const button = document.createElement("button");
-button.classList.add("btn", "btn-primary" , "bid-button");
+button.classList.add("btn", "btn-lg",  "btn-primary" , "bid-button");
 
 button.textContent = "Bid";
 button.setAttribute("data-bs-toggle", "modal");

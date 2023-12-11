@@ -58,7 +58,7 @@ export async function getPostId(id) {
 export async function addBid(postId, bidAmount) {
     const token = load('accessToken');
     const username = load('username');
-    const bidUrl = `${API_BASE_URL}/${action}/${postId}/bids`; // Replace 'id' with 'postId'
+    const bidUrl = `${API_BASE_URL}${action}/${postId}/bids`; // Replace 'id' with 'postId'
 
     try {
         const data = {

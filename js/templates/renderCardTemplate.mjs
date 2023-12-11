@@ -1,9 +1,9 @@
 import { postTemplate } from "./cardTemplate.mjs"
 import { getActivePosts} from "../api/posts/getPost.mjs"; 
 
-export async function renderCardTemplate(containerId, getPostsFunction) {
+export async function renderCardTemplate(containerId, posts) {
     try {
-        const posts = await getActivePosts();
+        // const posts = await getActivePosts();
         // console.log(posts)
         const container = document.querySelector(`#${containerId}`);
 
@@ -25,6 +25,7 @@ export async function renderCardTemplate(containerId, getPostsFunction) {
         console.error('Error:', error);
     }
 }
-document.addEventListener('DOMContentLoaded', () => {
-    renderCardTemplate('auctionPosts')
+document.addEventListener('DOMContentLoaded', async() => {
+    const posts = await getActivePosts();
+    renderCardTemplate('auctionPosts', posts);
 });
