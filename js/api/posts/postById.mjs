@@ -6,6 +6,7 @@ import { productTemplate } from "../../templates/productTemplate.mjs";
 
 const action = "/api/v1/auction/listings";
 const bids = "?_bids=true"
+const bid = "/bids"
 
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -57,12 +58,12 @@ export async function getPostId(id) {
 
 export async function addBid(postId, bidAmount) {
     const token = load('accessToken');
-    const username = load('username');
-    const bidUrl = `${API_BASE_URL}${action}/${postId}/bids`;
+    // const username = load('username');
+    const bidUrl = `${API_BASE_URL}${action}/${postId}${bid}`;
 
     try {
         const data = {
-            amount: bidAmount,
+            amount: Number(bidAmount)
         };
 
         const response = await fetch(bidUrl, {
@@ -121,6 +122,8 @@ export function bidModal(postId) {
                     // Close modal after bid is added
                     const myModal = new bootstrap.Modal(document.getElementById('bidModal'));
                     myModal.hide();
+
+                    window.location.reload();
                 } else {
                     if (!errorShown) {
                         const errorElement = document.createElement('div');
