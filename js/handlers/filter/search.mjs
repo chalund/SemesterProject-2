@@ -1,9 +1,9 @@
-import { getPosts } from "../../api/posts/getPost.mjs";
+import { getActivePosts } from "../../api/posts/getPost.mjs";
 import { renderCardTemplate } from "../../templates/renderCardTemplate.mjs";
 
 export async function search(param) {
     try {
-        const posts = await getPosts();
+        const posts = await getActivePosts();
         
         // Check if the search term is empty or undefined
         if (!param || param.trim() === '') {

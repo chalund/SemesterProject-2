@@ -177,6 +177,7 @@ nav, .nav {
   opacity: 0.6;
   cursor: pointer;
   transition: opacity 0.3s ease;
+  border: 1px solid #fff;
 }
 
 img.room-active {

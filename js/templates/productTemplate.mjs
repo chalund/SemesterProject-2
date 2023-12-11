@@ -26,7 +26,7 @@ function findLatestBidder(bids) {
     return latestBidderName;
 }
 
-import { bidModal } from "../handlers/buttons/bidBtn.mjs";
+// import { bidModal } from "../handlers/buttons/bidBtn.mjs";
 import { isLoggedIn } from "../handlers/buttons/userLoggedIn.mjs";
 import { imageGallery } from "../handlers/imgGallery.mjs";
 
@@ -40,7 +40,7 @@ export function productTemplate(postData) {
     container.append(cardContainer);
 
     const imageContainer = document.createElement("div");
-    imageContainer.classList.add("col-lg-6", "d-flex", "flex-column", "align-items-stretch");
+    imageContainer.classList.add("col-md-6", "col-lg-6", "d-flex", "flex-column", "align-items-stretch");
     
     const imageContainerDiv = document.createElement("div");
     imageContainerDiv.classList.add("text-center", "align-items-stretch");
@@ -58,9 +58,10 @@ export function productTemplate(postData) {
         mainImage.style.width = "100%";
         mainImage.style.height = "300px"
         productImages.appendChild(mainImage);
+
     } else {
         const placeholderImage = document.createElement("img");
-        placeholderImage.src = "/images/noImage.jpg"; // Replace with your placeholder image URL
+        placeholderImage.src = "../../images/noImage.jpg"; // Replace with your placeholder image URL
         placeholderImage.alt = "No Image Available";
         placeholderImage.classList.add("product-image");
         placeholderImage.style.width = "100%";
@@ -73,16 +74,17 @@ export function productTemplate(postData) {
     productImageList.classList.add("room-preview", "d-flex" , "justify-content-between");
     
     if (postData && postData.media && Array.isArray(postData.media)) {
-        const mediaSlice = postData.media.slice(1, 4); // Slice the media array if it has at least 4 elements
-        mediaSlice.forEach(mediaItem => {
+        postData.media.forEach(mediaItem => {
             const image = document.createElement("img");
             image.src = mediaItem;
             image.alt = "Product Image";
             image.classList.add("product-image", "room-preview-img"); // Add new class for specific styling
-            image.style.height = "100px";
+            image.style.maxHeight = "100px";
+            image.style.maxWidth = "150px";
             productImageList.appendChild(image);
         });
     }
+
 
     
     imageContainerDiv.appendChild(productImages);
@@ -94,20 +96,20 @@ export function productTemplate(postData) {
           
     //right side of container info content
     const productContainer = document.createElement("div");
-    productContainer.classList.add("col-lg-6", "d-flex", "justify-content-center", "align-items-center");
+    productContainer.classList.add("col-md-6", "col-lg-6", "d-flex", "justify-content-center", "align-items-center", "mt-3", "mt-sm-5", "p-sm-5");
     cardContainer.append(productContainer);
 
 
     const productContentContainer = document.createElement("div");
-    productContentContainer.classList.add("border", "d-flex" ,"flex-colum" , "justify-center-between");
+    productContentContainer.classList.add("border", "d-flex" ,"flex-colum" , "justify-center-between", "p-sm-5");
     productContainer.append(productContentContainer)
 
     const productInfo = document.createElement("div")
-    productInfo.classList.add("p-2")
+    productInfo.classList.add("p-2", "mt-sm-5")
     productContentContainer.append(productInfo)
 
     const sellerInfo = document.createElement("div")
-    sellerInfo.classList.add("mb-3")
+    sellerInfo.classList.add("mb-3", "mt-sm-5")
     productInfo.append(sellerInfo)
 
     const sellerCreated = document.createElement("p")
@@ -224,7 +226,7 @@ bidForm.appendChild(button);
 
     //bid container
     const bidContainer = document.createElement("div");
-    bidContainer.classList.add("col-12", "border", "p-3");
+    bidContainer.classList.add("col-12", "p-4" , "mt-lg-5");
     
     const bidHistoryTitle = document.createElement("h3");
     bidHistoryTitle.textContent = "Bid history";
