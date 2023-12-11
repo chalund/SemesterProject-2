@@ -5,7 +5,6 @@ import { bidModal } from "../../handlers/buttons/bidBtn.mjs";
 
 
 const action = "/api/v1/auction/listings";
-// const seller = "?_seller=true"
 const bids = "?_bids=true"
 
 
@@ -56,24 +55,3 @@ export async function getPostId(id) {
     }
 }
 
-// export async function getPostIdSeller(id) {
-//     const getPostUrl = `${API_BASE_URL}${action}/${id}${seller}`;
-//     const token = load("accessToken");
-
-//     try {
-//         const response = await fetch(getPostUrl, {
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 "Authorization": `Bearer ${token}`,
-//             },
-//         });
-
-//         const postData = await response.json();
-        
-//         return postData;
-//     } catch (error) {
-//         // Log and re-throw the error for handling outside this function
-//         console.error('Error in getPostId:', error);
-//         throw error;
-//     }
-// }
