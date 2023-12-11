@@ -58,7 +58,7 @@ export async function getPostId(id) {
 export async function addBid(postId, bidAmount) {
     const token = load('accessToken');
     const username = load('username');
-    const bidUrl = `${API_BASE_URL}${action}/${postId}/bids`; // Replace 'id' with 'postId'
+    const bidUrl = `${API_BASE_URL}${action}/${postId}/bids`;
 
     try {
         const data = {
@@ -75,8 +75,7 @@ export async function addBid(postId, bidAmount) {
         });
 
         if (response.ok) {
-            const newBid = await response.json();
-            // Optionally handle success (e.g., close the modal)
+            const newBid = await response.json()
             console.log('Bid added:', newBid);
             return newBid;
         } else {
@@ -91,78 +90,83 @@ export async function addBid(postId, bidAmount) {
 
 
 
+
+
 export function bidModal(postId) {
-    const bidButton = document.querySelector('.bid-button');
-    const saveBidBtn = document.getElementById('save-bid-btn');
-    const bidAmountInput = document.getElementById('bidAmount');
-    let errorShown = false;
-
-    
-
-    bidButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        const myModal = new bootstrap.Modal(document.getElementById('bidModal'));
-        myModal.show();
-    });
-
-    saveBidBtn.addEventListener('click', async (event) => {
-        event.preventDefault();
-    
-        const bidAmount = bidAmountInput.value.trim();
-    
-        try {
-            if (bidAmount !== '') {
-                // Add bid if a valid amount is provided
-                await addBid(postId, bidAmount); // Pass the postId as the first argument
-                    
-                // Optionally, close the modal or perform any other action on success
-                console.log('Bid added successfully!');
-                
-                // Close modal after bid is added
-                const myModal = new bootstrap.Modal(document.getElementById('bidModal'));
-                myModal.hide();
-            } else {
-                if (!errorShown) {
-                    const errorElement = document.createElement('div');
-                    errorElement.textContent = 'You must add a bid amount';
-                    errorElement.classList.add('input-group', 'text-danger', 'fw-bold', 'mt-2');
-                    bidAmountInput.parentElement.appendChild(errorElement);
-
-                    // Set errorShown to true to indicate that the error is displayed
-                    errorShown = true;
-                }
-            }
-        } catch (error) {
-            // Handle any errors from the addBid function
-            console.error('Error adding bid:', error);
-            // Optionally, display an error message to the user or perform error handling
+    const bidButtonHandler = (event) => {
+        const bidButton = event.target.closest('.bid-button');
+        if (bidButton) {
+            event.preventDefault();
+            const myModal = new bootstrap.Modal(document.getElementById('bidModal'));
+            myModal.show();
         }
-    });
+    };
+
+    const saveBidHandler = async (event) => {
+        const saveBidBtn = event.target.closest('#save-bid-btn');
+        if (saveBidBtn) {
+            event.preventDefault();
+            const bidAmountInput = document.getElementById('bidAmount'); // Ensure bidAmountInput is available here
+            const bidAmount = bidAmountInput.value.trim();
+            let errorShown = false; // Initialize errorShown here or provide its context
+
+            try {
+                if (bidAmount !== '') {
+                    // Add bid if a valid amount is provided
+                    await addBid(postId, bidAmount); // Pass the postId as the first argument
+
+                    // Optionally, close the modal or perform any other action on success
+                    console.log('Bid added successfully!');
+
+                    // Close modal after bid is added
+                    const myModal = new bootstrap.Modal(document.getElementById('bidModal'));
+                    myModal.hide();
+                } else {
+                    if (!errorShown) {
+                        const errorElement = document.createElement('div');
+                        errorElement.textContent = 'You must add a bid amount';
+                        errorElement.classList.add('input-group', 'text-danger', 'fw-bold', 'mt-2');
+                        bidAmountInput.parentElement.appendChild(errorElement);
+
+                        // Set errorShown to true to indicate that the error is displayed
+                        errorShown = true;
+                    }
+                }
+            } catch (error) {
+                // Handle any errors from the addBid function
+                console.error('Error adding bid:', error);
+                // Optionally, display an error message to the user or perform error handling
+            }
+        }
+    };
+
+    // Attach the event listeners to the document
+    document.addEventListener('click', bidButtonHandler);
+    document.addEventListener('click', saveBidHandler);
+
+    closeBidModal()
+
 }
 
 // Call the function when the DOM content is loaded
-document.addEventListener('DOMContentLoaded', bidModal);
+document.addEventListener('DOMContentLoaded', () => {
+    const postId = ''; // Set the postId here
+    bidModal(postId);
+});
 
 
 
 
-
-
-
-export function handleBidButtonClick() {
-    const bidButton = document.querySelector('.bid-button');
-
-    bidButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        const myModal = new bootstrap.Modal(document.getElementById('bidModal'));
-        myModal.show();
-    });
-
-    const closeButton = document.querySelector('.btn-secondary'); // Assuming the Close button has a class of btn-secondary
-    closeButton.addEventListener('click', () => {
-        const myModal = new bootstrap.Modal(document.getElementById('bidModal'));
-        myModal.hide();
-        window.location.reload(); // Reload the page
+export function closeBidModal() {
+    const reloadPage = () => {
+        window.location.reload();
+    };
+    
+    // Attach an event listener to all elements with the class .btn-close within the #bidModal
+    const closeButtons = document.querySelectorAll('#bidModal .btn-closeModal');
+    closeButtons.forEach(button => {
+        button.addEventListener('click', reloadPage);
     });
 }
+
 

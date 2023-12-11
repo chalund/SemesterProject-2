@@ -9,11 +9,7 @@ function formatDate(postData) {
     });
 }
 
-function calculateTotalBidsAmount(bids) {
-    return bids.reduce((total, bid) => total + bid.amount, 0);
-}
-
-function findLatestBidder(bids) {
+function findLatestBidderName(bids) {
     if (bids.length === 0) {
         return null; // No bids available
     }
@@ -24,6 +20,19 @@ function findLatestBidder(bids) {
     // Get the latest bid's bidderName
     const latestBidderName = sortedBids[0].bidderName;
     return latestBidderName;
+}
+
+function findLatestBidAmount(bids) {
+    if (bids.length === 0) {
+        return null; // No bids available
+    }
+
+    // Sort the bids by 'created' time in descending order
+    const sortedBids = bids.sort((a, b) => new Date(b.created) - new Date(a.created));
+
+    // Get the latest bid's amount
+    const latestBidAmount = sortedBids[0].amount;
+    return latestBidAmount;
 }
 
 // import { bidModal } from "../handlers/buttons/bidBtn.mjs";
@@ -156,25 +165,50 @@ export function productTemplate(postData) {
         tagElement.textContent = tag;
         productTags.appendChild(tagElement);
     });
+    
 
-    const currentBidContainer = document.createElement("div"); 
-    currentBidContainer.classList.add("mt-4" , "border", "px-2")
+
+
+
+
+
+
+    const currentBidContainer = document.createElement("div");
+    currentBidContainer.classList.add("mt-4", "border", "px-2");
 
     const currentPrice = document.createElement("p");
-    currentPrice.classList.add = ("mb-1")
-    currentPrice.textContent = `Current Price:`
+    currentPrice.classList.add("mb-1");
+    currentPrice.textContent = `Current Price:`;
 
-    currentBidContainer.append(currentPrice)
+    currentBidContainer.appendChild(currentPrice);
 
-  
+    const currentBidAmount = findLatestBidAmount(postData.bids);
 
-    const currentBidAmount = calculateTotalBidsAmount(postData.bids);
+    if (currentBidAmount !== null) {
+        const currentBid = document.createElement("h3");
+        currentBid.classList.add("mb-1", "text-info");
+        currentBid.textContent = `${currentBidAmount} credits`;
 
-    // const currentBid = document.createElement("h3");
-    // const currentBidAmount = calculateTotalBidsAmount(postData.bids)
-    // currentBid.classList.add("mb-1" , "text-info")
-    // currentBid.textContent = `${currentBidAmount} credits`;
-    const latestBidder = findLatestBidder(postData.bids);
+        currentBidContainer.appendChild(currentBid);
+    } else {
+        // If there are no bids available, show a message
+        const noBidsMessage = document.createElement("p");
+        noBidsMessage.textContent = "No bids yet";
+
+        currentBidContainer.appendChild(noBidsMessage);
+    }
+
+
+
+
+
+
+    const latestBidder = findLatestBidderName(postData.bids);
+
+
+
+
+
    
 
    
