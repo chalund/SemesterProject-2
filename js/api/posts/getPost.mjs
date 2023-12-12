@@ -13,7 +13,7 @@ export async function getPosts() {
             method: 'GET',
         });
         const getPosts = await response.json();
-        console.log("getPosts:", getPosts);
+        // console.log("getPosts:", getPosts);
         return getPosts; // Return the fetched posts
     } catch (error) {
         console.error('Error fetching posts:', error);

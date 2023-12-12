@@ -1,5 +1,5 @@
 import { getPosts } from "../../api/posts/getPost.mjs"; 
-import { renderCardTemplate } from "../../templates/renderCardTemplate.mjs"; 
+import { postTemplate } from "../../templates/cardTemplate.mjs"; 
 const filterPostContainer = document.querySelector("#auctionPosts")
 
 export async function fetchAndFilterPosts() {
@@ -17,11 +17,11 @@ export async function fetchAndFilterPosts() {
 
         const tabVal = tab.getAttribute("data-filter")
         if (tabVal === "newest") {
-            filterPopular(posts);
+            filterNewest(posts);
           } else if (tabVal === "oldest") {
-            filterPostsWithImages(posts);
+            filterOldest(posts);
           } else if (tabVal === "endsToday") {
-            filterUpdatedPosts(posts);
+            filterPostsEndsToday(posts);
           } else if (tabVal === "viewAll") {
             showAllPosts(posts);
           }
@@ -108,7 +108,7 @@ export function filterNewest(posts) {
   }
   
 
-  export async function getPostsEndsToday(postsResponse) {
+  export async function filterPostsEndsToday(postsResponse) {
     const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
 
     const postsEndingToday = postsResponse.filter(post => {
