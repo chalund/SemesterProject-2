@@ -28,7 +28,6 @@ import { createPostFormListener } from "./handlers/form/createPost.mjs";
 createPostFormListener()
 
 
-import { getProfileBiddings } from "./api/posts/postById.mjs"; 
 import { getProfileListings } from "./api/profile/getProfileListings.mjs";
 
 document.addEventListener('DOMContentLoaded', async() => {
@@ -36,7 +35,3 @@ document.addEventListener('DOMContentLoaded', async() => {
     renderCardProfileTemplate('profilePosts', listings);
 });
 
-document.addEventListener('DOMContentLoaded', async() => {
-    const bids = await getProfileBiddings();
-    renderCardProfileTemplate('profileActiveBids', bids);
-});

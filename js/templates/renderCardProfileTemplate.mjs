@@ -1,7 +1,7 @@
 import { getProfileListings } from "../api/profile/getProfileListings.mjs";
 // import { getProfileBids} from "../api/profile/getProfileBids.mjs"
 import { postProfileTemplate } from "./cardProfileTemplate.mjs";
-import { getProfileBiddings } from "../api/posts/postById.mjs";
+
 
 export async function renderCardProfileTemplate(containerId, posts) {
     try {
@@ -17,10 +17,10 @@ export async function renderCardProfileTemplate(containerId, posts) {
 }
 
 // Call the function 'renderPostProfileTemplate' with the ID of the container element as 'auctionPosts'
-// document.addEventListener('DOMContentLoaded', async() => {
-//     const listings = await getProfileListings();
-//     renderCardProfileTemplate('profilePosts', listings);
-// });
+document.addEventListener('DOMContentLoaded', async() => {
+    const listings = await getProfileListings();
+    renderCardProfileTemplate('profilePosts', listings);
+});
 
 // document.addEventListener('DOMContentLoaded', async() => {
 //     const bids = await getProfileBiddings();

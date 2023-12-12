@@ -57,28 +57,28 @@ export async function getPostId(id) {
     }
 }
 
-export async function getProfileBiddings(id) {
-    const getPostUrl = `${API_BASE_URL}${action}/${id}?_seller=true&_bids=true&_active=true`;
-    const token = load("accessToken");
+// export async function getProfileBiddings(id) {
+//     const getPostUrl = `${API_BASE_URL}${action}/${id}?_seller=true&_bids=true&_active=true`;
+//     const token = load("accessToken");
 
-    try {
-        const response = await fetch(getPostUrl, {
-            headers: {
-                'Content-Type': 'application/json',
-                "Authorization": `Bearer ${token}`,
-            },
-        });
+//     try {
+//         const response = await fetch(getPostUrl, {
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 "Authorization": `Bearer ${token}`,
+//             },
+//         });
 
-        const postData = await response.json();
-        console.log(postData)
+//         const postData = await response.json();
+//         console.log(postData)
         
-        return postData;
-    } catch (error) {
-        // Log and re-throw the error for handling outside this function
-        console.error('Error in getPostId:', error);
-        throw error;
-    }
-}
+//         return postData;
+//     } catch (error) {
+//         // Log and re-throw the error for handling outside this function
+//         console.error('Error in getPostId:', error);
+//         throw error;
+//     }
+// }
 
 
 
