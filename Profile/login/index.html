@@ -44,53 +44,56 @@
         </div>
     </div>
     <main>
+            <main>
         <div class="container-fluid min-vh-100 d-flex justify-content-center align-items-center bg-image">
             <div class="row border border-sm-0">
                 <div class="overlay">
-                    <div class="col-sm-8 col-md-6 col-lg-4 col-xl-4 col-xxl-3 d-flex flex-column justify-content-center align-items-center mt-2 bg-secondary white-text p-3 border rounded">
+                    <div class="col-sm-4 d-flex flex-column justify-content-center align-items-center mt-5 bg-secondary white-text p-5 border rounded">
                         <div class="navbar-brand d-flex align-items-center">
                             <img src="/images/logo.png" alt="Logo" width="80" height="80" class="d-inline-block align-text-top me-2">
                             <h1 class="ms-2 text-primary">eBids</h1>
                         </div>
                         <h2 class="text-center text-white mt-2">Login</h2>
                         <form id="loginForm">
-                            <div class="text-white p-3">
-                                <div class="form-group mb-3 position-relative">
-                                    <label for="email">Email</label>
-                                    <div class="input-group">
-                                        <input class="form-control" type="email" name="email" required pattern="^[\w\-.]+@(stud\.)?noroff\.no$" title="Please enter a valid email address">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-light btn-clear" type="button">&times;</button>
+                            <div class="">
+                                <div class="text-white custom-size p-3">
+                                    <div class="form-group mb-4 position-relative">
+                                        <label for="email">Email</label>
+                                        <div class="input-group">
+                                            <input class="form-control" type="email" name="email" required pattern="^[\w\-.]+@(stud\.)?noroff\.no$" title="only @noroff/@stud.noroff users">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-light btn-clear" type="button">&times;</button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <small id="emailError" class="text-primary">Please enter a valid @stud.noroff.no address.</small>
-                                </div>
-                                <div class="form-group mb-3 position-relative border-info">
-                                    <label for="password">Password</label>
-                                    <div class="input-group">
-                                        <input class="form-control" type="password" name="password" required minlength="8">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-light btn-clear" type="button">&times;</button>
+                                    <div class="form-group mb-4 position-relative border-info">
+                                        <label for="password">Password</label>
+                                        <div class="input-group">
+                                            <input class="form-control" type="password" name="password" required minLength="8">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-light btn-clear" type="button">&times;</button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <small id="passwordError" class="text-primary">Password must be at least 8 characters long.</small>
-                                </div>
-                                <div class="text-center mt-1">
-                                    <button type="submit" class="btn btn-info text-white">Submit</button>
-                                </div>
-                                <div class="text-center mt-3">
-                                    <p>New user? No problem!</p>
-                                    <a href="../register/index.html">Register new user</a>
+                                    <div class="text-center mt-3">
+                                        <button type="submit" class="btn btn-info text-white">Submit</button>
+                                      </div>
+                                      <div class="text-center mt-1">
+                                        <p>New user? No problem!</p>
+                                        <a href="../register/index.html">Register new user</a>
+                                      </div>
                                 </div>
                             </div>
-                        </form>
-                        
+                                
+                              </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
-             </div>
+            </div>
         </div>
     </main>
-    <footer class="footer py-1 bg-primary">
+    <footer class="footer mt-auto py-1 bg-primary">
         <p class="text-center"> &copy; Copyright 2023</p>
     </footer>  
     

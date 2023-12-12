@@ -29,28 +29,9 @@ nav , .nav {
   width: 150px;
 }
 
-
-.btn, .nav-item{
-  /* Define the initial transition properties */
-  transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+button:hover {
+  background-color: $info;
 }
-
-.btn:hover, .nav-item:hover{
-  /* Define the styles for the button when hovered */
-  transform: scale(1.1); /* Increase the size by 10% (adjust as needed) */
-  font-weight: bold;
-}
-
-.btn.btn-clear:hover,
-.btn#searchButton:hover {
-  transform: none; /* Override the scaling effect for these specific buttons */
-
-}
-
-.rounded-circle-icons {
-  padding: 20px; /* Adjust the value as needed */
-}
-
 
 .bg-image-large {
   background-image: url('../../images/images\ \(2\).jpeg');
@@ -83,9 +64,9 @@ nav , .nav {
   align-items: center;
 }
 
-// .text-center {
-//   padding: 20px;
-// }
+.text-center {
+  padding: 20px;
+}
 
 
 
@@ -142,11 +123,6 @@ nav , .nav {
   /* Define the styles for the card when hovered */
   border-color: $info; /* Change to your desired border color */
   box-shadow: 0 0 0 2px $info; /* Apply a shadow around the border */
-}
-
-.card-getStarted:hover {
-  border-color: none;
-  box-shadow: none;
 }
 
 
