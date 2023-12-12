@@ -7,6 +7,7 @@ const method = "post";
 
 export async function login(profile) {
     const loginUrl = `${API_BASE_URL}${action}`;
+    console.log(loginUrl)
 
     try{
         const response = await fetch(loginUrl, {
@@ -19,15 +20,15 @@ export async function login(profile) {
 
         if (response.ok) {
             const { accessToken, email, name, avatar, credits } = await response.json();
-
+            console.log({ accessToken, email, name, avatar, credits })
             storage.save("accessToken", accessToken);
             storage.save("email", email);
             storage.save("username", name);
             storage.save("avatar", avatar)
             storage.save("credits" ,credits)
 
-            // window.location.replace("/index.html");
-            window.location.replace("/index.html");
+
+            window.location.replace(`/profile/index.html`);
 
         } else {
             alert("Login failed. Please check your username and password."); 

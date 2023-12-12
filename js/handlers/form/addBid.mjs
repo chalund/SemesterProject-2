@@ -15,7 +15,7 @@ export async function createBidFormListener() {
         const bidValue = bidInput.value.trim();
 
         const addBid = {
-            amount: bidValue,
+            amount: Number(bidValue),
         };
 
         try {

@@ -6,7 +6,7 @@ const activePosts = "?_active=true";
 
 
 export async function getPosts() {
-    const getPostURL = `${API_BASE_URL}${action}`;
+    const getPostURL = `${API_BASE_URL}${action}?sort=created`;
 
     try {
         const response = await fetchToken(getPostURL, {
