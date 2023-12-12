@@ -1,68 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>eBids | Home</title>
-    <link rel="stylesheet" href="/dist/css/index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/dist/css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
     <script src="/js/indexHome.mjs" type="module"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container-fluid bg-secondary">
-        <nav class="navbar navbar-expand-sm navbar-dark">
-        
-            <a class="navbar-brand d-flex align-items-center" href="/index.html">
-                <img src="/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
-                <span class="ms-2">eBids</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar7">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbar7">
-                <ul class="navbar-nav ms-auto" id="navbarList">
-                     <li class="nav-item d-flex justify-content-center">
-                         <a class="nav-link active text-primary" href="/index.html">Auction</a>
-                    </li>
-                    <li class="nav-item d-flex justify-content-center">
-                        <a class="nav-link disabled text-white" href="/profile/index.html" tabindex="-1" aria-disabled="true" id="profileLink">Profile</a>
-                    </li>
-                     <li class="nav-item d-flex justify-content-center" id="loginListItem">
-                        <a href="/profile/login/index.html" class="btn btn-primary my-2 my-sm-0 ms-2 d-none d-sm-block" id="loginLink">Login</a>
-                        <a href="/profile/login/index.html" class="d-sm-none normal-link nav-link" id="loginLinkSmall">Login</a>
-                    </li>
-                </ul>
-            </div>
-    </nav>
+      <nav class="navbar navbar-expand-sm navbar-dark">
+        <a class="navbar-brand d-flex align-items-center" href="/index.html">
+          <img
+            src="/images/logo.png"
+            alt="Logo"
+            width="40"
+            height="40"
+            class="d-inline-block align-text-top me-2"
+          />
+          <span class="ms-2">eBids</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbar7"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar7">
+          <ul class="navbar-nav ms-auto" id="navbarList">
+            <li class="nav-item d-flex justify-content-center">
+              <a class="nav-link active text-primary" href="/index.html"
+                >Auction</a
+              >
+            </li>
+            <li class="nav-item d-flex justify-content-center">
+              <a
+                class="nav-link disabled text-white"
+                href="/profile/index.html"
+                tabindex="-1"
+                aria-disabled="true"
+                id="profileLink"
+                >Profile</a
+              >
+            </li>
+            <li
+              class="nav-item d-flex justify-content-center"
+              id="loginListItem"
+            >
+              <a
+                href="/profile/login/index.html"
+                class="btn btn-primary my-2 my-sm-0 ms-2 d-none d-sm-block"
+                id="loginLink"
+                >Login</a
+              >
+              <a
+                href="/profile/login/index.html"
+                class="d-sm-none normal-link nav-link"
+                id="loginLinkSmall"
+                >Login</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
     </div>
     <div class="container-fluid bg-info text-white">
-        <div class="d-flex justify-content-between nav">
-                <p class="text-start m-0 ms-2">Online auction site -buy & sell</p>
-                <p class="text-end m-0 me-2" id="navProfile">
-        </div>
+      <div class="d-flex justify-content-between nav">
+        <p class="text-start m-0 ms-2">Online auction site -buy & sell</p>
+        <p class="text-end m-0 me-2" id="navProfile"></p>
+      </div>
     </div>
     <main>
-       <!---Section one-->
-       <div class="container my-0 my-sm-5 col-12-log">
+      <!---Section one-->
+      <div class="container my-0 my-sm-5 col-12-log">
         <div class="row">
-            <div class="col-sm-12 bg-image">
-                <div class="overlay">
-                    <div class="d-flex justify-content-center align-items-center h-100">
-                        <div class="text-center text-white">
-                            <h1>Buy and sell, EASY!</h1>
-                            <h2>add more text here</h2>
-                                <form action="" id="serchForm">
-                                    <div class="form-group mb-3 position-relative mt-5">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search" aria-label="search-bar" aria-describedby="basic-addon2" id="searchInput">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-light btn-clear" type="button">&times;</button>
-                                            </div>
-                                            <button class="btn btn-primary" type="button" id="searchButton">Search</button>
-                                        </div>
-                                        <!-- <div class="dropdown">
+          <div class="col-sm-12 bg-image">
+            <div class="overlay">
+              <div
+                class="d-flex justify-content-center align-items-center h-100"
+              >
+                <div class="text-center text-white">
+                  <h1>Buy and sell, EASY!</h1>
+                  <h2>add more text here</h2>
+                  <form action="" id="serchForm">
+                    <div class="form-group mb-3 position-relative mt-5">
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Search"
+                          aria-label="search-bar"
+                          aria-describedby="basic-addon2"
+                          id="searchInput"
+                        />
+                        <div class="input-group-append">
+                          <button class="btn btn-light btn-clear" type="button">
+                            &times;
+                          </button>
+                        </div>
+                        <button
+                          class="btn btn-primary"
+                          type="button"
+                          id="searchButton"
+                        >
+                          Search
+                        </button>
+                      </div>
+                      <!-- <div class="dropdown">
                                             <button class="btn btn-primary dropdown-toggle ms-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                               <i class="bi bi-filter-left"></i>
                                              </button>
@@ -73,121 +130,121 @@
                                               <li><a class="dropdown-item active-filter" href="#" data-filter="viewAll">All Posts</a></li>
                                           </ul>
                                         </div> -->
-                                    </div>
-                                </form>
-                                <!-- <div class="mx-3 mt-4 d-none d-sm-block">
+                    </div>
+                  </form>
+                  <!-- <div class="mx-3 mt-4 d-none d-sm-block">
                                     <button class="btn btn-info text-white me-3" id="filterAllPosts">View All</button> 
                                     <button class="btn btn-info text-white me-3" id="filterNewPosts">New Auctions</button> 
                                     <button class="btn btn-info text-white me-3" id="filterEndsTodayPosts">Ends Today</button> 
                                     <button class="btn btn-info text-white me-3" id="filterPopularPost">Popular</button> 
                                 </div> -->
-                        </div>
-                    </div>
                 </div>
+              </div>
             </div>
-      
-
-            <div class="container bg-light p-3 mt-3">
-                <h2 id="auctionHeader">Auction posts</h2>
-                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4" id="auctionPosts">
-                </div>  
-            </div>
-
-
- 
-
-        
-        <!---Last change auctions-->
-     <!-- <div class="container bg-light p-3">
-            <h2>Last chance</h2>
-            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4" id="lastChance"></div>
-
-            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4"> -->
-                
-                    <!-- <div class="col card text-center">
-                        <img src="images/logo.png" class="card-img-top" alt="#" width="80px" height="100px">
-                        <div class="card-body">
-                            <h3>Product title</h3>
-                            <div class="row align-items-center">
-                                <div class="col text-end">
-                                    <p class="mb-0">Current bid</p>
-                                </div>
-                                <div class="col text-start">
-                                    <h4 class="mb-0">$186</h4>
-                                </div>
-                            </div>
-                            <a href="#" class="btn btn-danger mt-3">View</a>
-                        </div>
-                    </div> -->
-         
-               
-
-     
-
-      
-                    <div class="container my-0 my-sm-5 p-3 col-12-lg bg-secondary text-light">
-                        <div class="row">
-                            <h2 class="col-12 text-center mb-4">How to get started</h2>
-                            <div class="col-sm-12 col-md-6 col-lg-3">
-                                <div class="card bg-secondary border-secondary text-center">
-                                    <div class="d-flex justify-content-center align-items-center">
-                                        <img src="/images/logo.png" alt="" class="rounded-circle bg-primary" style="width: 100px; height: 100px;">
-                                    </div>
-                                    <div class="card-body text-white">
-                                        <h5 class="card-title">Register User</h5>
-                                        <p class="text-start">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum ut eligendi assumenda quis.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6 col-lg-3">
-                                <div class="card bg-secondary border-secondary text-center">
-                                    <div class="d-flex justify-content-center align-items-center">
-                                        <img src="/images/logo.png" alt="" class="rounded-circle bg-primary" style="width: 100px; height: 100px;">
-                                    </div>
-                                    <div class="card-body text-white">
-                                        <h5 class="card-title">Sell og Bid</h5>
-                                        <p class="text-start">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum ut eligendi assumenda quis.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6 col-lg-3">
-                                <div class="card bg-secondary border-secondary text-center">
-                                    <div class="d-flex justify-content-center align-items-center">
-                                        <img src="/images/logo.png" alt="" class="rounded-circle bg-primary" style="width: 100px; height: 100px;">
-                                    </div>
-                                    <div class="card-body text-white">
-                                        <h5 class="card-title">Submit a Bid</h5>
-                                        <p class="text-start">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum ut eligendi assumenda quis.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6 col-lg-3">
-                                <div class="card bg-secondary border-secondary text-center">
-                                    <div class="d-flex justify-content-center align-items-center">
-                                        <img src="/images/logo.png" alt="" class="rounded-circle bg-primary" style="width: 100px; height: 100px;">
-                                    </div>
-                                    <div class="card-body text-white">
-                                        <h5 class="card-title">Win</h5>
-                                        <p class="text-start">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum ut eligendi assumenda quis.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-        
-            
-                
-                
+          </div>
+          <div class="container bg-light p-3 mt-3">
+            <h2 id="auctionHeader">Auction posts</h2>
+            <div
+              class="row row-cols-1 row-cols-md-3 row-cols-lg-4"
+              id="auctionPosts"
+            ></div>
+          </div>
+          <div
+            class="container my-0 my-sm-5 p-3 col-12-lg bg-secondary text-light"
+          >
+            <div class="row">
+              <h2 class="col-12 text-center mb-4">How to get started</h2>
+              <div class="col-sm-12 col-md-6 col-lg-3">
+                <div
+                  class="card card-getStarted bg-secondary border-secondary text-center"
+                >
+                  <div class="d-flex justify-content-center align-items-center">
+                    <img
+                      src="/images/icons/click.png"
+                      alt=""
+                      class="rounded-circle rounded-circle-icons bg-primary"
+                      style="width: 100px; height: 100px"
+                    />
+                  </div>
+                  <div class="card-body text-white">
+                    <h5 class="card-title">Register User</h5>
+                    <p>
+                      To start using our auction, you’ll need to register. It’s
+                      completely free and requires just a few clicks!
+                    </p>
+                  </div>
                 </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-3">
+                <div
+                  class="card card-getStarted bg-secondary border-secondary text-center"
+                >
+                  <div class="d-flex justify-content-center align-items-center">
+                    <img
+                      src="/images/icons/up-down.png"
+                      alt=""
+                      class="rounded-circle rounded-circle-icons bg-primary"
+                      style="width: 100px; height: 100px"
+                    />
+                  </div>
+                  <div class="card-body text-white">
+                    <h5 class="card-title">Sell og Bid</h5>
+                    <p>
+                      Place a bid on any desired product or create a listing of
+                      something you would like to sell yourself.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-3">
+                <div
+                  class="card card-getStarted bg-secondary border-secondary text-center"
+                >
+                  <div class="d-flex justify-content-center align-items-center">
+                    <img
+                      src="/images/logo.png"
+                      alt=""
+                      class="rounded-circle rounded-circle-icons bg-primary"
+                      style="width: 100px; height: 100px"
+                    />
+                  </div>
+                  <div class="card-body text-white">
+                    <h5 class="card-title">Submit a Bid</h5>
+                    <p class="text-start">
+                      Submitting a bid to our auction is quick and easy. The
+                      highest bids win.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-3">
+                <div
+                  class="card card-getStarted bg-secondary border-secondary text-center"
+                >
+                  <div class="d-flex justify-content-center align-items-center">
+                    <img
+                      src="/images/icons/trophy.png"
+                      alt=""
+                      class="rounded-circle rounded-circle-icons bg-primary"
+                      style="width: 100px; height: 100px"
+                    />
+                  </div>
+                  <div class="card-body text-white">
+                    <h5 class="card-title">Win</h5>
+                    <p class="text-start">
+                      Easily win at our auction with highest bid or win by
+                      selling products yourself
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-        
-        </div>
-        
-    </div>
+      </div>
     </main>
-    <footer class="footer mt-auto py-1 bg-info">
-        <p class="text-center"> &copy; Copyright 2023</p>
-    </footer>  
-    
-</body>
+    <footer class="footer mt-auto py-1 bg-primary">
+      <p class="text-center">&copy; Copyright 2023</p>
+    </footer>
+  </body>
 </html>

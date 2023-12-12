@@ -13,46 +13,44 @@
 </head>
 <body>
     <div class="container-fluid bg-secondary">
-    <nav class="navbar navbar-expand-sm navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="/index.html">
-                <img src="/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
-                <span class="ms-2">eBids</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar7">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbar7">
-                <ul class="navbar-nav ms-auto" id="navbarList">
-                     <li class="nav-item d-flex justify-content-center">
-                         <a class="nav-link text-white" href="/index.html">Auction</a>
-                    </li>
-                    <li class="nav-item d-flex justify-content-center">
-                        <a class="nav-link active text-primary" href="/Listing/product/index.html">View Product</a>
-                    </li>
-                    <li class="nav-item d-flex justify-content-center">
-                        <a class="nav-link disabled text-white" href="/profile/index.html" tabindex="-1" aria-disabled="true" id="profileLink">Profile</a>
-                    </li>
-                     <li class="nav-item d-flex justify-content-center" id="loginListItem">
-                        <a href="/profile/login/index.html" class="btn btn-primary my-2 my-sm-0 ms-2 d-none d-sm-block" id="loginLink">Login</a>
-                        <a href="/profile/login/index.html" class="d-sm-none normal-link nav-link" id="loginLinkSmall">Login</a>
-                    </li>
-                </ul>
-            </div>
-    </nav>
+        <nav class="navbar navbar-expand-sm navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" href="/index.html">
+                    <img src="/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
+                    <span class="ms-2">eBids</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar7">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar7">
+                    <ul class="navbar-nav ms-auto" id="navbarList">
+                        <li class="nav-item d-flex justify-content-center">
+                            <a class="nav-link text-white" href="/index.html">Auction</a>
+                        </li>
+                        <li class="nav-item d-flex justify-content-center">
+                            <a class="nav-link active text-primary" href="/Listing/product/index.html">View Product</a>
+                        </li>
+                        <li class="nav-item d-flex justify-content-center">
+                            <a class="nav-link disabled text-white" href="/profile/index.html" tabindex="-1" aria-disabled="true" id="profileLink">Profile</a>
+                        </li>
+                        <li class="nav-item d-flex justify-content-center" id="loginListItem">
+                            <a href="/profile/login/index.html" class="btn btn-primary my-2 my-sm-0 ms-2 d-none d-sm-block" id="loginLink">Login</a>
+                            <a href="/profile/login/index.html" class="d-sm-none normal-link nav-link" id="loginLinkSmall">Login</a>
+                        </li>
+                    </ul>
+                </div>
+        </nav>
     </div>
     <div class="container-fluid bg-info text-white">
         <div class="d-flex justify-content-between nav">
-                <p class="text-start m-0 ms-2 d-none d-md-block">Online auction site -buy & sell</p>
-                <p class="text-end m-0 me-2" id="navProfile">
+            <p class="text-start m-0 ms-2 d-none d-md-block">Online auction site -buy & sell</p>
+            <p class="text-end m-0 me-2" id="navProfile">
         </div>
     </div>
     <main>
        <div class="container my-0 my-sm-5 border bg-secondary">
-           
-                <div id="viewProduct"></div>
-
-                <div class="modal fade" id="bidModal" tabindex="-1" aria-labelledby="bidModalLabel" aria-hidden="true">
+            <div id="viewProduct"></div>
+            <div class="modal fade" id="bidModal" tabindex="-1" aria-labelledby="bidModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -78,116 +76,11 @@
                         </div>
                     </div>
                     </div>
-                </div>
+            </div>
        </div>
-           
-    
-
-
-<!--        
-
-      <div class="container my-0 my-sm-5 pb-4 border">
-         <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-6">
-            <div class="text-center align-items-stretch">
-                <div class="room-gallery d-flex flex-column">
-                    <img src="/images/photos-images-pictures-beach-coast-travel-trip-concept.jpg" class="gallery-highlight flex-grow-1" alt="">
-                    <div class="room-preview d-flex justify-content-between">
-                        <img src="/images/photos-images-pictures-beach-coast-travel-trip-concept.jpg" alt="" class="active">
-                        <img src="/images/logo.png" alt="">
-                        <img src="/images/noImage.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-                <div class="col-sm-12 col-md-12 col-lg-6 d-flex justify-content-center align-items-center">
-                    <div class="border d-flex flex-column justify-content-between">
-                        <div class="product-info p-3">
-                            <div class="sellerInfo mb-3 border">
-                                <p class="mb-1">created 12/12/23 kl 1200</p>
-                                <p class="mb-1">by: Username</p>
-                                <div class="mb-1 col-8 py-1 bg-primary"></div>
-                            </div>
-                            <div>
-                                <h1>Title of product</h1>
-                                <p>This is the description of the product This is the description of the product</p>
-                            </div>
-                            <div class="d-flex flex-wrap">
-                                <p>Tags:</p>
-                                <p class="mx-2 border">product</p>
-                                <p class="mx-2 border" >watch</p>
-                                <p class="mx-2 border">new</p>
-                            </div>
-                            <div class="mt-4 border">
-                                <p class="mb-1">Current price:</p>
-                                <h3 class="mb-1 text-info">50 credits</h3>
-                                <p>Latest bid: USERNAME credits</p>
-                            </div>
-                            <h4 class="text-danger mt-3">Ends on : 12/12/2023 kl 1600</h4>
-                        <div class="mt-3">
-                            <h4>Place your Bid:</h4>
-                            <div class="col-4">
-                                <form class="d-flex" role="search">
-                                    <input class="form-control me-2" type="search" aria-label="Search">
-                                    <button class="btn btn-primary" type="submit">Bid</button>
-                                </form>
-                        
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 border p-3">
-                <h3>Bid history</h3>
-                <div class="col-4 py-1 bg-primary"></div>
-            
-                <div class="row">
-                    <div class="col mt-2">
-                        <div class="row">
-                            <div class="col-auto">
-                                <p>12/12/23 12:02:54</p>
-                            </div>
-                            <div class="col-auto">
-                                <p>username</p>
-                            </div>
-                            <div class="col-auto">
-                                <p>10 credits</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-auto">
-                                <p>12/12/23 12:02:54</p>
-                            </div>
-                            <div class="col-auto">
-                                <p>username</p>
-                            </div>
-                            <div class="col-auto">
-                                <p>10 credits</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-auto">
-                                <p>12/12/23 12:02:54</p>
-                            </div>
-                            <div class="col-auto">
-                                <p>username</p>
-                            </div>
-                            <div class="col-auto">
-                                <p>10 credits</p>
-                            </div>
-                        </div>
-                    </div>
-                 
-                </div>
-            </div>
-        </div>     -->
-        
-                 
-    
     </main>
     <footer class="footer mt-auto py-1 bg-primary">
         <p class="text-center"> &copy; Copyright 2023</p>
     </footer>  
-    
 </body>
 </html>
