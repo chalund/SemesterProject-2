@@ -68,6 +68,8 @@ nav , .nav {
 
 
 
+
+
 //create form button
 .hidden {
   display: none;
@@ -183,6 +185,30 @@ nav , .nav {
     
     .post-description {
       padding: 15px;
+    }
+
+    .image-container {
+      background-image: url('../../images/images\ \(2\).jpeg'); 
+      background-position: center;
+      position: relative;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    
+    
+    .image-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
+      filter: blur(5px); /* Apply a blur effect */
+    }
+    
+    .image-container .avatar {
+      position: relative;
+      z-index: 1; /* Ensure the image is above the overlay */
     }
 
 
