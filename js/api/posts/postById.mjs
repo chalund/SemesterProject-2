@@ -4,6 +4,7 @@ import { productTemplate } from "../../templates/productTemplate.mjs";
 
 
 
+
 const action = "/api/v1/auction/listings";
 const bids = "?_bids=true"
 const bid = "/bids"
@@ -55,6 +56,31 @@ export async function getPostId(id) {
         throw error;
     }
 }
+
+export async function getProfileBiddings(id) {
+    const getPostUrl = `${API_BASE_URL}${action}/${id}?_seller=true&_bids=true&_active=true`;
+    const token = load("accessToken");
+
+    try {
+        const response = await fetch(getPostUrl, {
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${token}`,
+            },
+        });
+
+        const postData = await response.json();
+        console.log(postData)
+        
+        return postData;
+    } catch (error) {
+        // Log and re-throw the error for handling outside this function
+        console.error('Error in getPostId:', error);
+        throw error;
+    }
+}
+
+
 
 export async function addBid(postId, bidAmount) {
     const token = load('accessToken');
@@ -122,6 +148,8 @@ export function bidModal(postId) {
                     // Close modal after bid is added
                     const myModal = new bootstrap.Modal(document.getElementById('bidModal'));
                     myModal.hide();
+
+                    alert("Your bid have been added successfully")
 
                     window.location.reload();
                 } else {

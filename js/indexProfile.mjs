@@ -1,5 +1,7 @@
 import { renderCardProfileTemplate } from "./templates/renderCardProfileTemplate.mjs"; 
-(renderCardProfileTemplate) // add cards
+
+
+
 
 import { createPostFormToggle } from "./handlers/createPost/hideCreatePostForm.mjs";
 createPostFormToggle() // show/hide button for create form
@@ -22,8 +24,19 @@ profileInNav()
 
 
 import { createPostFormListener } from "./handlers/form/createPost.mjs";
+
 createPostFormListener()
 
 
+import { getProfileBiddings } from "./api/posts/postById.mjs"; 
+import { getProfileListings } from "./api/profile/getProfileListings.mjs";
 
+document.addEventListener('DOMContentLoaded', async() => {
+    const listings = await getProfileListings();
+    renderCardProfileTemplate('profilePosts', listings);
+});
 
+document.addEventListener('DOMContentLoaded', async() => {
+    const bids = await getProfileBiddings();
+    renderCardProfileTemplate('profileActiveBids', bids);
+});

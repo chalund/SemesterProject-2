@@ -1,4 +1,5 @@
-import { closeBidModal } from "./postById.mjs";
+import { addBid } from "../../api/posts/addBid.mjs";
+import { closeBidModal } from "../buttons/closeModal.mjs";
 
 export function bidModal(postId) {
     const bidButtonHandler = (event) => {

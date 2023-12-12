@@ -1,3 +1,8 @@
+// import { bidModal } from "../handlers/buttons/bidBtn.mjs";
+import { isLoggedIn } from "../handlers/buttons/userLoggedIn.mjs";
+import { imageGallery } from "../handlers/imgGallery.mjs";
+
+
 function formatDate(postData) {
     const date = new Date(postData);
     return date.toLocaleDateString("en-US", {
@@ -9,35 +14,28 @@ function formatDate(postData) {
     });
 }
 
-function findLatestBidderName(bids) {
-    if (bids.length === 0) {
-        return null; // No bids available
+function findLatestValueByKey(array, key) {
+    if (array.length === 0) {
+        return null; // No items available
     }
 
-    // Sort the bids by 'created' time in descending order
-    const sortedBids = bids.sort((a, b) => new Date(b.created) - new Date(a.created));
+    // Sort the array by 'created' time in descending order
+    const sortedArray = array.sort((a, b) => new Date(b.created) - new Date(a.created));
 
-    // Get the latest bid's bidderName
-    const latestBidderName = sortedBids[0].bidderName;
-    return latestBidderName;
+    // Get the latest item's value for the specified key
+    const latestValue = sortedArray[0][key];
+    return latestValue;
+}
+
+// Usage example:
+function findLatestBidderName(bids) {
+    return findLatestValueByKey(bids, 'bidderName');
 }
 
 function findLatestBidAmount(bids) {
-    if (bids.length === 0) {
-        return null; // No bids available
-    }
-
-    // Sort the bids by 'created' time in descending order
-    const sortedBids = bids.sort((a, b) => new Date(b.created) - new Date(a.created));
-
-    // Get the latest bid's amount
-    const latestBidAmount = sortedBids[0].amount;
-    return latestBidAmount;
+    return findLatestValueByKey(bids, 'amount');
 }
 
-// import { bidModal } from "../handlers/buttons/bidBtn.mjs";
-import { isLoggedIn } from "../handlers/buttons/userLoggedIn.mjs";
-import { imageGallery } from "../handlers/imgGallery.mjs";
 
 
 export function productTemplate(postData) {
@@ -49,7 +47,7 @@ export function productTemplate(postData) {
     container.append(cardContainer);
 
     const imageContainer = document.createElement("div");
-    imageContainer.classList.add("col-md-6", "col-lg-6", "d-flex", "flex-column", "align-items-stretch");
+    imageContainer.classList.add("col-md-6", "col-lg-6", "d-flex","flex-column", "align-items-stretch");
     
     const imageContainerDiv = document.createElement("div");
     imageContainerDiv.classList.add("text-center", "align-items-stretch");
@@ -63,7 +61,7 @@ export function productTemplate(postData) {
         const mainImage = document.createElement("img");
         mainImage.src = postData.media[0];
         mainImage.alt = "Main Product Image";
-        mainImage.classList.add("gallery-highlight" , "flex-grow-1")
+        mainImage.classList.add("gallery-highlight" , "flex-grow-1", "productImage")
         mainImage.style.width = "100%";
         mainImage.style.height = "300px"
         productImages.appendChild(mainImage);
@@ -105,12 +103,12 @@ export function productTemplate(postData) {
           
     //right side of container info content
     const productContainer = document.createElement("div");
-    productContainer.classList.add("col-md-6", "col-lg-6", "d-flex", "justify-content-center", "align-items-center", "mt-3");
+    productContainer.classList.add("col-md-6", "col-lg-6", "d-flex", "align-items-center", "mt-3");
     cardContainer.append(productContainer);
 
 
     const productContentContainer = document.createElement("div");
-    productContentContainer.classList.add("border", "d-flex" ,"flex-colum" , "justify-center-between");
+    productContentContainer.classList.add("d-flex" ,"flex-colum" , "justify-center-between");
     productContainer.append(productContentContainer)
 
     const productInfo = document.createElement("div")
@@ -155,7 +153,7 @@ export function productTemplate(postData) {
     
     const tagsTitle = document.createElement("p");
     tagsTitle.textContent = "Tags: ";
-    tagsTitle.classList.add("mr-2");
+    tagsTitle.classList.add("mr-1");
     tagsTitle.style.textDecoration = 'underline'
     productTags.appendChild(tagsTitle);
     
@@ -166,9 +164,6 @@ export function productTemplate(postData) {
         productTags.appendChild(tagElement);
     });
     
-
-
-
 
 
 
@@ -184,19 +179,19 @@ export function productTemplate(postData) {
 
     const currentBidAmount = findLatestBidAmount(postData.bids);
 
-    if (currentBidAmount !== null) {
-        const currentBid = document.createElement("h3");
-        currentBid.classList.add("mb-1", "text-info");
-        currentBid.textContent = `${currentBidAmount} credits`;
+    // if (currentBidAmount !== null) {
+    //     const currentBid = document.createElement("h3");
+    //     currentBid.classList.add("mb-1", "text-info");
+    //     currentBid.textContent = `${currentBidAmount} credits`;
 
-        currentBidContainer.appendChild(currentBid);
-    } else {
-        // If there are no bids available, show a message
-        const noBidsMessage = document.createElement("p");
-        noBidsMessage.textContent = "No bids yet";
+    //     currentBidContainer.appendChild(currentBid);
+    // } else {
+    //     // If there are no bids available, show a message
+    //     const noBidsMessage = document.createElement("p");
+    //     noBidsMessage.textContent = "No bids yet";
 
-        currentBidContainer.appendChild(noBidsMessage);
-    }
+    //     currentBidContainer.appendChild(noBidsMessage);
+    // }
 
 
 
@@ -222,7 +217,7 @@ export function productTemplate(postData) {
     endsAt.classList.add("mt-3", "text-danger");
 
     const yourBidContainer = document.createElement("div");
-    yourBidContainer.classList.add("mt-3");
+    yourBidContainer.classList.add("mt-4");
     
     const yourBidTitle = document.createElement("h4");
     yourBidTitle.textContent = `Place your Bid:`;
@@ -240,7 +235,7 @@ bidForm.setAttribute("role", "search");
 // input.setAttribute("aria-label", "Search");
 
 const button = document.createElement("button");
-button.classList.add("btn", "btn-lg",  "btn-primary" , "bid-button");
+button.classList.add("btn", "btn-lg",  "btn-primary" , "bid-button", "custom-button");
 
 button.textContent = "Bid";
 button.setAttribute("data-bs-toggle", "modal");

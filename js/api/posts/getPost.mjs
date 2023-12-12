@@ -13,13 +13,36 @@ export async function getPosts() {
             method: 'GET',
         });
         const getPosts = await response.json();
-        // console.log("getPosts:", getPosts);
+        console.log("getPosts:", getPosts);
         return getPosts; // Return the fetched posts
     } catch (error) {
         console.error('Error fetching posts:', error);
         throw error;
     }
 }
+
+export async function sortPostsByCreationDate() {
+    const getPostURL = `${API_BASE_URL}${action}`;
+
+    try {
+        const response = await fetchToken(getPostURL, {
+            method: 'GET',
+        });
+        const posts = await response.json();
+
+        const sortedPosts = posts.sort((a, b) => {
+            const dateA = new Date(a.created).getTime();
+            const dateB = new Date(b.created).getTime();
+            return dateA - dateB;
+        });
+
+        return sortedPosts;
+    } catch (error) {
+        console.error("Error fetching or sorting posts:", error);
+        throw error;
+    }
+}
+
 
 export async function getPostsWithBids() {
     const getPostURL = `${API_BASE_URL}${action}${activePosts}`;
@@ -68,6 +91,39 @@ export async function getPostsCreatedToday() {
         throw error;
     }
 }
+
+export async function getPostsSortedByBidsEnding() {
+    const action = "/api/v1/auction/listings";
+    const getPostURL = `${API_BASE_URL}${action}`;
+
+    try {
+        const response = await fetchToken(getPostURL, {
+            method: 'GET',
+        });
+        const postsResponse = await response.json();
+
+        // Separate posts with bids and without bids
+        const postsWithBids = postsResponse.filter(post => post.bids.length > 0);
+        const postsWithoutBids = postsResponse.filter(post => post.bids.length === 0);
+
+        // Sort posts with bids by bid end time ascending
+        postsWithBids.sort((a, b) => {
+            const aBidEndTime = new Date(a.bids[0].endTime).getTime();
+            const bBidEndTime = new Date(b.bids[0].endTime).getTime();
+            return aBidEndTime - bBidEndTime;
+        });
+
+        // Combine posts with bids sorted by bid end time and posts without bids
+        const sortedPosts = [...postsWithBids, ...postsWithoutBids];
+
+        // console.log("Sorted Posts:", sortedPosts);
+        return sortedPosts;
+    } catch (error) {
+        console.error('Error fetching posts:', error);
+        throw error;
+    }
+}
+
 
 
 export async function getPostsEndsToday() {

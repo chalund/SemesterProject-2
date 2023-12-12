@@ -1,9 +1,10 @@
-import { getActivePosts } from "../../api/posts/getPost.mjs";
+import { getPosts} from "../../api/posts/getPost.mjs";
 import { renderCardTemplate } from "../../templates/renderCardTemplate.mjs";
 
 export async function search(param) {
     try {
-        const posts = await getActivePosts();
+        const posts = await getPosts();
+        // console.log("get active posts", posts)
         
         // Check if the search term is empty or undefined
         if (!param || param.trim() === '') {
@@ -13,8 +14,16 @@ export async function search(param) {
         const lowercaseParam = param.toLowerCase(); 
 
         const searchPosts = posts.filter((element) => {
-            const lowercaseTitle = (element?.title || '').toLowerCase(); 
-            return lowercaseTitle.includes(lowercaseParam);
+            const lowercaseTitle = (element?.title || '').toLowerCase();
+            const lowercaseDescription = (element?.description || '').toLowerCase();
+            const lowercaseTags = (element?.tags || []).join(' ').toLowerCase(); // If tags are an array, join them into a string
+
+            // Check if the lowercase title, description, or tags include the lowercase search parameter
+            return (
+                lowercaseTitle.includes(lowercaseParam) ||
+                lowercaseDescription.includes(lowercaseParam) ||
+                lowercaseTags.includes(lowercaseParam)
+            );
         });
 
         return searchPosts; 
@@ -25,16 +34,17 @@ export async function search(param) {
 }
 
 
+
 export async function handleSearch() {
     const searchInput = document.getElementById('searchInput');
     const searchTerm = searchInput.value.trim();
 
     try {
         const searchResults = await search(searchTerm);
-        console.log(searchResults)
+        // console.log(searchResults)
 
         const container = document.querySelector('#auctionPosts');
-        console.log(container); // Check if container is null or the actual element
+
         
         if (container) {
             container.innerHTML = " "; // Set innerHTML only if container exists

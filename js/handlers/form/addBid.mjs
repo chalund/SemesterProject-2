@@ -1,6 +1,5 @@
 import { createBid } from "../../api/posts/create.mjs"; 
-import { productTemplate } from "../../templates/productTemplate.mjs";
-// productTemplate()
+
 
 export async function createBidFormListener() {
     

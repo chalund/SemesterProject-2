@@ -3,13 +3,13 @@ import { load } from "../storage/index.mjs";
 
 const action = "/api/v1/auction/profiles";
 const bids = "/bids"
-const method = "get";
+
 
 
 export async function getProfileBids(name) {
     const token = load("accessToken");
     const username = load("username")
-    const getProfileBidsUrl = `${API_BASE_URL}${action}/${username}${bids}`; // Replace with your actual user info endpoint
+    const getProfileBidsUrl = `${API_BASE_URL}${action}/${username}${bids}/?_seller=true&_bids=true&_active=true`; // Replace with your actual user info endpoint
 
     try {
         const response = await fetch(getProfileBidsUrl, {
@@ -20,7 +20,7 @@ export async function getProfileBids(name) {
         });
         const getProfileBids = await response.json();
         console.log(getProfileBids)
-        return getProfile;
+        return getProfileBids
     } catch (error) {
         console.error(error);
         throw error;

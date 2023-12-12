@@ -1,9 +1,6 @@
-import { getActivePosts, getPostsEndsToday, getPostsCreatedToday, getPostsWithBids } from '../../api/posts/getPost.mjs';
-
 import { renderCardTemplate } from "../../templates/renderCardTemplate.mjs";
-renderCardTemplate('auctionPost', getActivePosts);
-
-
+import { getActivePosts, getPostsEndsToday, getPostsCreatedToday, getPostsWithBids } from '../../api/posts/getPost.mjs';
+// Other imports...
 
 // Function to change the header
 export function changeHeader(newHeaderText) {
@@ -17,7 +14,8 @@ export function changeHeader(newHeaderText) {
 export async function handleFilterAllPosts() {
     try {
         changeHeader('Auction');
-        renderCardTemplate('auctionPost', getActivePosts);
+        const posts = await getActivePosts();
+        renderCardTemplate('auctionPost', posts);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -27,7 +25,8 @@ export async function handleFilterAllPosts() {
 export async function handleFilterNewPosts() {
     try {
         changeHeader('New Auction Posts');
-        renderCardTemplate('auctionPost', getPostsCreatedToday);
+        const posts = await getPostsCreatedToday();
+        renderCardTemplate('auctionPost', posts);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -37,7 +36,8 @@ export async function handleFilterNewPosts() {
 export async function handleFilterEndsTodayPosts() {
     try {
         changeHeader('Auction ends today Posts');
-        renderCardTemplate('auctionPost', getPostsEndsToday);
+        const posts = await getPostsEndsToday();
+        renderCardTemplate('auctionPosts', posts);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -47,13 +47,14 @@ export async function handleFilterEndsTodayPosts() {
 export async function handleFilterPopularPost() {
     try {
         changeHeader('Popular auction posts');
-        renderCardTemplate('auctionPost', getPostsWithBids);
+        const posts = await getPostsWithBids();
+        renderCardTemplate('auctionPosts', posts);
     } catch (error) {
         console.error('Error:', error);
     }
 }
 
-// Adding event listeners to the respective functions
+// Adding event listeners to the respective filter buttons
 document.querySelector('#filterAllPosts').addEventListener('click', handleFilterAllPosts);
 document.querySelector('#filterNewPosts').addEventListener('click', handleFilterNewPosts);
 document.querySelector('#filterEndsTodayPosts').addEventListener('click', handleFilterEndsTodayPosts);

@@ -18,7 +18,7 @@ export async function getProfile(name) {
             },
         });
         const getProfile = await response.json();
-        // console.log(getProfile)
+        console.log(getProfile)
         return getProfile;
     } catch (error) {
         console.error(error);
@@ -26,20 +26,18 @@ export async function getProfile(name) {
     }
 }
 
-
 export async function updateProfileLayout() {
     try {
         const userData = await getProfile();
-        // console.log(userData)
 
         // Update the HTML elements with user info
         const profileAvatar = document.querySelector('#profile-avatar');
         const profileUsername = document.querySelector('#profile-name');
         const profileEmail = document.querySelector('#profile-email');
         const profileCredits = document.querySelector('#profile-credits');
-        const profileWins = document.querySelector('#profile-wins')
-        const profileListings = document.querySelector('#profile-listings')
+        const profileWins = document.querySelector('#profile-wins');
 
+        // Check if all queried elements exist before updating
         if (profileAvatar && profileUsername && profileEmail && profileCredits && profileWins) {
             if (!userData.avatar) {
                 profileAvatar.src = "../images/logo.png";
@@ -47,29 +45,21 @@ export async function updateProfileLayout() {
             } else {
                 profileAvatar.src = userData.avatar;
             }
-            
-            profileUsername.textContent = userData.name;
-            profileEmail.textContent = userData.email;
 
-            profileCredits.textContent = `${userData.credits} credits`;
+            profileUsername.textContent = userData.name || '';
+            profileEmail.textContent = userData.email || '';
+
+            profileCredits.textContent = `${userData.credits || 0} credits`;
 
             if (userData.wins.length === 0) {
-                profileWins.textContent = '0 Wins'; // If wins array length is 0, display '0'
-              } else {
-                profileWins.textContent = `${userData.wins.length} Wins`; // Display the actual count of wins
-              }
-            
-              if(userData._count.listings === 0) {
-                profileListings.textContent = `You have no listings at the moment`
-              } else {
-                profileListings.textContent = `${userData._count.listings}`
-              }
-         
+                profileWins.textContent = '0 Wins';
+            } else {
+                profileWins.textContent = `${userData.wins.length} Wins`;
             }
-            
-
+        }
     } catch (error) {
         console.error(error);
         // Handle errors as needed
     }
 }
+

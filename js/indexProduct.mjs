@@ -12,3 +12,4 @@ import { createLogoutButton } from "./handlers/buttons/logoutBtn.mjs";
 // renderProductTemplate('viewProduct', getPostId)
 createLogoutButton()
 
+
