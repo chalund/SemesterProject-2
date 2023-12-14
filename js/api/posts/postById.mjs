@@ -3,8 +3,6 @@ import { load } from "../storage/index.mjs";
 import { productTemplate } from "../../templates/productTemplate.mjs"; 
 
 
-
-
 const action = "/api/v1/auction/listings";
 const bids = "?_bids=true"
 const bid = "/bids"
@@ -57,35 +55,10 @@ export async function getPostId(id) {
     }
 }
 
-// export async function getProfileBiddings(id) {
-//     const getPostUrl = `${API_BASE_URL}${action}/${id}?_seller=true&_bids=true&_active=true`;
-//     const token = load("accessToken");
-
-//     try {
-//         const response = await fetch(getPostUrl, {
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 "Authorization": `Bearer ${token}`,
-//             },
-//         });
-
-//         const postData = await response.json();
-//         console.log(postData)
-        
-//         return postData;
-//     } catch (error) {
-//         // Log and re-throw the error for handling outside this function
-//         console.error('Error in getPostId:', error);
-//         throw error;
-//     }
-// }
-
-
-
 export async function addBid(postId, bidAmount) {
     const token = load('accessToken');
     // const username = load('username');
-    const bidUrl = `${API_BASE_URL}${action}${postId}${bid}`;
+    const bidUrl = `${API_BASE_URL}${action}/${postId}${bid}`;
 
     try {
         const data = {
@@ -114,9 +87,6 @@ export async function addBid(postId, bidAmount) {
         throw error;
     }
 }
-
-
-
 
 
 export function bidModal(postId) {
@@ -199,5 +169,3 @@ export function closeBidModal() {
         button.addEventListener('click', reloadPage);
     });
 }
-
-
