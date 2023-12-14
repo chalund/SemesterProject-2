@@ -1,5 +1,6 @@
-import { addBid } from "../../api/posts/addBid.mjs";
+import { addBid } from "../../api/posts/postById.mjs";
 import { closeBidModal } from "../buttons/closeModal.mjs";
+import { clearInputListeners } from "../buttons/clearInput.mjs";
 
 export function bidModal(postId) {
     const bidButtonHandler = (event) => {
@@ -8,6 +9,9 @@ export function bidModal(postId) {
             event.preventDefault();
             const myModal = new bootstrap.Modal(document.getElementById('bidModal'));
             myModal.show();
+            
+            // Call clearInputListeners after the modal is shown
+            clearInputListeners();
         }
     };
 
@@ -17,30 +21,36 @@ export function bidModal(postId) {
             event.preventDefault();
             const bidAmountInput = document.getElementById('bidAmount'); // Ensure bidAmountInput is available here
             const bidAmount = bidAmountInput.value.trim();
-            let errorShown = false; // Initialize errorShown here or provide its context
-
+            let errorElement = bidAmountInput.parentElement.querySelector('.text-danger');
+    
             try {
-                if (bidAmount !== '') {
+                if (/^\d+$/.test(bidAmount)) {
+                    // Remove any existing error elements
+                    if (errorElement) {
+                        errorElement.remove();
+                        errorElement = null;
+                    }
+    
                     // Add bid if a valid amount is provided
                     await addBid(postId, bidAmount); // Pass the postId as the first argument
-
+    
                     // Optionally, close the modal or perform any other action on success
                     console.log('Bid added successfully!');
-
+    
                     // Close modal after bid is added
                     const myModal = new bootstrap.Modal(document.getElementById('bidModal'));
                     myModal.hide();
-
+    
+                    alert("Your bid has been added successfully");
+    
                     window.location.reload();
                 } else {
-                    if (!errorShown) {
-                        const errorElement = document.createElement('div');
-                        errorElement.textContent = 'You must add a bid amount';
+                    if (!errorElement) {
+                        // Add new error element only if it doesn't exist
+                        errorElement = document.createElement('div');
+                        errorElement.textContent = 'You must add a valid numeric bid amount';
                         errorElement.classList.add('input-group', 'text-danger', 'fw-bold', 'mt-2');
                         bidAmountInput.parentElement.appendChild(errorElement);
-
-                        // Set errorShown to true to indicate that the error is displayed
-                        errorShown = true;
                     }
                 }
             } catch (error) {
@@ -50,12 +60,15 @@ export function bidModal(postId) {
             }
         }
     };
+    
+    
 
     // Attach the event listeners to the document
     document.addEventListener('click', bidButtonHandler);
     document.addEventListener('click', saveBidHandler);
 
     closeBidModal()
+ 
 
 }
 

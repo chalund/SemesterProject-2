@@ -8,12 +8,16 @@ export function clearInputListeners() {
     document.addEventListener('DOMContentLoaded', function() {
         const clearButtons = document.querySelectorAll('.btn-clear');
         clearButtons.forEach(button => {
-            button.addEventListener('click', clearInput);
+            button.addEventListener('click', event => {
+                clearInput(event);
+                console.log('Clear button clicked');
+            });
         });
 
-        // console.log(clearButtons);
-        // console.log('Input listeners attached');
+        console.log(clearButtons);
+        console.log('Input listeners attached');
     });
 }
+
 
 
