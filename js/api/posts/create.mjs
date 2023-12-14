@@ -20,13 +20,13 @@ export async function createPost(postData) {
         });
 
         if (!response.ok) {
-            const errorData = await response.json(); // Parse the error response
-            console.error('Failed to create post:', response.status, response.statusText, errorData);
+            const errorData = await response.json(); 
+            // console.error('Failed to create post:', response.status, response.statusText, errorData);
             throw new Error(`Failed to create post: ${response.status}`);
         }
 
         const post = await response.json();
-        console.log('Created post:', post);
+        // console.log('Created post:', post);
         return post;
     } catch (error) {
         console.error('Error creating post:', error);
@@ -49,7 +49,7 @@ export async function createBid(id) {
             body: JSON.stringify(id),
         });
             const post = await response.json();
-            console.log(post)
+            // console.log(post)
             return post;
      
     } catch (error) {

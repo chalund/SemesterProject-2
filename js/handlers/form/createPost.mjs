@@ -79,11 +79,10 @@ export async function createPostFormListener() {
             try {
                 const response = await createPost(post);
                 // Post creation successful
-                console.log("Post added successfully:", response);
+                // console.log("Post added successfully:", response);
                 window.location.reload();
             } catch (error) {
                 console.log("Error creating post:", error);
-                // Handle specific error cases and provide feedback to the user
             }
         });
 }

@@ -25,7 +25,7 @@ export function postProfileTemplate(postData) {
         const firstImage = postData.media[0];
 
         const image = document.createElement("img");
-        image.classList.add("card-img-top", "profile-post");
+        image.classList.add("card-img-top", "profile-post", "mt-5");
         image.src = firstImage;
         image.alt = "Post Image";
         image.style.maxHeight = "200px";
