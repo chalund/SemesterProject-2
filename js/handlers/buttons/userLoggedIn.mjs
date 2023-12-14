@@ -37,54 +37,9 @@ export function updateButtonBasedOnLoginStatus() {
     }
 }
 
-export function profileInNav() {
-    const profileInfo = document.querySelector("#navProfile");
 
-    if (isLoggedIn()) {
-        const avatar = load("avatar");
-        const username = load("username");
-        const credits = load("credits");
 
-        if (avatar && username && credits && profileInfo) {
-            const avatarElement = document.createElement('img');
-            avatarElement.src = avatar;
-            avatarElement.alt = 'User Avatar';
-            avatarElement.height = '20';
-            avatarElement.width = '20';
-            avatarElement.classList.add('mx-2', 'rounded-circle');
 
-            const usernameElement = document.createElement('span');
-            usernameElement.classList.add("me-2")
-            usernameElement.textContent = username;
-
-            const lineElement = document.createElement('span');
-            lineElement.textContent = '|';
-            lineElement.style.margin = '0 8px'; // Adjust the margin as needed
-
-            const creditsElement = document.createElement('span');
-            creditsElement.textContent = credits + ' Credits';
-
-            // Clear existing content and append new content to profileInfo
-            profileInfo.innerHTML = '';
-            profileInfo.appendChild(avatarElement);
-            profileInfo.appendChild(usernameElement);
-            profileInfo.appendChild(lineElement);
-            profileInfo.appendChild(creditsElement);
-        }
-    } else {
-        // If not logged in, clear the profileInfo content
-        profileInfo.innerHTML = '';
-    }
-}
-
-export function updateProfileAndButtons() {
-    updateButtonBasedOnLoginStatus();
-    if (isLoggedIn()) {
-        profileInNav();
-    }
-}
-
-document.addEventListener('DOMContentLoaded', updateProfileAndButtons);
 
 
 

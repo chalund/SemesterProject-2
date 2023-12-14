@@ -23,6 +23,9 @@ import * as searchFunction from "./handlers/filter/search.mjs"
 updateButtonBasedOnLoginStatus()
 createLogoutButton()
 
+import { profileInNav } from "./api/profile/getProfileInNav.mjs";
+profileInNav()
+
 // import { fetchAndFilterPosts } from "./handlers/filter/filterNew.mjs";
 // fetchAndFilterPosts()
 

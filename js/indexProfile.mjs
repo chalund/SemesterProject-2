@@ -18,9 +18,12 @@ updateProfileLayout() // update profile image
 import { clearInputListeners } from "./handlers/buttons/clearInput.mjs";
 clearInputListeners() //works on modal
 
-import { updateButtonBasedOnLoginStatus, profileInNav } from "./handlers/buttons/userLoggedIn.mjs"; 
+import { updateButtonBasedOnLoginStatus } from "./handlers/buttons/userLoggedIn.mjs"; 
 updateButtonBasedOnLoginStatus()
+
+import { profileInNav } from "./api/profile/getProfileInNav.mjs";
 profileInNav()
+
 
 
 import { createPostFormListener } from "./handlers/form/createPost.mjs";
