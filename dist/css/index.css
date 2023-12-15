@@ -183,7 +183,7 @@ nav, .nav {
 }
 
 .image-container {
-  background-image: url("../../images/image.jpeg");
+  background-image: url("../../images/");
   background-position: center;
   position: relative;
   background-color: rgba(0, 0, 0, 0.7);

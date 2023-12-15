@@ -40,7 +40,7 @@ function findLatestBidAmount(bids) {
 
 export function productTemplate(postData) {
     const container = document.createElement("div")
-    container.classList.add("container", "my-0", "my-sm-5", "bg-light", "mt-3")
+    container.classList.add("container", "bg-light", "mt-3")
 
     const cardContainer = document.createElement("div");
     cardContainer.classList.add("row"); // Ensure columns have equal height

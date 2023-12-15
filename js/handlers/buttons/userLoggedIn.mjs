@@ -9,15 +9,16 @@ export function isLoggedIn() {
 }
 
 
-// Function to update button based on user login status
 export function updateButtonBasedOnLoginStatus() {
     const loginListItem = document.getElementById('loginListItem');
     const profileLink = document.getElementById('profileLink');
 
+
+
     if (isLoggedIn()) {
         const logoutButton = createLogoutButton();
         loginListItem.innerHTML = '';
-        loginListItem.appendChild(logoutButton);
+        loginListItem.append(logoutButton);
         profileLink.classList.remove('disabled');
         profileLink.removeAttribute('tabindex');
         profileLink.removeAttribute('aria-disabled');

@@ -7,11 +7,11 @@ export async function removePost(id) {
     const removePostUrl = `${API_BASE_URL}${action}/${id}`;
     const token = load("accessToken");
 
-    if (!id) {
-        throw new Error("Delete requires a postID");
-    }
+    // if (!id) {
+    //     throw new Error("Delete requires a postID");
+    // }
     
-    try{
+   
     const response = await fetch(removePostUrl, {
         method: "DELETE",
         headers: {
@@ -21,11 +21,8 @@ export async function removePost(id) {
     })
 
     const post = await response.json()
-    console.log("post is deleted")
 
     return post;
     
-    }catch(error){
-        console.log(error)
-    }
+  
 }

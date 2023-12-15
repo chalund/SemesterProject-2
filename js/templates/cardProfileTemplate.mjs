@@ -14,11 +14,11 @@ export function postProfileTemplate(postData) {
     deleteBtn.setAttribute("data-post-id", postData.id); // Add a custom attribute to store post ID
     deleteBtn.addEventListener("click", handleDeleteButtonClick); // Add click event listener
     
-    deleteBtn.addEventListener("click", (event) => {
-        const postId = event.currentTarget.getAttribute("data-post-id"); // Extract post ID from custom attribute
+    // deleteBtn.addEventListener("click", (event) => {
+    //     const postId = event.currentTarget.getAttribute("data-post-id"); // Extract post ID from custom attribute
     
-        handleDeleteButtonClick({ id: postId }); // Pass an object with the 'id' property to handleDeleteButtonClick
-      });
+    //     handleDeleteButtonClick({ id: postId }); // Pass an object with the 'id' property to handleDeleteButtonClick
+    //   });
 
 
     if (postData.media && postData.media.length > 0) {
