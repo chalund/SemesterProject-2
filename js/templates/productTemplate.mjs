@@ -108,7 +108,7 @@ export function productTemplate(postData) {
 
 
     const productContentContainer = document.createElement("div");
-    productContentContainer.classList.add("d-flex" ,"flex-colum" , "justify-center-between");
+    productContentContainer.classList.add("d-flex" ,"flex-colum" , "justify-center-between", "ms-4");
     productContainer.append(productContentContainer)
 
     const productInfo = document.createElement("div")

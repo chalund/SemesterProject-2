@@ -71,7 +71,14 @@
     </div>
     <div class="container bg-light p-3 mt-3">
         <h2 id="auctionHeader">Auction posts</h2>
+        <div>Pagenumber</div>
+      
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4" id="auctionPosts"></div>  
+        <div class="loader mb-3"></div>
+        <div class="text-center mt-4">
+            <button class="btn btn-info text-white costum-btn" id="btnPrev">Previous</button>
+            <button class="btn btn-info text-white costum-btn ms-4" id="btnNext">Next</button>
+        </div>
     </div>
     <div class="container my-0 my-sm-5 p-3 col-12-lg bg-secondary text-light">
         <div class="row">
@@ -122,6 +129,12 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="text-center mt-4 text-info ">
+        <a href="/index.html" id="backToTopButton">
+            <img src="/images/icons/arrow-up.png" alt="icon arrow up" class="rounded-circle">
+            <h5>Back to top</h5>
+        </a>
     </div>
     </main>
     <footer class="footer mt-auto py-1 bg-info">

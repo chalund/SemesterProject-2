@@ -29,5 +29,7 @@ profileInNav()
 // import { fetchAndFilterPosts } from "./handlers/filter/filterNew.mjs";
 // fetchAndFilterPosts()
 
+import { toggleProfileLink } from "./handlers/buttons/profileLink.mjs";
+toggleProfileLink()
 
 

@@ -12,4 +12,8 @@ import { clearInputListeners } from "./handlers/buttons/clearInput.mjs";
 clearInputListeners()
 
 
+import { toggleProfileLink } from "./handlers/buttons/profileLink.mjs";
+toggleProfileLink()
+
+
 
