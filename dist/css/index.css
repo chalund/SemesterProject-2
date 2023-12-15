@@ -39,7 +39,7 @@ nav, .nav {
 }
 
 .bg-image-large {
-  background-image: url("../../images/images (2).jpeg");
+  background-image: url("../../images/image.jpeg");
   background-color: rgba(0, 0, 0, 0.7); /* Adjust overlay color and opacity */
 }
 
@@ -48,7 +48,7 @@ nav, .nav {
 }
 
 .bg-image {
-  background-image: url("../../images/images (2).jpeg"); /* Replace 'your-image-url.jpg' with your image URL */
+  background-image: url("../../images/image.jpeg"); /* Replace 'your-image-url.jpg' with your image URL */
   background-position: center;
   position: relative;
   height: 350px; /* Adjust height as needed */
@@ -183,7 +183,7 @@ nav, .nav {
 }
 
 .image-container {
-  background-image: url("../../images/images (2).jpeg");
+  background-image: url("../../images/image.jpeg");
   background-position: center;
   position: relative;
   background-color: rgba(0, 0, 0, 0.7);
