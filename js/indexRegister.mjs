@@ -7,3 +7,5 @@ clearInputListeners()
 
 
 registerFormListener()
+import { registerFormValidation } from "./handlers/form/registerValidation.mjs";
+registerFormListener()

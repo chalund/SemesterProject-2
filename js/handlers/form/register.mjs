@@ -20,8 +20,8 @@ export function registerFormListener() {
                 localStorage.setItem('userData', JSON.stringify(response));
                 
                 // Redirects the user to the profile page after successful registration
-                // window.location.href = '/profile/index.html';
-                alert('user is registered'); 
+                window.location.href = '/profile/login/index.html';
+                // alert('user is registered'); 
             } catch (error) {
                 // Handles any errors that might occur during registration
                 console.error('Registration failed:', error);

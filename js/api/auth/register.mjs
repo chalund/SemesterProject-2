@@ -22,8 +22,6 @@ export async function register(profile) {
         } else if (response.status === 400) {
             alert("User already exists try a different username or email");
 
-            clearRegistrationForm()
-
             window.location.replace("/profile/register/index.html");
         }
     } catch(error) {
