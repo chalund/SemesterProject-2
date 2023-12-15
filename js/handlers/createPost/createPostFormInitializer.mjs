@@ -52,7 +52,5 @@ export function createPostFormInitializer() {
         event.preventDefault();
         const formData = new FormData(event.target);
         const media = formData.getAll("media");
-        console.log(media);
-        // Perform further operations with the media URLs as needed
     });
 }

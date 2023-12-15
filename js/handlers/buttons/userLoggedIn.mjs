@@ -14,7 +14,6 @@ export function updateButtonBasedOnLoginStatus() {
     const profileLink = document.getElementById('profileLink');
 
 
-
     if (isLoggedIn()) {
         const logoutButton = createLogoutButton();
         loginListItem.innerHTML = '';

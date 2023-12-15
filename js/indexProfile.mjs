@@ -24,9 +24,8 @@ clearInputListeners() //clear fields in forms
 import { profileInNav } from "./api/profile/getProfileInNav.mjs";
 profileInNav() // show profile usrname & credits in nav
 
-// import { updateButtonBasedOnLoginStatus } from "./handlers/buttons/userLoggedIn.mjs"; 
-// updateButtonBasedOnLoginStatus()
+import { updateButtonBasedOnLoginStatus } from "./handlers/buttons/userLoggedIn.mjs"; 
+updateButtonBasedOnLoginStatus()
 
-import { createLogoutButton, createLogoutLink } from "./handlers/buttons/logoutBtn.mjs";
+import { createLogoutButton } from "./handlers/buttons/logoutBtn.mjs";
 createLogoutButton()
-createLogoutLink()
