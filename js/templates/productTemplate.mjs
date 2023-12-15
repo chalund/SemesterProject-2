@@ -40,7 +40,7 @@ function findLatestBidAmount(bids) {
 
 export function productTemplate(postData) {
     const container = document.createElement("div")
-    container.classList.add("container", "my-0", "my-sm-5", "border", "bg-light", "mt-3")
+    container.classList.add("container", "my-0", "my-sm-5", "bg-light", "mt-3")
 
     const cardContainer = document.createElement("div");
     cardContainer.classList.add("row"); // Ensure columns have equal height
@@ -255,7 +255,7 @@ bidForm.appendChild(button);
 
     //bid container
     const bidContainer = document.createElement("div");
-    bidContainer.classList.add("col-12", "p-4" , "mt-lg-5");
+    bidContainer.classList.add("col-12", "p-4" , "mt-5");
     
     const bidHistoryTitle = document.createElement("h3");
     bidHistoryTitle.textContent = "Bid history";
