@@ -30,4 +30,6 @@ profileInNav()
 // fetchAndFilterPosts()
 
 
+import { toggleProfileLink } from "./handlers/buttons/profileBtn.mjs";
+toggleProfileLink()
 
