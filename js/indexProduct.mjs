@@ -11,7 +11,7 @@ createLogoutButton()
 import { clearInputListeners } from "./handlers/buttons/clearInput.mjs";
 clearInputListeners()
 
-import { toggleProfileLink } from "./handlers/buttons/profileBtn.mjs";
-toggleProfileLink()
+// import { toggleProfileLink } from "./handlers/buttons/profileBtn.mjs";
+// toggleProfileLink()
 
 

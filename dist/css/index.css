@@ -64,6 +64,8 @@ nav, .nav {
 .card {
   position: relative;
   overflow: hidden;
+  max-width: 250px;
+  margin: 0 auto; /* Set margins to auto for horizontal centering */
 }
 
 .card a {

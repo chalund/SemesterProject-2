@@ -1,3 +1,5 @@
+import { formatDate } from "../handlers/formatDate.mjs";
+
 export function postTemplate(postData) {
     const container = document.createElement("div");
     container.classList.add("row", "row-cols-1", "row-cols-md-3", "row-cols-lg-4" )
@@ -72,15 +74,9 @@ export function postTemplate(postData) {
     viewButton.textContent = "View";
 
     const endsAt = document.createElement("h5");
-    const endsAtDate = new Date(postData.endsAt); // Convert endsAt string to a Date object
-    const formattedDate = endsAtDate.toLocaleDateString("en-US", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-    });
-    endsAt.textContent = `Ends at: ${formattedDate}`;
+    const endsAtDate = formatDate(postData.endsAt); // Convert endsAt string to a Date object
+
+    endsAt.textContent = `Ends at: ${endsAtDate}`;
     endsAt.classList.add("mt-3", "text-danger") // Set the formatted date
     cardBody.appendChild(endsAt);
 

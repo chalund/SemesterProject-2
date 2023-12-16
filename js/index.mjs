@@ -21,6 +21,6 @@ import { profileInNav } from "./api/profile/getProfileInNav.mjs";
 profileInNav()
 
 
-import { toggleProfileLink } from "./handlers/buttons/profileBtn.mjs";
-toggleProfileLink()
+// import { toggleProfileLink } from "./handlers/buttons/profileBtn.mjs";
+// toggleProfileLink()
 

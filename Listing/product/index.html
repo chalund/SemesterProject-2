@@ -12,40 +12,39 @@
     <script src="/js/handlers/imgGallery.mjs" type="module"></script>
 </head>
 <body>
-    <div class="container-fluid bg-secondary">
-    <nav class="navbar navbar-expand-sm navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="/index.html">
-                <img src="/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
-                <span class="ms-2">eBids</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar7">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbar7">
-                <ul class="navbar-nav ms-auto" id="navbarList">
-                     <li class="nav-item d-flex justify-content-center">
-                         <a class="nav-link" href="/index.html">Auction</a>
-                    </li>
-                    <li class="nav-item d-flex justify-content-center">
-                        <a class="nav-link active text-primary" href="/Listing/product/index.html">View Product</a>
-                    </li>
-                    <li class="nav-item d-flex justify-content-center">
-                        <a class="nav-link disabled" href="/profile/index.html" tabindex="-1" aria-disabled="true" id="profileLink">Profile</a>
-                    </li>
-                    <li class="nav-item d-flex justify-content-center" id="loginListItem">
-                        <a href="/profile/login/index.html" class="btn btn-primary d-sm-block" id="loginLink">Login</a>
-                    </li>
-                </ul>
-            </div>
-    </nav>
-    </div>
-    <div class="container-fluid bg-info text-white">
-        <div class="d-flex justify-content-between nav">
-                <p class="text-start m-0 ms-2">Online auction site -buy & sell</p>
-                <p class="text-end m-0 me-2" id="navProfile">
+    <header>
+        <div class="container-fluid bg-secondary">
+            <nav class="navbar navbar-expand-sm navbar-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand d-flex align-items-center" href="/index.html">
+                        <img src="/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
+                        <span class="ms-2">eBids</span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar7">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar7">
+                        <ul class="navbar-nav ms-auto" id="navbarList">
+                             <li class="nav-item d-flex justify-content-center">
+                                 <a class="nav-link" href="/index.html">Auction</a>
+                            </li>
+                             <li class="nav-item d-flex justify-content-center">
+                                <a class="nav-link" href="/profile/register/index.html">Register</a>
+                            </li>
+                            <li class="nav-item d-flex justify-content-center" id="loginListItem">
+                                <a href="/profile/login/index.html" class="btn btn-primary d-sm-block" id="loginLink">Login</a>
+                            </li>
+                        </ul>
+                    </div>
+            </nav>
         </div>
-    </div>
+        <div class="container-fluid bg-info text-white">
+            <div class="d-flex justify-content-between nav">
+                    <p class="text-start m-0 ms-2">Online auction site -buy & sell</p>
+                    <p class="text-end m-0 me-2" id="navProfile">
+            </div>
+        </div>
+    </header>
     <main>
         <div class="container-fluid min-vh-100 d-flex justify-content-center align-items-center bg-image-large">
          

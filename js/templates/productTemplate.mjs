@@ -159,7 +159,7 @@ export function productTemplate(postData) {
     const endsAtDate = formatDate(postData.endsAt);
     endsAt.textContent = `Ends at: ${endsAtDate}`;
     endsAt.classList.add("mt-3", "text-danger");
-    
+
 
     const yourBidContainer = document.createElement("div");
     yourBidContainer.classList.add("mt-4");

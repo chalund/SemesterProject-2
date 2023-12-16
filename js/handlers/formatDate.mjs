@@ -10,6 +10,8 @@ export function formatDate(postData) {
         timeZone: "Europe/London", // Set the timezone to London
     };
 
-    const londonDate = date.toLocaleDateString("en-US", options);
-    return londonDate; // Return the formatted date and time
+    const dateFormatter = new Intl.DateTimeFormat("en-GB", options);
+    const formattedDate = dateFormatter.format(date);
+    return formattedDate; // Return the formatted date and time
 }
+

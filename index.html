@@ -11,48 +11,47 @@
     <script src="/js/index.mjs" type="module"></script>
 </head>
 <body>
-    <div class="container-fluid bg-secondary">
-        <nav class="navbar navbar-expand-sm navbar-dark">
-            <a class="navbar-brand d-flex align-items-center" href="/index.html">
-                <img src="/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
-                <span class="ms-2">eBids</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar7">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbar7">
-                <ul class="navbar-nav ms-auto" id="navbarList">
-                     <li class="nav-item d-flex justify-content-center">
-                         <a class="nav-link active text-primary" href="/index.html">Auction</a>
-                    </li>
-                    <li class="nav-item d-flex justify-content-center">
-                        <a class="nav-link " href="/profile/index.html" tabindex="-1" aria-disabled="true" id="profileLink">Profile</a>
-                    </li>
-                     <li class="nav-item d-flex justify-content-center" id="loginListItem">
-                        <a href="/profile/login/index.html" class="btn btn-primary my-2 my-sm-0 ms-2 d-none d-sm-block" id="loginLink">Login</a>
-                        <!-- <a href="/profile/login/index.html" class="d-sm-none normal-link nav-link" id="loginLinkSmall">Login</a> -->
-                    </li>
-                    <!-- <li class="nav-item d-flex justify-content-center" id="logoutListItem">
-                        <a href="/profile/login/index.html" class="d-sm-none normal-link nav-link" id="logoutLinkSmall">Logout</a>
-                    </li> -->
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <div class="container-fluid bg-info text-white">
-        <div class="d-flex justify-content-between nav">
-            <p class="text-start m-0 ms-2">Online auction site -buy & sell</p>
-            <p class="text-end m-0 me-2" id="navProfile">
+    <header>
+        <div class="container-fluid bg-secondary">
+            <nav class="navbar navbar-expand-sm navbar-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand d-flex align-items-center" href="/index.html">
+                        <img src="/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
+                        <span class="ms-2">eBids</span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar7">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar7">
+                        <ul class="navbar-nav ms-auto" id="navbarList">
+                             <li class="nav-item d-flex justify-content-center">
+                                 <a class="nav-link" href="/index.html">Auction</a>
+                            </li>
+                             <li class="nav-item d-flex justify-content-center">
+                                <a class="nav-link" href="/profile/register/index.html">Register</a>
+                            </li>
+                            <li class="nav-item d-flex justify-content-center" id="loginListItem">
+                                <a href="/profile/login/index.html" class="btn btn-primary d-sm-block" id="loginLink">Login</a>
+                            </li>
+                        </ul>
+                    </div>
+            </nav>
         </div>
-    </div>
+        <div class="container-fluid bg-info text-white">
+            <div class="d-flex justify-content-between nav">
+                    <p class="text-start m-0 ms-2">Online auction site -buy & sell</p>
+                    <p class="text-end m-0 me-2" id="navProfile">
+            </div>
+        </div>
+    </header>
     <main>
     <!---Section one-->
     <div class="container my-0 my-sm-5 col-12-log">
         <div class="row">
             <div class="col-sm-12 bg-image">
-                <div class="overlay">
+
                     <div class="d-flex justify-content-center align-items-center h-100">
-                        <div class="text-center text-white">
+                        <div class="text-center text-white mt-2">
                             <h1>Buy and sell, EASY!</h1>
                             <h2>add more text here</h2>
                                 <form action="" id="serchForm">

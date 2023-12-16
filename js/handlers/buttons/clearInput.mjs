@@ -13,11 +13,5 @@ export function clearInputListeners() {
                 console.log('Clear button clicked');
             });
         });
-
-        console.log(clearButtons);
-        console.log('Input listeners attached');
     });
 }
-
-
-

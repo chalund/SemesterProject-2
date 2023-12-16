@@ -17,47 +17,10 @@ export async function getProfileListings(name) {
             },
         });
         const profileListings = await response.json();
-        console.log(profileListings)
+    
         return profileListings;
     } catch (error) {
         console.error(error);
         throw error;
     }
 }
-
-
-// export async function productCardListings() {
-//     try {
-//         const product = await getProfileListings()
-//         console.log(product)
-
-//     const cardImage = document.querySelector("#card-image")
-//     const cardTitle = document.querySelector("#card-title")
-//     const cardBid = document.querySelector("#card-bid")
-//     const cardEndTime = document.querySelector("#card-endTime")
-
-//     if (cardImage && cardTitle && cardBid && cardEndTime) {
-//        if (!product.image) {
-//         cardImage.src = "../images/logo.png"
-//         cardImage.alt = "logo"
-//        } else {
-//         cardImage.src = product.media
-//        }
-    
-//     cardTitle.textContent = product.title
-    
-//     if(cardEndTime === 0) {
-//         cardEndTime.textContent = product.updated
-//     } else {
-//         cardEndTime.textContent = product.endAt
-//     }
-
-
-//     }
-
-//     } catch (error) {
-//         console.error(error);
-//         // Handle errors as needed
-//     }
-// }
-// productCardListings()
