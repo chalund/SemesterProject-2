@@ -295,3 +295,14 @@ nav , .nav {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+@media (max-width: 576px) {
+  .productInfo{
+    padding-top: 100px;
+  }
+
+  .productCard{
+    padding: 20px;
+  }
+}
+

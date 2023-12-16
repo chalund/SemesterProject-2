@@ -245,6 +245,14 @@ img.room-active {
     transform: rotate(360deg);
   }
 }
+@media (max-width: 576px) {
+  .productInfo {
+    padding-top: 100px;
+  }
+  .productCard {
+    padding: 20px;
+  }
+}
 /*!
  * Bootstrap v5.1.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

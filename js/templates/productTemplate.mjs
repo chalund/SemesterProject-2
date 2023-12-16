@@ -1,62 +1,26 @@
-// import { bidModal } from "../handlers/buttons/bidBtn.mjs";
 import { isLoggedIn } from "../handlers/buttons/userLoggedIn.mjs";
 import { imageGallery } from "../handlers/imgGallery.mjs";
-
-
-function formatDate(postData) {
-    const date = new Date(postData);
-    return date.toLocaleDateString("en-US", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-    });
-}
-
-function findLatestValueByKey(array, key) {
-    if (array.length === 0) {
-        return null; // No items available
-    }
-
-    // Sort the array by 'created' time in descending order
-    const sortedArray = array.sort((a, b) => new Date(b.created) - new Date(a.created));
-
-    // Get the latest item's value for the specified key
-    const latestValue = sortedArray[0][key];
-    return latestValue;
-}
-
-// Usage example:
-function findLatestBidderName(bids) {
-    return findLatestValueByKey(bids, 'bidderName');
-}
-
-function findLatestBidAmount(bids) {
-    return findLatestValueByKey(bids, 'amount');
-}
-
+import { formatDate } from "../handlers/formatDate.mjs";
+import { findLatestBidAmount, findLatestBidderName } from "../handlers/latestBidder.mjs";
 
 
 export function productTemplate(postData) {
     const container = document.createElement("div")
-    container.classList.add("container", "bg-light", "mt-3")
+    container.classList.add("container", "bg-light")
 
     const cardContainer = document.createElement("div");
-    cardContainer.classList.add("row"); // Ensure columns have equal height
+    cardContainer.classList.add("row"); 
     container.append(cardContainer);
 
     const imageContainer = document.createElement("div");
-    imageContainer.classList.add("col-md-6", "col-lg-6", "d-flex","flex-column", "align-items-stretch");
+    imageContainer.classList.add("col-md-6", "col-lg-6", "d-flex","flex-column", "align-items-stretch", "mt-2");
     
     const imageContainerDiv = document.createElement("div");
     imageContainerDiv.classList.add("text-center", "align-items-stretch");
     
-
     const productImages = document.createElement("div");
     productImages.classList.add("room-gallery" , "d-flex", "flex-column");
     
-    // Assuming the first image is the main image
     if (postData && postData.media && postData.media.length > 0) {
         const mainImage = document.createElement("img");
         mainImage.src = postData.media[0];
@@ -68,12 +32,12 @@ export function productTemplate(postData) {
 
     } else {
         const placeholderImage = document.createElement("img");
-        placeholderImage.src = "../../images/noImage.jpg"; // Replace with your placeholder image URL
+        placeholderImage.src = "../../images/noImage.jpg";
         placeholderImage.alt = "No Image Available";
         placeholderImage.classList.add("product-image");
         placeholderImage.style.width = "100%";
-        placeholderImage.style.display = "block"; // Ensure it takes full width
-        placeholderImage.style.margin = "auto"; // Center the image horizontally
+        placeholderImage.style.display = "block"; 
+        placeholderImage.style.margin = "auto";
         productImages.appendChild(placeholderImage);
     }
     
@@ -85,30 +49,47 @@ export function productTemplate(postData) {
             const image = document.createElement("img");
             image.src = mediaItem;
             image.alt = "Product Image";
-            image.classList.add("product-image", "room-preview-img"); // Add new class for specific styling
+            image.classList.add("product-image", "room-preview-img"); 
             image.style.maxHeight = "100px";
-            image.style.maxWidth = "150px";
+            image.style.maxWidth = "100px";
             productImageList.appendChild(image);
         });
+
+        // Change width based on screen size
+        window.addEventListener('resize', () => {
+            const images = productImageList.querySelectorAll('img');
+            if (window.innerWidth >= 768) { 
+                images.forEach(img => {
+                    img.style.maxWidth = '150px'; 
+                });
+            } else {
+                images.forEach(img => {
+                    img.style.maxWidth = '100px'; 
+                });
+            }
+        });
+
+        // Initial width check on page load
+        if (window.innerWidth >= 768) {
+            const images = productImageList.querySelectorAll('img');
+            images.forEach(img => {
+                img.style.maxWidth = '200px'; 
+            });
+        }
     }
 
-
-    
     imageContainerDiv.appendChild(productImages);
     imageContainerDiv.appendChild(productImageList);
     imageContainer.appendChild(imageContainerDiv);
     
-    // Append the image container to the cardContainer or your desired location in the DOM
     cardContainer.appendChild(imageContainer);
-          
-    //right side of container info content
+  
     const productContainer = document.createElement("div");
-    productContainer.classList.add("col-md-6", "col-lg-6", "d-flex", "align-items-center", "mt-3");
+    productContainer.classList.add("col-md-6", "col-lg-6", "d-flex", "align-items-center", "mt-3", "productInfo");
     cardContainer.append(productContainer);
 
-
     const productContentContainer = document.createElement("div");
-    productContentContainer.classList.add("d-flex" ,"flex-colum" , "justify-center-between");
+    productContentContainer.classList.add("d-flex" ,"flex-colum" , "justify-center-between", "ms-3");
     productContainer.append(productContentContainer)
 
     const productInfo = document.createElement("div")
@@ -126,13 +107,11 @@ export function productTemplate(postData) {
     
     const sellerId = document.createElement("p")
     sellerId.classList.add("mb-1")
-    // sellerId.textContent = `${postData.seller.name}`
 
     const sellerInfoLine = document.createElement("div")
     sellerInfoLine.classList.add("mb-1", "py-1", "bg-primary")
 
     sellerInfo.append(sellerCreated, sellerId, sellerInfoLine)
-
 
     const productTitle = document.createElement("h1");
     productTitle.textContent = postData.title;
@@ -145,7 +124,6 @@ export function productTemplate(postData) {
     productDescription.textContent = postData.description;
     productDescription.style.fontWeight = 'bold';
 
-    //tags
     const productTags = document.createElement("div");
     productTags.classList.add("d-flex", "flex-wrap");
     
@@ -163,10 +141,6 @@ export function productTemplate(postData) {
         tagElement.textContent = tag;
         productTags.appendChild(tagElement);
     });
-    
-
-
-
 
     const currentBidContainer = document.createElement("div");
     currentBidContainer.classList.add("mt-4", "border", "px-2");
@@ -179,84 +153,41 @@ export function productTemplate(postData) {
 
     const currentBidAmount = findLatestBidAmount(postData.bids);
 
-    // if (currentBidAmount !== null) {
-    //     const currentBid = document.createElement("h3");
-    //     currentBid.classList.add("mb-1", "text-info");
-    //     currentBid.textContent = `${currentBidAmount} credits`;
-
-    //     currentBidContainer.appendChild(currentBid);
-    // } else {
-    //     // If there are no bids available, show a message
-    //     const noBidsMessage = document.createElement("p");
-    //     noBidsMessage.textContent = "No bids yet";
-
-    //     currentBidContainer.appendChild(noBidsMessage);
-    // }
-
-
-
-
-
-
     const latestBidder = findLatestBidderName(postData.bids);
-
-
-
-
-
-   
-
-   
-  
-
-
 
     const endsAt = document.createElement("h4");
     const endsAtDate = formatDate(postData.endsAt);
     endsAt.textContent = `Ends at: ${endsAtDate}`;
     endsAt.classList.add("mt-3", "text-danger");
+    
 
     const yourBidContainer = document.createElement("div");
     yourBidContainer.classList.add("mt-4");
     
     const yourBidTitle = document.createElement("h4");
     yourBidTitle.textContent = `Place your Bid:`;
-    
-    // Creating form elements
 
-const bidForm = document.createElement("form");
-bidForm.id = "addBidForm"; // Set form ID
-bidForm.classList.add("col-8", "d-flex", "addBidForm");
-bidForm.setAttribute("role", "search");
+    const bidForm = document.createElement("form");
+    bidForm.id = "addBidForm";
+    bidForm.classList.add("col-8", "d-flex", "addBidForm");
+    bidForm.setAttribute("role", "search");
 
-// const input = document.createElement("input");
-// input.classList.add("form-control", "me-2", "bidSearch");
-// input.setAttribute("type", "search");
-// input.setAttribute("aria-label", "Search");
+    const button = document.createElement("button");
+    button.classList.add("btn", "btn-lg",  "btn-primary" , "bid-button", "custom-button");
 
-const button = document.createElement("button");
-button.classList.add("btn", "btn-lg",  "btn-primary" , "bid-button", "custom-button");
+    button.textContent = "Bid";
+    button.setAttribute("data-bs-toggle", "modal");
+    button.setAttribute("data-bs-target", "#bidModal");
 
-button.textContent = "Bid";
-button.setAttribute("data-bs-toggle", "modal");
-button.setAttribute("data-bs-target", "#bidModal");
+    bidForm.appendChild(button);
 
-// Appending input and button to the form
-// bidForm.appendChild(input);
-bidForm.appendChild(button);
-
-    
-    // Appending the bid form to the yourBidContainer
     yourBidContainer.append(yourBidTitle, bidForm);
-    
-    // Appending yourBidContainer to the productInfo
+        
     productInfo.append(productTitle, productDescriptionTitle, productDescription, productTags, currentBidContainer, endsAt, yourBidContainer);
 
-
-    //bid container
     const bidContainer = document.createElement("div");
     bidContainer.classList.add("col-12", "p-4" , "mt-5");
-    
+        
     const bidHistoryTitle = document.createElement("h3");
     bidHistoryTitle.textContent = "Bid history";
 
@@ -265,56 +196,46 @@ bidForm.appendChild(button);
 
     bidContainer.append(bidHistoryTitle , bidLine);
 
-        // Check if user is logged in
-        if (isLoggedIn()) {
-            // Loop through bids and add bid entries to the bid container
-            postData.bids.forEach(bid => {
-                const bidEntry = document.createElement("div");
-                bidEntry.classList.add("d-flex", "justify-content-start", "align-items-center", "mb-1");
+    if (isLoggedIn()) {
+        postData.bids.forEach(bid => {
+        const bidEntry = document.createElement("div");
+        bidEntry.classList.add("d-flex", "justify-content-start", "align-items-center", "mb-1");
                 
-                const bidDate = document.createElement("p");
-                const bidDateCreated = formatDate(bid.created);
-                bidDate.classList.add("me-3");
-                bidDate.textContent = `${bidDateCreated}`;
+        const bidDate = document.createElement("p");
+        const bidDateCreated = formatDate(bid.created);
+        bidDate.classList.add("me-3");
+        bidDate.textContent = `${bidDateCreated}`;
     
-                const bidUsername = document.createElement("p");
-                bidUsername.classList.add("me-3", "mt-1");
-                bidUsername.textContent = bid.bidderName;
-                bidUsername.style.width = "155px"; // Set a fixed width
+        const bidUsername = document.createElement("p");
+        bidUsername.classList.add("me-3", "mt-1");
+        bidUsername.textContent = bid.bidderName;
+        bidUsername.style.width = "155px"; 
     
-                const bidAmount = document.createElement("p");
-                bidAmount.classList.add("me-3");
-                bidAmount.textContent = `$${bid.amount}`;
-                bidAmount.style.width = "100px"; // Set a fixed width
+        const bidAmount = document.createElement("p");
+        bidAmount.classList.add("me-3");
+        bidAmount.textContent = `$${bid.amount}`;
+        bidAmount.style.width = "100px"; 
     
-                bidEntry.appendChild(bidDate);
-                bidEntry.appendChild(bidUsername);
-                bidEntry.appendChild(bidAmount);
+        bidEntry.appendChild(bidDate);
+        bidEntry.appendChild(bidUsername);
+        bidEntry.appendChild(bidAmount);
     
-                bidContainer.appendChild(bidEntry);
-        
+        bidContainer.appendChild(bidEntry);
+        });
 
-
-            });
-
-            if (latestBidder) {
-                
-
-                  // Display current bid amount
+        if (latestBidder) {
             const currentBid = document.createElement("h3");
             currentBid.classList.add("mb-1", "text-info");
             currentBid.textContent = `${currentBidAmount} credits`;
             currentBidContainer.appendChild(currentBid);
             
-                const currentBidUsername = document.createElement("p");
-                currentBidUsername.classList.add("me-3");
-                currentBidUsername.textContent = `Latest bid: ${latestBidder}`;
-                currentBidContainer.appendChild(currentBidUsername);
+            const currentBidUsername = document.createElement("p");
+            currentBidUsername.classList.add("me-3");
+            currentBidUsername.textContent = `Latest bid: ${latestBidder}`;
+            currentBidContainer.appendChild(currentBidUsername);
             }
-    
-          
+
         } else {
-            // If user is not logged in, show a message
             const currentBid = document.createElement("h3");
             currentBid.classList.add("mb-1", "text-info");
             currentBid.textContent = "Log in to see Bids";
@@ -326,18 +247,11 @@ bidForm.appendChild(button);
             bidContainer.appendChild(notLoggedInMessage);
         }
 
-
-    
-
-    
     cardContainer.append(bidContainer)
 
     document.body.appendChild(container);
 
-    // Call imageGallery after the product template content is added to the DOM
     imageGallery();
 
-
-    
     return container;
 }
