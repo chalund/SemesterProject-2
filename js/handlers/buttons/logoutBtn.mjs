@@ -1,6 +1,3 @@
-
-
-// Function to create a logout button element
 export function createLogoutButton() {
     const logoutButton = document.createElement('a');
     logoutButton.href = "#";

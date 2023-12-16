@@ -1,6 +1,7 @@
 import { addBid } from "../../api/posts/postById.mjs";
 import { closeBidModal } from "../buttons/closeModal.mjs";
 import { clearInputListeners } from "../buttons/clearInput.mjs";
+import { isLoggedIn } from "../buttons/userLoggedIn.mjs";
 
 export function bidModal(postId) {
     const bidButtonHandler = (event) => {
@@ -24,6 +25,13 @@ export function bidModal(postId) {
             let errorElement = bidAmountInput.parentElement.querySelector('.text-danger');
     
             try {
+             
+                if (!isLoggedIn()) {
+                    // User is not logged in, prompt them to log in
+                    alert('You must be logged in to place a bid.');
+                    return; // Exit function if user is not logged in
+                }
+    
                 if (/^\d+$/.test(bidAmount)) {
                     // Remove any existing error elements
                     if (errorElement) {
@@ -61,11 +69,10 @@ export function bidModal(postId) {
         }
     };
     
-    
-
     // Attach the event listeners to the document
     document.addEventListener('click', bidButtonHandler);
     document.addEventListener('click', saveBidHandler);
+    
 
     closeBidModal()
  

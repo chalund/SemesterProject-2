@@ -1,4 +1,5 @@
 import { createBid } from "../../api/posts/create.mjs"; 
+import { isLoggedIn } from "../buttons/userLoggedIn.mjs";
 
 
 export async function createBidFormListener() {

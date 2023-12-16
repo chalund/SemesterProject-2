@@ -70,5 +70,15 @@ export async function handleSearch() {
 
 // Event listener for the search button
 const searchButton = document.getElementById('searchButton');
+const searchInput = document.getElementById('searchInput');
+
 searchButton.addEventListener('click', handleSearch);
+
+searchInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Prevents form submission or any default behavior
+
+        handleSearch();
+    }
+});
 
