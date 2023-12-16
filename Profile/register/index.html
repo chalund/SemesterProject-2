@@ -46,7 +46,68 @@
     </header>
     <main>
         <div class="container-fluid min-vh-100 d-flex justify-content-center align-items-center bg-image-large">
-                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex flex-column justify-content-center align-items-center m-2 bg-secondary white-text p-3 border rounded formWidth">
+            <div class="col-sm-8 col-md-6 col-lg-4 col-xl-4 col-xxl-3 d-flex flex-column justify-content-center align-items-center mt-2 bg-secondary white-text p-3 border rounded">
+                <div class="navbar-brand d-flex align-items-center">
+                        <img src="/images/logo.png" alt="Logo" width="80" height="80" class="d-inline-block align-text-top me-2">
+                        <h1 class="ms-2 text-primary">eBids</h1>
+                </div>
+                <h2 class="text-center text-white mt-2">Register user</h2>
+                    <form id="registerForm">
+                        <div>
+                            <div class="text-white p-3">
+                                <div class="form-group mb-3 position-relative border-info">
+                                    <label for="name">Username *</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="name" name="name" id="usernameReg" required>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-light btn-clear" type="button">&times;</button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-1 text-primary username-validation-message"> Please choose a username.</div>
+                                </div>
+                                <div class="form-group mb-3 position-relative">
+                                    <label for="email">Email *</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="email" name="email" id="emailReg" required pattern="^[\w\-.]+@(stud\.)?noroff\.no$" title="only @noroff/@stud.noroff users">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-light btn-clear" type="button">&times;</button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-1 text-primary email-validation-message">Please use a @noroff or stud@noroff email.</div>
+                                </div>
+                                <div class="form-group mb-3 position-relative border-info">
+                                    <label for="password">Password</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="password" name="password" id="passwordReg" required minLength="8">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-light btn-clear" type="button">&times;</button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-1 text-primary password-validation-message">Please choose a password with min. 8 characters.</div>
+                                </div>
+                                <div class="form-group mb-3 position-relative border-info">
+                                    <label for="avatar">Avatar</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="url" name="avatar" id="avatarReg">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-light btn-clear" type="button">&times;</button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-1 text-primary avatar-validation-message">Please provide a valid URL address for the avatar.</div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-info text-white">Register</button>
+                                <p class="text-center text-white mt-3">Your welcome gift is 1000 points for register new user</p>
+                            </div>
+                            <div class="text-center">
+                                <p><a href="/profile/login/index.html">Click  here to Login</a></p>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+                    <!-- <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 d-flex flex-column justify-content-center align-items-center m-2 bg-secondary white-text p-3 border rounded formWidth">
                         <div class="navbar-brand d-flex align-items-center">
                                 <img src="/images/logo.png" alt="Logo" width="80" height="80" class="d-inline-block align-text-top me-2">
                                 <h1 class="ms-2 text-primary">eBids</h1>
@@ -56,53 +117,54 @@
                                 <div>
                                     <div class="text-white p-2">
                                         <div class="form-group position-relative">
-                                        <label for="validationServerUsername" class="form-label mb-1">Username *</label>
-                                        <div class="input-group has-validation">
-                                          <input type="text" class="form-control is-invalid mt-1" id="validationServerUsername" aria-describedby=" validationServerUsernameFeedback" required>
-                                          <button class="btn btn-outline-light btn-clear" type="button">&times;</button>
-                                          <div id="validationServerUsernameFeedback" class="invalid-feedback text-primary">
-                                            Please choose a username.
-                                          </div>
+                                            <label for="validationServerUsername" class="form-label mb-1">Username *</label>
+                                            <div class="input-group has-validation">
+                                            <input type="text" class="form-control is-invalid mt-1" id="validationServerUsername" aria-describedby=" validationServerUsernameFeedback" required>
+                                            <button class="btn btn-outline-light btn-clear" type="button">&times;</button>
+                                            <div id="validationServerUsernameFeedback" class="invalid-feedback text-primary">
+                                                Please choose a username.
+                                            </div>
+                                            </div>
                                         </div>
                                     
 
-                                        <div class="form-group mt-2">
-                                        <label for="validationServerEmail" class="form-label mb-1">Email *</label>
-                                        <div class="input-group has-validation">
-                                            <input type="text" class="form-control is-invalid mt-1" id="validationServerEmail">
-                                            <button class="btn btn-outline-light btn-clear" type="button">&times;</button>                          
-                                            <div id="validationServerEmailFeedback" class="invalid-feedback text-primary">
-                                            Please use a @noroff or stud@noroff email.
+                                        <div class="form-group position-relative mt-2">
+                                            <label for="validationServerEmail" class="form-label mb-1">Email *</label>
+                                            <div class="input-group has-validation">
+                                                <input type="text" class="form-control is-invalid mt-1" id="validationServerEmail">
+                                                <button class="btn btn-outline-light btn-clear" type="button">&times;</button>                          
+                                                <div id="validationServerEmailFeedback" class="invalid-feedback text-primary">
+                                                Please use a @noroff or stud@noroff email.
+                                                </div>
                                             </div>
                                         </div>
+
+                                      <div class="form-group position-relative mt-2">
+                                            <label for="validationServerUsername" class="form-label mb-1">Password *</label>
+                                            <div class="input-group has-validation">
+                                            <input type="password" class="form-control is-invalid mt-1" id="validationServerPassword" aria-describedby="inputGroupPrepend3 validationServerPasswordFeedback" required minLength="8">
+                                            <button class="btn btn-outline-light btn-clear" type="button">&times;</button>
+                                            <div id="validationServerPasswordFeedback" class="invalid-feedback text-primary">
+                                                Please choose a password with min. 8 characters.
+                                            </div>
+                                            </div>
                                       </div>
 
                                       <div class="form-group position-relative mt-2">
-                                        <label for="validationServerUsername" class="form-label mb-1">Password *</label>
-                                        <div class="input-group has-validation">
-                                          <input type="text" class="form-control is-invalid mt-1" id="validationServerPassword" aria-describedby="inputGroupPrepend3 validationServerPasswordFeedback" required minLength="8">
-                                          <button class="btn btn-outline-light btn-clear" type="button">&times;</button>
-                                          <div id="validationServerPasswordFeedback" class="invalid-feedback text-primary">
-                                            Please choose a password with min. 8 characters.
-                                          </div>
-                                        </div>
-                                      </div>
-
-                                      <div class="form-group position-relative mt-2">
-                                        <label for="validationServerAvatar" class="form-label mb-1">Avatar (URL)</label>
-                                        <div class="input-group">
-                                          <input type="text" class="form-control  mt-1" id="validationServerAvatar" aria-describedby="inputGroupPrepend4 validationServerAvatarFeedback" >
-                                          <button class="btn btn-outline-light btn-clear" type="button">&times;</button>
-                                          <div class=" text-primary">
-                                            Please provide a valid URL address for the avatar. (Optional)
-                                          </div>
-                                        </div>
+                                            <label for="validationServerAvatar" class="form-label mb-1">Avatar (URL)</label>
+                                            <div class="input-group">
+                                            <input type="text" class="form-control  mt-1" id="validationServerAvatar" aria-describedby="inputGroupPrepend4 validationServerAvatarFeedback" >
+                                            <button class="btn btn-outline-light btn-clear" type="button">&times;</button>
+                                            <div class=" text-primary">
+                                                Please provide a valid URL address for the avatar. (Optional)
+                                            </div>
+                                            </div>
                                       </div>
 
                                         
 
                                 
-                                    </div>
+                                </div>
                                     </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-info text-white mt-4">Register</button>
@@ -113,7 +175,7 @@
                                     </div>
                                 </div>
                             </form>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
