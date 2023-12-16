@@ -1,0 +1,264 @@
+$primary: #fd7e14;
+$secondary: #232323;
+$danger: #CE1060;
+$info: #369694;
+$light: #fff;
+
+
+body {
+  background-color: #eae4e4;
+}
+
+nav , .nav {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-item .nav-link.active {
+  color: $primary;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.custom-button {
+  width: 150px;
+}
+
+.btn, .nav-item{
+  transition: transform 0.3s ease-in-out;
+}
+
+.btn:hover, .nav-item:hover{
+  transform: scale(1.1); 
+  font-weight: bold;
+}
+
+.btn.btn-clear:hover,
+.btn#searchButton:hover {
+  transform: none; 
+}
+
+.rounded-circle-icons {
+  padding: 20px; 
+}
+
+.bg-image-large {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../images/image.jpeg');
+}
+
+//login register form
+.custom-size {
+  width: 400px;
+}
+
+.bg-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.704), rgba(0, 0, 0, 0.714)), url('../../images/image.jpeg');
+  background-position: center;
+  position: relative;
+  height: 350px; 
+}
+
+//create form button
+.hidden {
+  display: none;
+}
+
+//login btn link
+.normal-link {
+  text-decoration: none;
+}
+
+//edit btn
+.card {
+  position: relative;
+  overflow: hidden;
+  max-width: 250px;
+  margin: 0 auto; 
+}
+
+.card a {
+  text-decoration: none;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 150px;
+  display: block;
+}
+
+.profile-post {
+  margin-top: 20%
+}
+
+.card .delete-btn {
+  position: absolute;
+  top: 6%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  z-index: 1; 
+}
+
+.card {
+  border: 2px solid transparent; 
+  transition: border-color 0.3s; 
+}
+
+.card:hover {
+  border-color: $info; 
+  box-shadow: 0 0 0 2px $info;
+}
+
+.card-getStarted:hover {
+  border-color: none;
+  box-shadow: none;
+}
+
+//product item
+.item-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item-list {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.item-list img {
+  width: 30%; 
+  height: auto;
+}
+
+    
+//Profile image
+.profile-widget {
+  position: relative;
+}
+
+.profile-widget .image-container {
+  background-size: cover;
+  background-position: center;
+  padding: 100px 0 10px;
+}
+
+.profile-widget .image-container .profile-background {
+  width: 100%;
+  height: auto;
+}
+
+.profile-widget .image-container .avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 0 auto -60px;
+  display: block;
+}
+
+.profile-widget .details {
+  padding: 50px 15px 15px;
+  text-align: center;
+}
+
+.panel {
+  border-radius: 0;
+  margin-bottom: 30px;
+  border: 1px solid #dddddd;
+}
+    
+.post-description {
+  padding: 15px;
+}
+
+.image-container {
+  background-image: url('../../images/image.jpeg'); 
+  background-position: center;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+    
+.image-container::before {
+  content: '';
+   position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  filter: blur(5px); 
+}
+    
+.image-container .avatar {
+  position: relative;
+  z-index: 1; 
+}
+
+.room-gallery {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+  
+.room-preview {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  margin-top: 10px;    
+}
+  
+.room-preview img {
+  height: 100px;
+  flex-grow: 1;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  border: 1px solid $light;
+}
+  
+img.room-active {
+  opacity: 1;
+}
+
+//login and registering form
+.formWidth {
+  max-width: 500px;
+}
+.loginInput{
+  min-width: 250px;
+}
+
+.loader {
+  border: 16px solid #f5f5f5; 
+  border-top: 16px solid #369694;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 576px) {
+  .productInfo{
+    padding-top: 100px;
+  }
+
+  .productCard{
+    padding: 20px;
+  }
+}

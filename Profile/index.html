@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eBids | Profile</title>
+    <link rel="stylesheet" href="/dist/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="../js/indexProfile.mjs" type="module"></script> 
+</head>
+<body>
+    <header>
+        <div class="container-fluid bg-secondary">
+            <nav class="navbar navbar-expand-sm navbar-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand d-flex align-items-center" href="/index.html">
+                        <img src="/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
+                        <span class="ms-2">eBids</span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar7">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar7">
+                        <ul class="navbar-nav ms-auto" id="navbarList">
+                             <li class="nav-item d-flex justify-content-center">
+                                 <a class="nav-link" href="/index.html">Auction</a>
+                            </li>
+                            <li class="nav-item d-flex justify-content-center">
+                                <a class="nav-link disabled active" href="/profile/index.html" tabindex="-1" aria-disabled="true" id="profileLink">Profile</a>
+                            </li>
+                            <li class="nav-item d-flex justify-content-center" id="loginListItem">
+                                <a href="/profile/login/index.html" class="btn btn-primary d-sm-block" id="loginLink">Login</a>
+                            </li>
+                        </ul>
+                    </div>
+            </nav>
+        </div>
+        <div class="container-fluid bg-info text-white">
+            <div class="d-flex justify-content-between nav">
+                    <p class="text-start m-0 ms-2">Online auction site -buy & sell</p>
+                    <p class="text-end m-0 me-2" id="navProfile">
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container mt-5 min-vh-100">
+        <div class="row justify-content-center">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div class="panel profile-widget">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="image-container"  id="editProfileImage">
+                                <img src="../images/logo.png" class="avatar border border-black" alt="avatar" id="profile-avatar"> 
+                                <button class="btn btn-primary position-absolute top-0 end-0 m-3" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="editProfileModalLabel">Edit profile image</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="avatarForm" action="">
+                                                <div class="form-group mb-3 position-relative">
+                                                    <label for="avatar">Update Profile image</label>
+                                                    <div class="input-group">
+                                                        <input class="form-control" type="url" id="avatar" name="avatar">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-outline-secondary btn-clear" type="button">&times;</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" id="save-btn">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--UserProfile-->
+                            <div class="col-sm-12">
+                                <div class="details mt-2">
+                                    <h4 id="profile-name"></h4>
+                                    <div id="profile-email"></div>
+                                    <div class="mt-2" id="profile-credits"></div>
+                                    <div class="mt-2">
+                                        <a href="#" class="btn btn-outline-primary" id="profile-wins"></a>
+                                        <a href="#" class="btn btn-primary">Follow</a>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                    <!-- Create new listing form-->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel">
+                                <div class="post-description bg-info">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h3 class="mb-3 text-white">Create new listing</h3>
+                                        <button id="toggleForm" class="btn btn-light"><i class="bi bi-arrow-down-square"></i></button>
+                                    </div>
+                                    <form id="createPostForm" class="hidden">
+                                        <div>
+                                        <div class="form-group mb-2">
+                                            <label for="title">Title</label>
+                                            <div class="input-group">
+                                                <input class="form-control" id="title" type="text" name="title" placeholder="" required>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-light btn-clear" type="button">&times;</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="endsAt">Auction ends</label>
+                                            <div class="input-group"></div>
+                                                <input class="form-control" id="endsAt" type="datetime-local" name="endsAt" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="body">Description</label>
+                                            <div class="input-group">
+                                                <input class="form-control" id="body" name="body" placeholder=""></input>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-light btn-clear" type="button">&times;</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="tags">Tags</label>
+                                            <div class="input-group">
+                                                <input class="form-control" id="tags" type="text" name="tags" placeholder="">
+                                                <div class="input-group-append d-flex">
+                                                    <button class="btn btn-light btn-clear" type="button">&times;</button>
+                                                    <button type="button" class="add-tags btn btn-light">Add Tags</button>
+                                                </div>
+                                            </div>
+                                            <div id="tagsList"></div>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label for="media">Images</label>
+                                            <div class="input-group">
+                                                <input class="form-control" id="media" type="url" name="media" placeholder="">
+                                                <div class="input-group-append d-flex">
+                                                    <button class="btn btn-light btn-clear" type="button">&times;</button>
+                                                    <button type="button" class="add-media btn btn-light">Add image</button>
+                                                </div>
+                                            </div>
+                                            <div id="imageList"></div>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-danger my-4">Create Post</button>
+                                        </div>
+                                    </form>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <!---My listings-->  
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="post-description mb-5">
+                                <div class="d-flex align-items-center">
+                                        <h3 class="mr-3 mb-0">My Listings:</h3>
+                                        <p class="mb-0 ms-3" id="profileListings"></p>
+                                </div>
+                                <div class="py-1 bg-primary"></div>
+                                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4" id="profilePosts"></div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer mt-auto py-1 bg-info">
+        <p class="text-center"> &copy; Copyright 2023</p>
+    </footer>  
+</body>
+</html>
