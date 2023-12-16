@@ -19,23 +19,21 @@ nav, .nav {
 }
 
 .btn, .nav-item {
-  /* Define the initial transition properties */
-  transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+  transition: transform 0.3s ease-in-out;
 }
 
 .btn:hover, .nav-item:hover {
-  /* Define the styles for the button when hovered */
-  transform: scale(1.1); /* Increase the size by 10% (adjust as needed) */
+  transform: scale(1.1);
   font-weight: bold;
 }
 
 .btn.btn-clear:hover,
 .btn#searchButton:hover {
-  transform: none; /* Override the scaling effect for these specific buttons */
+  transform: none;
 }
 
 .rounded-circle-icons {
-  padding: 20px; /* Adjust the value as needed */
+  padding: 20px;
 }
 
 .bg-image-large {
@@ -47,10 +45,10 @@ nav, .nav {
 }
 
 .bg-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../images/image.jpeg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.704), rgba(0, 0, 0, 0.714)), url("../../images/image.jpeg");
   background-position: center;
   position: relative;
-  height: 350px; /* Adjust height as needed */
+  height: 350px;
 }
 
 .hidden {

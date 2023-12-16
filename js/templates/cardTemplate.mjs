@@ -19,9 +19,8 @@ export function postTemplate(postData) {
         image.alt = "Post Image";
         image.style.maxHeight = "200px";
     
-        // Handle broken images
         image.onerror = function() {
-            image.src = "../images/noImage.jpg"; // Set default image path if the original image is broken
+            image.src = "../images/noImage.jpg"; 
             image.alt = "Default Image";
         };
     
@@ -29,7 +28,7 @@ export function postTemplate(postData) {
     } else {
         const defaultImage = document.createElement("img");
         defaultImage.classList.add("card-img-top");
-        defaultImage.src = "../images/noImage.jpg"; // Default image path when no image is present
+        defaultImage.src = "../images/noImage.jpg"; 
         defaultImage.alt = "Default Image";
         defaultImage.style.maxHeight = "200px";
         card.append(defaultImage);
@@ -42,10 +41,6 @@ export function postTemplate(postData) {
     cardTitle.textContent = postData.title;
     cardBody.append(cardTitle);
 
-    // const description = document.createElement("p");
-    // description.textContent = postData.description || 'No description available';
-    // cardBody.append(description);
-
     const BidDiv = document.createElement("div");
     BidDiv.classList.add("row", "align-items-center");
 
@@ -57,27 +52,17 @@ export function postTemplate(postData) {
     colTextEnd.append(currentBid);
     BidDiv.append(colTextEnd);
 
-    // const amount = document.createElement("div");
-    // amount.classList.add("col", "text-start");
-    // const bidAmount = document.createElement("h4");
-    // bidAmount.classList.add("mb-0");
-    // bidAmount.textContent = `$${postData.amount || '0'}`;
-    // amount.append(bidAmount);
-    // BidDiv.append(amount);
-
-    // cardBody.append(BidDiv);
-
     const viewButton = document.createElement("a");
     viewButton.href = "/listing/product/index.html";
-    viewButton.id = `${postData.id}`; // Set the ID based on your data
+    viewButton.id = `${postData.id}`; 
     viewButton.classList.add("btn", "btn-primary", "mt-3");
     viewButton.textContent = "View";
 
     const endsAt = document.createElement("h5");
-    const endsAtDate = formatDate(postData.endsAt); // Convert endsAt string to a Date object
+    const endsAtDate = formatDate(postData.endsAt);
 
     endsAt.textContent = `Ends at: ${endsAtDate}`;
-    endsAt.classList.add("mt-3", "text-danger") // Set the formatted date
+    endsAt.classList.add("mt-3", "text-danger")
     cardBody.appendChild(endsAt);
 
     cardBody.append(viewButton);
@@ -87,15 +72,10 @@ export function postTemplate(postData) {
     cardContainer.appendChild(card);
 
     viewButton.addEventListener("click", (event) => {
-        event.preventDefault(); // Prevents the default behavior of the anchor tag
+        event.preventDefault(); 
         const postId = postData.id;
         window.location.href = `/listing/product/index.html?id=${postId}`;
     });
 
     return cardContainer;
 }
-
-
-
-
-

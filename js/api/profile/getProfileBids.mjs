@@ -5,11 +5,10 @@ const action = "/api/v1/auction/profiles";
 const bids = "/bids"
 
 
-
 export async function getProfileBids(name) {
     const token = load("accessToken");
     const username = load("username")
-    const getProfileBidsUrl = `${API_BASE_URL}${action}/${username}${bids}/?_seller=true&_bids=true&_active=true`; // Replace with your actual user info endpoint
+    const getProfileBidsUrl = `${API_BASE_URL}${action}/${username}${bids}/?_seller=true&_bids=true&_active=true`;
 
     try {
         const response = await fetch(getProfileBidsUrl, {

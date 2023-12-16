@@ -18,4 +18,3 @@ export function createLogoutButton() {
 
     return logoutButton;
 }
-

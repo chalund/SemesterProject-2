@@ -20,7 +20,6 @@ function toggleValidationMessage(inputFieldId, validationMessageClass) {
     });
 }
 
-// Call the function for each input field and validation message pair
 document.addEventListener('DOMContentLoaded', () => {
     toggleValidationMessage('usernameReg', 'username-validation-message');
     toggleValidationMessage('emailReg', 'email-validation-message');

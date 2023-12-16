@@ -57,13 +57,11 @@ export async function createPostFormListener() {
             const title = document.querySelector('#title').value;
             const endsAt = document.querySelector('#endsAt').value;
             const body = document.querySelector('#body').value;
-        
-            // Gather media URLs from inputs
+
             const media = Array.from(document.querySelectorAll('input[name="media"]'))
                             .map(input => input.value)
                             .filter(value => value !== '');
         
-            // Gather tags from inputs
             const tags = Array.from(document.querySelectorAll('input[name="tags"]'))
                             .map(input => input.value)
                             .filter(value => value !== '');
@@ -78,7 +76,6 @@ export async function createPostFormListener() {
         
             try {
                 const response = await createPost(post);
-                // Post creation successful
                 // console.log("Post added successfully:", response);
                 window.location.reload();
             } catch (error) {

@@ -5,11 +5,11 @@ export function registerFormListener() {
     console.log(form)
 
         form.addEventListener("submit", async (event) => {
-            event.preventDefault(); // Prevents the default form submission behavior
+            event.preventDefault(); 
             
             const form = event.target
-            const formData = new FormData(form); // Collects form data
-            const profile = Object.fromEntries(formData); // Converts form data into an object
+            const formData = new FormData(form); 
+            const profile = Object.fromEntries(formData); 
             console.log(profile)
             
        register(profile)

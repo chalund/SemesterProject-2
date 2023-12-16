@@ -16,19 +16,18 @@ export function profileInNav(username, credits) {
 
             const lineElement = document.createElement('span');
             lineElement.textContent = '|';
-            lineElement.style.margin = '0 8px'; // Adjust the margin as needed
+            lineElement.style.margin = '0 8px'; 
 
             const creditsElement = document.createElement('span');
             creditsElement.textContent = credits + ' Credits';
 
-            // Clear existing content and append new content to profileInfo
             profileInfo.innerHTML = '';
             profileInfo.appendChild(usernameElement);
             profileInfo.appendChild(lineElement);
             profileInfo.appendChild(creditsElement);
         }
     } else {
-        // If not logged in or profileInfo not found, clear the profileInfo content
+        
         profileInfo.innerHTML = '';
     }
 }

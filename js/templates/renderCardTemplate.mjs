@@ -19,7 +19,6 @@ export async function renderCardTemplate(containerId, posts) {
             container.append(postContent);
         });
 
-        // Hide loader after rendering
         loader.style.display = "none";
     } catch (error) {
         console.error('Error:', error);

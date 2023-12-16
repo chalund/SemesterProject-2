@@ -29,3 +29,4 @@ updateButtonBasedOnLoginStatus()
 
 import { createLogoutButton } from "./handlers/buttons/logoutBtn.mjs";
 createLogoutButton()
+

@@ -10,17 +10,9 @@ import * as searchFunction from "./handlers/search/search.mjs"
 searchFunction.search()
 searchFunction.handleSearch()
 
-
-
-// renderCardTemplate('auctionPosts', getActivePosts)
 updateButtonBasedOnLoginStatus()
 createLogoutButton()
 
 
 import { profileInNav } from "./api/profile/getProfileInNav.mjs";
 profileInNav()
-
-
-// import { toggleProfileLink } from "./handlers/buttons/profileBtn.mjs";
-// toggleProfileLink()
-

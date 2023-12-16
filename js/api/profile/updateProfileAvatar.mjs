@@ -47,32 +47,27 @@ export function editProfileImageModal() {
 
         try {
             if (avatarUrl !== '') {
-                // Reset errorShown flag if a valid URL is provided
+
                 errorShown = false;
 
                 await editProfileImage(avatarUrl);
 
                 location.reload();
-                // Optionally, add code here to handle success (e.g., close the modal)
             } else {
-                // Show error message for missing avatar URL only if not already shown
+
                 if (!errorShown) {
                     const errorElement = document.createElement('div');
                     errorElement.textContent = 'You must add a URL';
                     errorElement.classList.add('input-group', 'text-danger', 'fw-bold', 'mt-2');
                     avatarInput.parentElement.appendChild(errorElement);
 
-                    // Set errorShown to true to indicate that the error is displayed
                     errorShown = true;
                 }
             }
         } catch (error) {
-            // Handle any errors from the editProfileImage function
             console.error('Error updating avatar:', error);
-            // Optionally, display an error message to the user or perform error handling
         }
     });
 }
 
-// Call the function when the DOM content is loaded
 document.addEventListener('DOMContentLoaded', editProfileImageModal);

@@ -48,7 +48,7 @@ export async function getPostId(id) {
         
         return postData;
     } catch (error) {
-        // Log and re-throw the error for handling outside this function
+
         console.error('Error in getPostId:', error);
         throw error;
     }
@@ -56,7 +56,6 @@ export async function getPostId(id) {
 
 export async function addBid(postId, bidAmount) {
     const token = load('accessToken');
-    // const username = load('username');
     const bidUrl = `${API_BASE_URL}${action}/${postId}${bid}`;
 
     try {

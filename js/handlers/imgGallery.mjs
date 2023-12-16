@@ -8,12 +8,10 @@ export function imageGallery() {
             const bigSrc = smallSrc.replace("small", "big");
             highlight.src = bigSrc;
 
-            // Remove 'room-active' class from all preview images
             previews.forEach(preview => {
                 preview.classList.remove("room-active");
             });
 
-            // Add 'room-active' class to the clicked preview image
             this.classList.add("room-active");
 
             console.log(smallSrc);

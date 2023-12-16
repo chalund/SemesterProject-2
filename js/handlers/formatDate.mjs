@@ -6,12 +6,12 @@ export function formatDate(postData) {
         year: "numeric",
         hour: "2-digit",
         minute: "2-digit",
-        hour12: false, // Ensure 24-hour format
-        timeZone: "Europe/London", // Set the timezone to London
+        hour12: false, 
+        timeZone: "Europe/London", 
     };
 
     const dateFormatter = new Intl.DateTimeFormat("en-GB", options);
     const formattedDate = dateFormatter.format(date);
-    return formattedDate; // Return the formatted date and time
+    return formattedDate; 
 }
 

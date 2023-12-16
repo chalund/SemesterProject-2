@@ -42,7 +42,7 @@ export function productTemplate(postData) {
     }
     
     const productImageList = document.createElement("div");
-    productImageList.classList.add("room-preview", "d-flex" , "justify-content-between");
+    productImageList.classList.add("room-preview", "d-flex" , "justify-content-between", "mb-1");
     
     if (postData && postData.media && Array.isArray(postData.media)) {
         postData.media.forEach(mediaItem => {

@@ -4,11 +4,10 @@ import { load } from "../storage/index.mjs";
 const action = "/api/v1/auction/profiles";
 const method = "get";
 
-
 export async function getProfile(name) {
     const token = load("accessToken");
     const username = load("username")
-    const getProfileUrl = `${API_BASE_URL}${action}/${username}`; // Replace with your actual user info endpoint
+    const getProfileUrl = `${API_BASE_URL}${action}/${username}`; 
 
     try {
         const response = await fetch(getProfileUrl, {
@@ -30,14 +29,12 @@ export async function updateProfileLayout() {
     try {
         const userData = await getProfile();
 
-        // Update the HTML elements with user info
         const profileAvatar = document.querySelector('#profile-avatar');
         const profileUsername = document.querySelector('#profile-name');
         const profileEmail = document.querySelector('#profile-email');
         const profileCredits = document.querySelector('#profile-credits');
         const profileWins = document.querySelector('#profile-wins');
 
-        // Check if all queried elements exist before updating
         if (profileAvatar && profileUsername && profileEmail && profileCredits && profileWins) {
             if (!userData.avatar) {
                 profileAvatar.src = "../images/logo.png";
@@ -62,4 +59,3 @@ export async function updateProfileLayout() {
         // Handle errors as needed
     }
 }
-

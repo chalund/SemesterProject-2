@@ -1,4 +1,5 @@
 import { handleDeleteButtonClick } from "../handlers/buttons/deleteBtn.mjs"; 
+import { formatDate } from "../handlers/formatDate.mjs";
 
 export function postProfileTemplate(postData) {
 
@@ -11,12 +12,14 @@ export function postProfileTemplate(postData) {
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("btn", "btn-danger", "delete-btn", "small");
     deleteBtn.textContent = "Delete";
-    deleteBtn.setAttribute("data-post-id", postData.id); // Add a custom attribute to store post ID
-    deleteBtn.addEventListener("click", handleDeleteButtonClick); // Add click event listener
+    deleteBtn.setAttribute("data-post-id", postData.id); 
     
- 
-
-
+    deleteBtn.addEventListener("click", (event) => {
+        const postId = event.currentTarget.getAttribute("data-post-id"); 
+    
+        handleDeleteButtonClick({ id: postId }); 
+      });
+    
     if (postData.media && postData.media.length > 0) {
         const firstImage = postData.media[0];
 
@@ -39,35 +42,17 @@ export function postProfileTemplate(postData) {
     description.textContent = postData.description || 'No description available';
     cardBody.append(description);
 
-
-
-    // const viewButton = document.createElement("a");
-    // viewButton.href = "../listing/product/index.html";
-    // viewButton.classList.add("btn", "btn-primary", "mt-3");
-    // viewButton.textContent = "View";
-
     const endsAt = document.createElement("h5");
-    const endsAtDate = new Date(postData.endsAt); // Convert endsAt string to a Date object
-    const formattedDate = endsAtDate.toLocaleDateString("en-US", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-    });
-    endsAt.textContent = `Ends at: ${formattedDate}`;
-    endsAt.classList.add("mt-3", "text-danger") // Set the formatted date
+    const endsAtDate = formatDate(postData.endsAt); 
+    endsAt.textContent = `Ends at: ${endsAtDate}`;
+    endsAt.classList.add("mt-3", "text-danger") 
     cardBody.appendChild(endsAt);
 
     card.append(deleteBtn)
-    // cardBody.append(viewButton);
     cardBody.append(endsAt);
 
     card.append(cardBody);
     cardContainer.append(card);
 
- 
-
-    
     return cardContainer;
 }

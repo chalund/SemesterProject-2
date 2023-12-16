@@ -3,7 +3,6 @@ import * as storage from "../storage/index.mjs";
 
 const action = "/api/v1/auction/auth/login";
 
-
 export async function login(profile) {
     const loginUrl = `${API_BASE_URL}${action}`;
     console.log(loginUrl)
@@ -25,8 +24,7 @@ export async function login(profile) {
             storage.save("username", name);
             storage.save("avatar", avatar)
             storage.save("credits" ,credits)
-
-
+            
             window.location.replace(`/profile/index.html`);
 
         } else {

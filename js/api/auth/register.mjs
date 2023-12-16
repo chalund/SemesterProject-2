@@ -15,8 +15,6 @@ export async function register(profile) {
             body: JSON.stringify(profile),
         });
 
-
-
         if (response.status === 200 || response.status === 201) {
             const json = await response.json();
             alert("Welcome, you are now registered");
@@ -27,11 +25,8 @@ export async function register(profile) {
         } else if (response.status === 400) {
             alert("User already exists try a different username or email");
 
-           
         }
     } catch(error) {
         console.log(error)
     }
-
-
 }

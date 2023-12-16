@@ -14,19 +14,16 @@ export function bidModal(postId) {
         const saveBidBtn = event.target.closest('#save-bid-btn');
         if (saveBidBtn) {
             event.preventDefault();
-            const bidAmountInput = document.getElementById('bidAmount'); // Ensure bidAmountInput is available here
+            const bidAmountInput = document.getElementById('bidAmount'); 
             const bidAmount = bidAmountInput.value.trim();
-            let errorShown = false; // Initialize errorShown here or provide its context
+            let errorShown = false; 
 
             try {
                 if (bidAmount !== '') {
-                    // Add bid if a valid amount is provided
-                    await addBid(postId, bidAmount); // Pass the postId as the first argument
+                    await addBid(postId, bidAmount); 
 
-                    // Optionally, close the modal or perform any other action on success
-                    console.log('Bid added successfully!');
+                    // console.log('Bid added successfully!');
 
-                    // Close modal after bid is added
                     const myModal = new bootstrap.Modal(document.getElementById('bidModal'));
                     myModal.hide();
 
@@ -38,19 +35,15 @@ export function bidModal(postId) {
                         errorElement.classList.add('input-group', 'text-danger', 'fw-bold', 'mt-2');
                         bidAmountInput.parentElement.appendChild(errorElement);
 
-                        // Set errorShown to true to indicate that the error is displayed
                         errorShown = true;
                     }
                 }
             } catch (error) {
-                // Handle any errors from the addBid function
                 console.error('Error adding bid:', error);
-                // Optionally, display an error message to the user or perform error handling
             }
         }
     };
 
-    // Attach the event listeners to the document
     document.addEventListener('click', bidButtonHandler);
     document.addEventListener('click', saveBidHandler);
 
@@ -60,6 +53,6 @@ export function bidModal(postId) {
 
 // Call the function when the DOM content is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    const postId = ''; // Set the postId here
+    const postId = ''; 
     bidModal(postId);
 });
