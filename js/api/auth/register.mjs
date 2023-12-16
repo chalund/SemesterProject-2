@@ -17,14 +17,14 @@ export async function register(profile) {
         if (response.status === 200 || response.status === 201) {
             const json = await response.json();
             alert("Welcome, you are now registered");
-            // window.location.replace("/index.html");
+            window.location.replace("/profile/login/index.html");
             return json;
         } else if (response.status === 400) {
             alert("User already exists try a different username or email");
 
-            window.location.replace("/profile/register/index.html");
+           
         }
     } catch(error) {
-        console.log(error)
+        // console.log(error)
     }
 }
