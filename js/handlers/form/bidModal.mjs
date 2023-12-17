@@ -1,7 +1,8 @@
-import { addBid } from "../../api/posts/postById.mjs";
+import { addBid, getPostId } from "../../api/posts/postById.mjs";
 import { closeBidModal } from "../buttons/closeModal.mjs";
 import { clearInputListeners } from "../buttons/clearInput.mjs";
 import { isLoggedIn } from "../buttons/userLoggedIn.mjs";
+import { findLatestBidAmount } from "../latestBidder.mjs";
 
 export function bidModal(postId) {
     const clickHandler = async (event) => {
@@ -28,10 +29,23 @@ export function bidModal(postId) {
                     return; 
                 }
     
+                if (!bidAmount) {
+                    displayErrorMessage('You must add a valid numeric bid amount');
+                    return;
+                }
+
                 if (/^\d+$/.test(bidAmount)) {
                     if (errorElement) {
                         errorElement.remove();
                         errorElement = null;
+                    }
+
+                    const postData = await getPostId(postId);
+                    const latestBidAmount = findLatestBidAmount(postData.bids);
+
+                    if (bidAmount <= latestBidAmount) {
+                        displayErrorMessage('Your bid must be higher than the current bid');
+                        return;
                     }
     
                     await addBid(postId, bidAmount);
@@ -40,17 +54,27 @@ export function bidModal(postId) {
     
                     alert("Your bid has been added successfully");
                     window.location.reload();
+                    console.log(addBid)
                 } else {
-                    if (!errorElement) {
-                        errorElement = document.createElement('div');
-                        errorElement.textContent = 'You must add a valid numeric bid amount';
-                        errorElement.classList.add('input-group', 'text-danger', 'fw-bold', 'mt-2');
-                        bidAmountInput.parentElement.appendChild(errorElement);
-                    }
+                    displayErrorMessage('You must add a valid numeric bid amount');
                 }
             } catch (error) {
                 console.error('Error adding bid:', error);
             }
+        }
+    };
+
+    const displayErrorMessage = (message) => {
+        const bidAmountInput = document.getElementById('bidAmount');
+        let errorElement = bidAmountInput.parentElement.querySelector('.text-danger');
+        
+        if (errorElement) {
+            errorElement.textContent = message;
+        } else {
+            errorElement = document.createElement('div');
+            errorElement.textContent = message;
+            errorElement.classList.add('input-group', 'text-danger', 'fw-bold', 'mt-2');
+            bidAmountInput.parentElement.appendChild(errorElement);
         }
     };
     
@@ -58,7 +82,4 @@ export function bidModal(postId) {
     closeBidModal();
 }
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     const postId = ''; 
-//     bidModal(postId);
-// });
+

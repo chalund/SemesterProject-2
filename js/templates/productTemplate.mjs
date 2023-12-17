@@ -42,7 +42,7 @@ export function productTemplate(postData) {
     }
     
     const productImageList = document.createElement("div");
-    productImageList.classList.add("room-preview", "d-flex" , "justify-content-between", "mb-1");
+    productImageList.classList.add("room-preview", "d-flex" , "justify-content-between", "mb-2");
     
     if (postData && postData.media && Array.isArray(postData.media)) {
         postData.media.forEach(mediaItem => {
@@ -192,7 +192,7 @@ export function productTemplate(postData) {
     bidHistoryTitle.textContent = "Bid history";
 
     const bidLine = document.createElement("div");
-    bidLine.classList.add("col-md-8", "py-1", "bg-primary");
+    bidLine.classList.add("col-md-8", "py-1", "bg-primary", "mb-1");
 
     bidContainer.append(bidHistoryTitle , bidLine);
 
