@@ -22,8 +22,6 @@ export function bidModal(postId) {
                 if (bidAmount !== '') {
                     await addBid(postId, bidAmount); 
 
-                    // console.log('Bid added successfully!');
-
                     const myModal = new bootstrap.Modal(document.getElementById('bidModal'));
                     myModal.hide();
 
@@ -51,7 +49,6 @@ export function bidModal(postId) {
 
 }
 
-// Call the function when the DOM content is loaded
 document.addEventListener('DOMContentLoaded', () => {
     const postId = ''; 
     bidModal(postId);

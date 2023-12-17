@@ -76,7 +76,7 @@ export async function createPostFormListener() {
         
             try {
                 const response = await createPost(post);
-                // console.log("Post added successfully:", response);
+        
                 window.location.reload();
             } catch (error) {
                 console.log("Error creating post:", error);

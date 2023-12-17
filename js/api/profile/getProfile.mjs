@@ -17,7 +17,7 @@ export async function getProfile(name) {
             },
         });
         const getProfile = await response.json();
-        // console.log(getProfile)
+
         return getProfile;
     } catch (error) {
         console.error(error);

@@ -18,12 +18,12 @@ export async function createBidFormListener() {
 
         try {
             const response = await createBid(addBid); 
-            // console.log("Bid added successfully:", response);
+    
             window.location.replace("/listing/product/index/html");
            
         } catch (error) {
             console.log("Error creating bid:", error);
-            // Handle specific error cases and provide feedback to the user
+    
         }
     });
 }
