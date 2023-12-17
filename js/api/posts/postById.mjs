@@ -6,7 +6,7 @@ import { bidModal } from "../../handlers/form/bidModal.mjs";
 
 const action = "/api/v1/auction/listings";
 const bids = "?_bids=true"
-const bid = "/bids"
+const bid = "bids"
 
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', async () => {
             const postDetailsContainer = document.querySelector('#viewProduct');
             postDetailsContainer.append(template);
 
-            // bidModal(postId);
+            bidModal(postId);
            
         } catch (error) {
             // Handle errors occurring during data retrieval
@@ -56,7 +56,7 @@ export async function getPostId(id) {
 
 export async function addBid(postId, bidAmount) {
     const token = load('accessToken');
-    const bidUrl = `${API_BASE_URL}${action}/${postId}${bid}`;
+    const bidUrl = `${API_BASE_URL}${action}/${postId}/${bid}`;
 
     try {
         const data = {
@@ -74,10 +74,9 @@ export async function addBid(postId, bidAmount) {
 
         if (response.ok) {
             const newBid = await response.json()
-
             return newBid;
+
         } else {
-        
             throw new Error('Failed to add bid');
         }
     } catch (error) {

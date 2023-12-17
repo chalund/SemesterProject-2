@@ -4,29 +4,27 @@ import { clearInputListeners } from "../buttons/clearInput.mjs";
 import { isLoggedIn } from "../buttons/userLoggedIn.mjs";
 
 export function bidModal(postId) {
-    const bidButtonHandler = (event) => {
+    const clickHandler = async (event) => {
         const bidButton = event.target.closest('.bid-button');
+        const saveBidBtn = event.target.closest('#save-bid-btn');
+        
         if (bidButton) {
             event.preventDefault();
             const myModal = new bootstrap.Modal(document.getElementById('bidModal'));
             myModal.show();
-            
             clearInputListeners();
         }
-    };
 
-    const saveBidHandler = async (event) => {
-        const saveBidBtn = event.target.closest('#save-bid-btn');
         if (saveBidBtn) {
             event.preventDefault();
-            const bidAmountInput = document.getElementById('bidAmount'); 
+            const bidAmountInput = document.getElementById('bidAmount');
             const bidAmount = bidAmountInput.value.trim();
             let errorElement = bidAmountInput.parentElement.querySelector('.text-danger');
     
             try {
-             
                 if (!isLoggedIn()) {
                     alert('You must be logged in to place a bid.');
+                    window.location.reload();
                     return; 
                 }
     
@@ -36,14 +34,11 @@ export function bidModal(postId) {
                         errorElement = null;
                     }
     
-                    await addBid(postId, bidAmount); 
-                    // console.log('Bid added successfully!');
-
+                    await addBid(postId, bidAmount);
                     const myModal = new bootstrap.Modal(document.getElementById('bidModal'));
                     myModal.hide();
     
                     alert("Your bid has been added successfully");
-    
                     window.location.reload();
                 } else {
                     if (!errorElement) {
@@ -59,14 +54,11 @@ export function bidModal(postId) {
         }
     };
     
-    document.addEventListener('click', bidButtonHandler);
-    document.addEventListener('click', saveBidHandler);
-    
-
-    closeBidModal()
+    document.addEventListener('click', clickHandler);
+    closeBidModal();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const postId = ''; 
-    bidModal(postId);
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//     const postId = ''; 
+//     bidModal(postId);
+// });
